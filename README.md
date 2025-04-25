@@ -1,3 +1,10 @@
+# LoopBill
+This system is designed for a pest control company to manage service packages, agents, sales personnel, and customer interactions in a streamlined way. The goal is to:
+- Track scheduled services and their completion
+- Automate reminders and invoicing
+- Monitor agent and sales performance (KPIs)
+- Allow structured complaint resolution and re-servicing
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
