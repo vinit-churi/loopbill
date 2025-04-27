@@ -28,15 +28,12 @@ to First Byte.
 generateMetadata function to define page-level <meta> and <link> tags in the HTML <head> for each route.
 
 - Essential Meta Tags
-: title: Supply a unique, descriptive <title> via metadata.title to influence title links shown in Google Search 
+    - title: Supply a unique, descriptive <title> via metadata.title to influence title links shown in Google Search 
 results.
-
-: description: Use metadata.description for a concise summary (≈155–160 characters) to improve click-through rates.
-
-: keywords: Optionally include relevant terms via metadata.keywords.
-
-: robots: Control indexing per page with metadata.robots (e.g. { index: true, follow: true } or noindex) to manage which 
-pages appear in search
+    - description: Use metadata.description for a concise summary (≈155–160 characters) to improve click-through rates.
+    - keywords: Optionally include relevant terms via metadata.keywords.
+    - robots: Control indexing per page with metadata.robots (e.g. { index: true, follow: true } or noindex) to manage which 
+pages appear in search.
 
 - Open Graph & Twitter Cards
 : Define social sharing data using metadata.openGraph and metadata.twitter, setting properties like og:title,
@@ -52,8 +49,8 @@ resource fetching early.
 to all search engines.
 
 - Image SEO
-  : Ensure every image includes meaningful alt text via metadata.openGraph.images[].alt or inline alt attributes to
-  improve accessibility and image search ranking
+: Ensure every image includes meaningful alt text via metadata.openGraph.images[].alt or inline alt attributes to
+improve accessibility and image search ranking
 
 - Validation & Testing
 : Regularly audit site with Lighthouse’s SEO audit in Chrome DevTools and Google’s Rich Results Test to verify that all 
