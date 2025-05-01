@@ -25,10 +25,21 @@ export default function Navbar() {
             </nav>
 
             {/* Mobile Menu Button */}
-            <button className="md:hidden absolute start-4 cursor-pointer">
-                <img className="h-6 w-6"
-                     src="/menu_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="menu"/>
-            </button>
+            <Sheet>
+                <SheetTrigger className="md:hidden absolute start-4 cursor-pointer">
+                    <img className="h-6 w-6"
+                         src="/menu_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="menu"/>
+                </SheetTrigger>
+                <SheetContent>
+                    <SheetHeader>
+                        <SheetTitle>Are you absolutely sure?</SheetTitle>
+                        <SheetDescription>
+                            This action cannot be undone. This will permanently delete your account
+                            and remove your data from our servers.
+                        </SheetDescription>
+                    </SheetHeader>
+                </SheetContent>
+            </Sheet>
             <Link href="/" className="md:hidden text-2xl font-bold text-primary">
                 LoopBill
             </Link>
