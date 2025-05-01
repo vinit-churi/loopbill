@@ -3,7 +3,6 @@ import {Button} from "@/components/ui/button";
 import {
     Sheet,
     SheetContent,
-    SheetDescription,
     SheetHeader,
     SheetTitle,
     SheetTrigger,
@@ -30,13 +29,17 @@ export default function Navbar() {
                     <img className="h-6 w-6"
                          src="/menu_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="menu"/>
                 </SheetTrigger>
-                <SheetContent>
+                <SheetContent side={"left"}>
                     <SheetHeader>
-                        <SheetTitle>Are you absolutely sure?</SheetTitle>
-                        <SheetDescription>
-                            This action cannot be undone. This will permanently delete your account
-                            and remove your data from our servers.
-                        </SheetDescription>
+                        <SheetTitle>
+                            <Link href={{pathname: '/', hash: 'about'}} scroll={true}>About</Link>
+                        </SheetTitle>
+                        <SheetTitle>
+                            <Link href={{pathname: '/', hash: 'pricing'}} scroll={true}>Pricing</Link>
+                        </SheetTitle>
+                        <SheetTitle>
+                            <Link href={{pathname: '/', hash: 'contact'}} scroll={true}>Contact</Link>
+                        </SheetTitle>
                     </SheetHeader>
                 </SheetContent>
             </Sheet>
