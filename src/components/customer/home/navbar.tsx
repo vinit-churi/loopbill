@@ -3,14 +3,12 @@ import {Button} from "@/components/ui/button";
 
 export default function Navbar() {
     return (
-        <nav className="sticky top-0 z-50 bg-[#edebe4]">
-            <div className="flex md:justify-between items-center p-4 md:py-3.5 md:px-8 relative justify-center">
+        <nav className="top-0 z-50 bg-[#edebe4] flex md:justify-between items-center p-4 md:py-3.5 md:px-8 relative justify-center">
                 {/* Desktop Menu */}
                 <Link href="/" className="hidden md:flex text-2xl font-bold text-primary">
                     LoopBill
                 </Link>
                 <nav className="hidden md:flex items-center space-x-8">
-                    <Link href="/">Home</Link>
                     <Link href={{pathname: '/', hash: 'about'}} scroll={true}>About</Link>
                     <Link href={{pathname: '/', hash: 'pricing'}} scroll={true}>Pricing</Link>
                     <Link href={{pathname: '/', hash: 'contact'}} scroll={true}>Contact</Link>
@@ -24,7 +22,6 @@ export default function Navbar() {
                 <Link href="/" className="md:hidden text-2xl font-bold text-primary">
                     LoopBill
                 </Link>
-            </div>
         </nav>
     );
 }
