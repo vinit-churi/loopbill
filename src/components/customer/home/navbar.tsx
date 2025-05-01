@@ -26,9 +26,9 @@ const Navbar = () => {
                 {/* Desktop Menu */}
                 <nav className="hidden md:flex items-center space-x-8">
                     <Link href="/" className="nav-link">Home</Link>
-                    <Link href="/about" className="nav-link">About</Link>
-                    <Link href="/pricing" className="nav-link">Pricing</Link>
-                    <Link href="/contact" className="nav-link">Contact</Link>
+                    <Link href={{pathname: '/', hash: 'about'}} scroll={true} className="nav-link">About</Link>
+                    <Link href={{pathname: '/', hash: 'pricing'}} scroll={true} className="nav-link">Pricing</Link>
+                    <Link href={{pathname: '/', hash: 'contact'}} scroll={true} className="nav-link">Contact</Link>
                     <Button className="btn-primary cursor-pointer">Get Started</Button>
                 </nav>
 
@@ -40,9 +40,9 @@ const Navbar = () => {
                 <div className="md:hidden py-4 px-4">
                     <div className="flex flex-col space-y-4">
                         <Link href="/" className="nav-link">Home</Link>
-                        <Link href="/about" className="nav-link">About</Link>
-                        <Link href="/pricing" className="nav-link">Pricing</Link>
-                        <Link href="/contact" className="nav-link">Contact</Link>
+                        <Link href={{pathname: '/', hash: 'about'}} scroll={true} className="nav-link">About</Link>
+                        <Link href={{pathname: '/', hash: 'pricing'}} scroll={true} className="nav-link">Pricing</Link>
+                        <Link href={{pathname: '/', hash: 'contact'}} scroll={true} className="nav-link">Contact</Link>
                         <Button className="btn-primary w-full">Get Started</Button>
                     </div>
                 </div>
