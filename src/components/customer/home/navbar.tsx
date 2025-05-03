@@ -10,7 +10,7 @@ import {
 
 export default function Navbar() {
   return (
-    <nav className="top-0 z-50 bg-[#edebe4]">
+    <nav className="sticky top-0 z-50 bg-[#edebe4]">
       {/* Desktop Menu */}
       <div className="max-w-7xl mx-auto flex md:justify-between items-center p-4 md:py-3.5 md:px-8 relative justify-center">
         <Link
