@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import Pricing from "@/components/customer/home/pricing";
-import Link from "next/link";
 import About from "@/components/customer/home/about";
+import Contact from "@/components/customer/home/contact";     
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -97,6 +98,9 @@ export default function Home() {
 
       {/* pricing section */}
       <Pricing />
+
+      {/* contact section */}
+      <Contact />
 
       <footer className="bg-[#edebe4]">
         <div className="max-w-7xl mx-auto py-12">
