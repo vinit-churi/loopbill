@@ -12,9 +12,9 @@ const Contact = () => {
   };
 
   return (
-    <section className="flex flex-col bg-[#f7f6f0]">
+    <section id="contact" className="flex flex-col bg-[#f7f6f0]">
       {/* Hero Section */}
-      <div className="bg-gradient-to-b from-[#edebe4] to-[#f7f6f0] py-20">
+      <div className="py-20">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl font-bold mb-6 heading-gradient">

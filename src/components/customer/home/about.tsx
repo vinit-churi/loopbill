@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section className="flex flex-col">
+    <section id="about" className="flex flex-col">
       {/* Hero Section */}
       <div className="bg-gray-50 py-20">
         <div className="max-w-7xl mx-auto">

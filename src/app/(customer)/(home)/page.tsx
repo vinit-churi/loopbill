@@ -83,7 +83,8 @@ export default function Home() {
               <ul className="space-y-2">
                 <li>
                   <Link
-                    href="/about"
+                    href={{ pathname: "/", hash: "about" }}
+                    scroll={true}
                     className="text-gray-600 hover:text-gray-900"
                   >
                     About
@@ -91,7 +92,8 @@ export default function Home() {
                 </li>
                 <li>
                   <Link
-                    href="/pricing"
+                    href={{ pathname: "/", hash: "pricing" }}
+                    scroll={true}
                     className="text-gray-600 hover:text-gray-900"
                   >
                     Pricing
@@ -99,7 +101,8 @@ export default function Home() {
                 </li>
                 <li>
                   <Link
-                    href="/contact"
+                    href={{ pathname: "/", hash: "contact" }}
+                    scroll={true}
                     className="text-gray-600 hover:text-gray-900"
                   >
                     Contact

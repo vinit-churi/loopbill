@@ -42,7 +42,7 @@ const Pricing = () => {
   ];
 
   return (
-    <section className="flex flex-col bg-[#f7f6f0]">
+    <section id="pricing" className="flex flex-col bg-[#f7f6f0]">
       {/* Hero Section */}
       <section className="bg-gradient-to-b py-20">
         <div className="max-w-7xl mx-auto">
