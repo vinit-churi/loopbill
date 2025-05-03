@@ -1,4 +1,5 @@
 import {Button} from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Home() {
     return (
@@ -23,7 +24,7 @@ export default function Home() {
       </header>
 
       {/* Features Section */}
-      <section className="py-20">
+      <section className="py-20 bg-[#eeebe4]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4">Why Choose Loopbill?</h2>
@@ -73,6 +74,45 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <footer className="bg-[#edebe4]">
+        <div className="max-w-7xl mx-auto py-12">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 className="text-lg font-semibold mb-4">Loopbill</h3>
+                <p className="text-gray-600">Professional pest control services for your peace of mind.</p>
+            </div>
+            <div>
+                <h4 className="text-sm font-semibold mb-4">Company</h4>
+                <ul className="space-y-2">
+                <li><Link href="/about" className="text-gray-600 hover:text-gray-900">About</Link></li>
+                <li><Link href="/pricing" className="text-gray-600 hover:text-gray-900">Pricing</Link></li>
+                <li><Link href="/contact" className="text-gray-600 hover:text-gray-900">Contact</Link></li>
+                </ul>
+            </div>
+            <div>
+                <h4 className="text-sm font-semibold mb-4">Services</h4>
+                <ul className="space-y-2">
+                <li><a href="#" className="text-gray-600 hover:text-gray-900">Residential</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-gray-900">Commercial</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-gray-900">Emergency</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 className="text-sm font-semibold mb-4">Contact</h4>
+                <ul className="space-y-2">
+                <li className="text-gray-600">1234 Pest Control St</li>
+                <li className="text-gray-600">City, State 12345</li>
+                <li className="text-gray-600">contact@loopbill.com</li>
+                <li className="text-gray-600">(555) 123-4567</li>
+                </ul>
+            </div>
+            </div>
+            <div className="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
+            <p>&copy; {new Date().getFullYear()} Loopbill. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
     </div>
     );
 }
