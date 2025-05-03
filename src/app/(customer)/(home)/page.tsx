@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import Pricing from "@/components/customer/home/pricing";
 import About from "@/components/customer/home/about";
-import Contact from "@/components/customer/home/contact";     
+import Contact from "@/components/customer/home/contact";
 import Link from "next/link";
+import Features from "@/components/customer/home/features";
 
 export default function Home() {
   return (
@@ -26,81 +27,47 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Features Section */}
-      <section className="py-20 bg-[#eeebe4]">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Why Choose Loopbill?</h2>
-            <p className="text-gray-600">
-              Expert pest control services you can trust
-            </p>
+      <main>
+        {/* Features Section */}
+        <Features />
+
+        {/* CTA Section */}
+        <section className="relative bg-primary py-20 overflow-hidden">
+          <div className="absolute inset-0">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)`,
+                backgroundSize: "24px 24px",
+              }}
+            />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Expert Team",
-                description:
-                  "Our certified professionals have years of experience in pest control.",
-              },
-              {
-                title: "24/7 Service",
-                description:
-                  "Emergency pest control services available around the clock.",
-              },
-              {
-                title: "Guaranteed Results",
-                description:
-                  "We stand behind our work with a 100% satisfaction guarantee.",
-              },
-            ].map((feature, index) => (
-              <div
-                key={index}
-                className="p-6 bg-white rounded-lg shadow-sm border border-gray-100"
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="max-w-3xl mx-auto text-center text-white">
+              <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
+              <p className="text-lg mb-8 opacity-90">
+                Contact us today for a free inspection and quote. Protect your
+                property from pests!
+              </p>
+              <Button
+                size="lg"
+                className="bg-white text-primary hover:bg-gray-100"
               >
-                <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </div>
-            ))}
+                Contact Us Now
+              </Button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
-      <section className="relative bg-primary py-20 overflow-hidden">
-        <div className="absolute inset-0">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)`,
-              backgroundSize: "24px 24px",
-            }}
-          />
-        </div>
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="max-w-3xl mx-auto text-center text-white">
-            <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
-            <p className="text-lg mb-8 opacity-90">
-              Contact us today for a free inspection and quote. Protect your
-              property from pests!
-            </p>
-            <Button
-              size="lg"
-              className="bg-white text-primary hover:bg-gray-100"
-            >
-              Contact Us Now
-            </Button>
-          </div>
-        </div>
-      </section>
+        {/* about section */}
+        <About />
 
-      {/* about section */}
-      <About />
+        {/* pricing section */}
+        <Pricing />
 
-      {/* pricing section */}
-      <Pricing />
-
-      {/* contact section */}
-      <Contact />
+        {/* contact section */}
+        <Contact />
+      </main>
 
       <footer className="bg-[#edebe4]">
         <div className="max-w-7xl mx-auto py-12">
