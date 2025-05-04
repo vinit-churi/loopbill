@@ -21,7 +21,7 @@ const Contact = () => {
               Get in Touch
             </h1>
             <p className="text-xl text-gray-600">
-              We're here to help with all your pest control needs
+              We&apos;re here to help with all your pest control needs
             </p>
           </div>
         </div>

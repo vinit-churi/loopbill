@@ -27,7 +27,7 @@ export default function About() {
               that protect both homes and businesses.
             </p>
             <p className="text-gray-600">
-              Today, we're proud to be one of the leading pest control
+              Today, we&apos;re proud to be one of the leading pest control
               companies, serving thousands of satisfied customers across the
               region. Our commitment to excellence and customer satisfaction
               remains at the heart of everything we do.

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -36,7 +37,9 @@ export default function Navbar() {
       {/* Mobile Menu Button */}
       <Sheet>
         <SheetTrigger className="md:hidden absolute start-4 cursor-pointer">
-          <img
+          <Image
+            width={24}
+            height={24}
             className="h-6 w-6"
             src="/menu_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg"
             alt="menu"
