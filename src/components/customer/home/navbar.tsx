@@ -1,73 +1,68 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import Link from 'next/link'
+import Image from 'next/image'
+import { Button } from '@/components/ui/button'
 import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+    Sheet,
+    SheetContent,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from '@/components/ui/sheet'
+
+const links = [
+    { id: 'about', label: 'About' },
+    { id: 'pricing', label: 'Pricing' },
+    { id: 'contact', label: 'Contact' },
+]
 
 export default function Navbar() {
-  return (
-    <nav className="sticky top-0 z-50 bg-[#edebe4]">
-      {/* Desktop Menu */}
-      <div className="max-w-7xl mx-auto flex md:justify-between items-center p-4 md:py-3.5 md:px-8 relative justify-center">
-        <Link
-          href="/"
-          className="hidden md:flex text-2xl font-bold text-primary"
-        >
-          LoopBill
-        </Link>
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link href={{ pathname: "/", hash: "about" }} scroll={true}>
-            About
-          </Link>
-          <Link href={{ pathname: "/", hash: "pricing" }} scroll={true}>
-            Pricing
-          </Link>
-          <Link href={{ pathname: "/", hash: "contact" }} scroll={true}>
-            Contact
-          </Link>
-          <Button className="btn-primary cursor-pointer">Get Started</Button>
-        </nav>
-      </div>
+    return (
+        <nav className="sticky top-0 z-50 bg-[#edebe4]">
+            <div className="relative mx-auto flex max-w-7xl items-center justify-center p-4 md:py-3.5 md:px-8 md:justify-between">
+                {/* Mobile ▸ menu button (hidden on md+) */}
+                <Sheet>
+                    <SheetTrigger className="absolute left-4 md:hidden">
+                        <Image
+                            src="/menu_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg"
+                            alt="menu"
+                            width={24}
+                            height={24}
+                        />
+                    </SheetTrigger>
 
-      {/* Mobile Menu Button */}
-      <Sheet>
-        <SheetTrigger className="md:hidden absolute start-4 cursor-pointer">
-          <Image
-            width={24}
-            height={24}
-            className="h-6 w-6"
-            src="/menu_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg"
-            alt="menu"
-          />
-        </SheetTrigger>
-        <SheetContent side={"left"}>
-          <SheetHeader>
-            <SheetTitle>
-              <Link href={{ pathname: "/", hash: "about" }} scroll={true}>
-                About
-              </Link>
-            </SheetTitle>
-            <SheetTitle>
-              <Link href={{ pathname: "/", hash: "pricing" }} scroll={true}>
-                Pricing
-              </Link>
-            </SheetTitle>
-            <SheetTitle>
-              <Link href={{ pathname: "/", hash: "contact" }} scroll={true}>
-                Contact
-              </Link>
-            </SheetTitle>
-          </SheetHeader>
-        </SheetContent>
-      </Sheet>
-      <Link href="/" className="md:hidden text-2xl font-bold text-primary">
-        LoopBill
-      </Link>
-    </nav>
-  );
+                    <SheetContent side="left">
+                        <SheetHeader className="space-y-4">
+                            {links.map(({ id, label }) => (
+                                <SheetTitle key={id}>
+                                    <Link
+                                        href={{ pathname: '/', hash: id }}
+                                        scroll
+                                        className="block"
+                                    >
+                                        {label}
+                                    </Link>
+                                </SheetTitle>
+                            ))}
+                        </SheetHeader>
+                    </SheetContent>
+                </Sheet>
+
+                {/* Brand */}
+                <Link href="/" className="text-2xl font-bold text-primary">
+                    UrbanPestMaster
+                </Link>
+
+                {/* Desktop ▸ link group */}
+                <nav className="hidden items-center space-x-8 md:flex">
+                    {links.map(({ id, label }) => (
+                        <Link key={id} href={{ pathname: '/', hash: id }} scroll>
+                            {label}
+                        </Link>
+                    ))}
+
+                    <Button className="btn-primary">Get Started</Button>
+                </nav>
+            </div>
+        </nav>
+    )
 }
