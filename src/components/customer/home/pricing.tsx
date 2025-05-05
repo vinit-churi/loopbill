@@ -1,131 +1,124 @@
-import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
+import { Button } from '@/components/ui/button'
+import { Check } from 'lucide-react'
 
-const Pricing = () => {
-  const plans = [
-    {
-      name: "Basic",
-      price: "99",
-      description: "Perfect for small homes",
-      features: [
-        "Quarterly inspections",
-        "Basic pest control",
-        "Free re-service",
-        "Phone support",
-      ],
-    },
-    {
-      name: "Professional",
-      price: "199",
-      description: "Ideal for larger homes",
-      features: [
-        "Monthly inspections",
-        "Advanced pest control",
-        "Priority re-service",
-        "24/7 phone support",
-        "Preventive treatments",
-      ],
-    },
-    {
-      name: "Enterprise",
-      price: "Custom",
-      description: "For commercial properties",
-      features: [
-        "Weekly inspections",
-        "Comprehensive pest control",
-        "Emergency service",
-        "Dedicated manager",
-        "Custom solutions",
-        "Warranty included",
-      ],
-    },
-  ];
+const plans = [
+  {
+    name: 'Basic',
+    price: '₹999',
+    description: 'Perfect for small homes',
+    features: [
+      'Quarterly inspections',
+      'Basic pest control',
+      'Free re-service',
+      'Phone support',
+    ],
+  },
+  {
+    name: 'Professional',
+    price: '₹9999',
+    description: 'Ideal for larger homes',
+    features: [
+      'Monthly inspections',
+      'Advanced pest control',
+      'Priority re-service',
+      '24/7 phone support',
+      'Preventive treatments',
+    ],
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    description: 'For commercial properties',
+    features: [
+      'Weekly inspections',
+      'Comprehensive pest control',
+      'Emergency service',
+      'Dedicated manager',
+      'Custom solutions',
+      'Warranty included',
+    ],
+  },
+]
 
-  return (
-    <section id="pricing" className="flex flex-col bg-[#f7f6f0]">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b py-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold mb-6 heading-gradient">
-              Simple, Transparent Pricing
-            </h1>
-            <p className="text-xl text-gray-600">
-              Choose the perfect plan for your pest control needs
-            </p>
-          </div>
+const frequentlyAskedQuestions = [
+  {
+    question: "What's included in the basic plan?",
+    answer: 'Our basic plan includes quarterly inspections, treatment for common household pests, and free re-service if pests return between scheduled visits.',
+  },
+  {
+    question: 'Can I upgrade my plan anytime?',
+    answer: 'Yes, you can upgrade your plan at any time. We’ll prorate the difference and adjust your service schedule accordingly.',
+  },
+  {
+    question: 'Do you offer any guarantees?',
+    answer: "Yes, we offer a 100% satisfaction guarantee. If you're not satisfied with our service, we'll return to re-treat at no additional cost.",
+  },
+]
+
+const Pricing = () => (
+    <section id="pricing" className="bg-[#f7f6f0]">
+      {/* Hero */}
+      <header className="py-20 text-center">
+        <div className="mx-auto max-w-3xl px-4">
+          <h1 className="mb-6 text-4xl font-bold heading-gradient">
+            Simple, Transparent Pricing
+          </h1>
+          <p className="text-xl text-gray-600">
+            Choose the perfect plan for your pest control needs
+          </p>
         </div>
-      </section>
+      </header>
 
-      {/* Pricing Cards */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {plans.map((plan) => (
-              <div
-                key={plan.name}
-                className="flex flex-col p-8 bg-white rounded-lg shadow-sm border border-gray-100"
-              >
-                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                <div className="mb-4">
-                  <span className="text-4xl font-bold">
-                    {typeof plan.price === "number"
-                      ? `$${plan.price}`
-                      : plan.price}
-                  </span>
-                  {typeof plan.price === "number" && (
+      {/* Plans */}
+      <ul className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 pb-20 md:grid-cols-3">
+        {plans.map(({ name, price, description, features }) => (
+            <li
+                key={name}
+                className="flex flex-col rounded-lg border border-gray-100 bg-white p-8 shadow-sm"
+            >
+              <h3 className="mb-2 text-2xl font-bold">{name}</h3>
+
+              <div className="mb-4">
+                <span className="text-4xl font-bold">{price}</span>
+                {price !== 'Custom' && (
                     <span className="text-gray-600">/month</span>
-                  )}
-                </div>
-                <p className="text-gray-600 mb-6">{plan.description}</p>
-                <ul className="space-y-4 mb-8 flex-grow">
-                  {plan.features.map((feature) => (
+                )}
+              </div>
+
+              <p className="mb-6 text-gray-600">{description}</p>
+
+              <ul className="mb-8 flex-grow space-y-4">
+                {features.map((feature) => (
                     <li key={feature} className="flex items-center">
-                      <Check className="h-5 w-5 text-green-500 mr-2" />
+                      <Check className="mr-2 h-5 w-5 text-green-500" />
                       <span className="text-gray-600">{feature}</span>
                     </li>
-                  ))}
-                </ul>
-                <Button className="btn-primary w-full mt-auto">
-                  Get Started
-                </Button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+                ))}
+              </ul>
 
-      {/* FAQ Section */}
-      <section className="bg-gray-50 py-20">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">
+              <Button className="btn-primary mt-auto w-full">Get Started</Button>
+            </li>
+        ))}
+      </ul>
+
+      {/* FAQ */}
+      <section className="bg-gray-50 py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <h2 className="mb-12 text-center text-3xl font-bold">
             Frequently Asked Questions
           </h2>
-          <div className="max-w-3xl mx-auto grid gap-6">
-            {[
-              {
-                q: "What's included in the basic plan?",
-                a: "Our basic plan includes quarterly inspections, treatment for common household pests, and free re-service if pests return between scheduled visits.",
-              },
-              {
-                q: "Can I upgrade my plan anytime?",
-                a: "Yes, you can upgrade your plan at any time. We'll prorate the difference and adjust your service schedule accordingly.",
-              },
-              {
-                q: "Do you offer any guarantees?",
-                a: "Yes, we offer a 100% satisfaction guarantee. If you're not satisfied with our service, we'll return to re-treat at no additional cost.",
-              },
-            ].map((faq, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg">
-                <h3 className="text-lg font-semibold mb-2">{faq.q}</h3>
-                <p className="text-gray-600">{faq.a}</p>
-              </div>
+
+          <ul className="mx-auto grid max-w-3xl gap-4">
+            {frequentlyAskedQuestions.map(({ question, answer }) => (
+                <li key={question} className="rounded-lg bg-white p-6">
+                  <h3 className="mb-2 text-lg font-semibold">{question}</h3>
+                  <p className="text-gray-600">{answer}</p>
+                </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
     </section>
-  );
-};
+)
 
-export default Pricing;
+export default Pricing
