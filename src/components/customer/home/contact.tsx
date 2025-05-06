@@ -1,14 +1,15 @@
 "use client";
 
 import React from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import {Button} from "@/components/ui/button";
+import {Input} from "@/components/ui/input";
+import {Textarea} from "@/components/ui/textarea";
 
-const Field: React.FC<{ label: string; children: React.ReactNode }> = ({
-                                                                           label,
-                                                                           children,
-                                                                       }) => (
+const Field: React.FC<{ label: string; children: React.ReactNode }> = (
+    {
+        label,
+        children,
+    }) => (
     <label className="block text-sm font-medium space-y-2">
         <span>{label}</span>
         {children}
@@ -78,19 +79,19 @@ const Contact = () => {
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <Field label="First Name">
-                            <Input placeholder="Johnny" />
+                            <Input placeholder="Johnny"/>
                         </Field>
                         <Field label="Last Name">
-                            <Input placeholder="Walker" />
+                            <Input placeholder="Walker"/>
                         </Field>
                     </div>
 
                     <Field label="Email">
-                        <Input type="email" placeholder="johnny@example.com" />
+                        <Input type="email" placeholder="johnny@example.com"/>
                     </Field>
 
                     <Field label="Phone">
-                        <Input type="tel" placeholder="+91 00000 00000" />
+                        <Input type="tel" placeholder="+91 00000 00000"/>
                     </Field>
 
                     <Field label="Message">
