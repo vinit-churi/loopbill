@@ -140,23 +140,27 @@ const Contact = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <Field label="First Name">
                             <Input placeholder="Johnny" value={firstName}
-                                   onChange={(event) => setFirstName(event.target.value)}/>
+                                   onChange={(event) => setFirstName(event.target.value)}
+                                   required/>
                         </Field>
                         <Field label="Last Name">
                             <Input placeholder="Walker"
                                    value={lastName}
-                                   onChange={(event) => setLastName(event.target.value)}/>
+                                   onChange={(event) => setLastName(event.target.value)}
+                                   required/>
                         </Field>
                     </div>
 
                     <Field label="Email">
                         <Input type="email" placeholder="johnny@example.com" value={email}
-                               onChange={(event) => setEmail(event.target.value)}/>
+                               onChange={(event) => setEmail(event.target.value)}
+                               required/>
                     </Field>
 
                     <Field label="Phone">
                         <Input type="tel" placeholder="+91 00000 00000" value={phone}
-                               onChange={(event) => setPhone(event.target.value)}/>
+                               onChange={(event) => setPhone(event.target.value)}
+                               required/>
                     </Field>
 
                     <Field label="Message">
@@ -165,7 +169,7 @@ const Contact = () => {
                             className="h-32"
                             value={message}
                             onChange={(event) => setMessage(event.target.value)}
-                        />
+                            required/>
                     </Field>
 
                     <Button type="submit" className="btn-primary w-full" disabled={loading}>
