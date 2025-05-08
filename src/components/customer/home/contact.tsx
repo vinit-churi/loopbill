@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, {useState} from "react";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
+import {toast} from "sonner";
 
 const Field: React.FC<{ label: string; children: React.ReactNode }> = (
     {
@@ -17,9 +18,53 @@ const Field: React.FC<{ label: string; children: React.ReactNode }> = (
 );
 
 const Contact = () => {
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
+    /* form state */
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setLoading(true);
+
         // Handle form submission
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    firstName,
+                    lastName,
+                    email,
+                    phone,
+                    message,
+                }),
+            });
+
+            if (!res.ok) {
+                throw new Error("Network response was not ok");
+            }
+
+            toast.success("Message sent! We’ll be in touch soon.");
+            /* reset form */
+            setFirstName("");
+            setLastName("");
+            setEmail("");
+            setPhone("");
+            setMessage("");
+
+        } catch (error) {
+            if (error instanceof Error) {
+                console.error(error.message);
+            } else {
+                console.error("Unknown error:", error);
+            }
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -79,30 +124,35 @@ const Contact = () => {
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <Field label="First Name">
-                            <Input placeholder="Johnny"/>
+                            <Input placeholder="Johnny" value={firstName}
+                                   onChange={(e) => setFirstName(e.target.value)}/>
                         </Field>
                         <Field label="Last Name">
-                            <Input placeholder="Walker"/>
+                            <Input placeholder="Walker" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
                         </Field>
                     </div>
 
                     <Field label="Email">
-                        <Input type="email" placeholder="johnny@example.com"/>
+                        <Input type="email" placeholder="johnny@example.com" value={email}
+                               onChange={(e) => setEmail(e.target.value)}/>
                     </Field>
 
                     <Field label="Phone">
-                        <Input type="tel" placeholder="+91 00000 00000"/>
+                        <Input type="tel" placeholder="+91 00000 00000" value={phone}
+                               onChange={(e) => setPhone(e.target.value)}/>
                     </Field>
 
                     <Field label="Message">
                         <Textarea
                             placeholder="Tell us about your pest control needs..."
                             className="h-32"
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
                         />
                     </Field>
 
-                    <Button type="submit" className="btn-primary w-full">
-                        Send Message
+                    <Button type="submit" className="btn-primary w-full" disabled={loading}>
+                        {loading ? "Sending…" : "Send Message"}
                     </Button>
                 </form>
             </div>
