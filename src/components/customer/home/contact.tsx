@@ -45,7 +45,22 @@ const Contact = () => {
             });
 
             if (!res.ok) {
-                throw new Error("Network response was not ok");
+                // Try to read a JSON error from the API (e.g. { message: "…" })
+                // ──❯  handle the “unsuccessful HTTP” branch right here
+                let serverMessage: string | undefined;
+
+                try {
+                    // `res.json()` might fail if the body is not JSON, hence the extra try/catch.
+                    const json = (await res.json()) as { message?: string };
+                    serverMessage = json?.message;
+                } catch {
+                    /* body not JSON – ignore */
+                }
+
+                toast.error(
+                    serverMessage ?? `Request failed: ${res.status} ${res.statusText}`
+                );
+                return; // <── early-exit, nothing thrown
             }
 
             toast.success("Message sent! We’ll be in touch soon.");
@@ -125,21 +140,23 @@ const Contact = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <Field label="First Name">
                             <Input placeholder="Johnny" value={firstName}
-                                   onChange={(e) => setFirstName(e.target.value)}/>
+                                   onChange={(event) => setFirstName(event.target.value)}/>
                         </Field>
                         <Field label="Last Name">
-                            <Input placeholder="Walker" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+                            <Input placeholder="Walker"
+                                   value={lastName}
+                                   onChange={(event) => setLastName(event.target.value)}/>
                         </Field>
                     </div>
 
                     <Field label="Email">
                         <Input type="email" placeholder="johnny@example.com" value={email}
-                               onChange={(e) => setEmail(e.target.value)}/>
+                               onChange={(event) => setEmail(event.target.value)}/>
                     </Field>
 
                     <Field label="Phone">
                         <Input type="tel" placeholder="+91 00000 00000" value={phone}
-                               onChange={(e) => setPhone(e.target.value)}/>
+                               onChange={(event) => setPhone(event.target.value)}/>
                     </Field>
 
                     <Field label="Message">
@@ -147,7 +164,7 @@ const Contact = () => {
                             placeholder="Tell us about your pest control needs..."
                             className="h-32"
                             value={message}
-                            onChange={(e) => setMessage(e.target.value)}
+                            onChange={(event) => setMessage(event.target.value)}
                         />
                     </Field>
 
