@@ -60,7 +60,7 @@ export default function Navbar() {
                         </Link>
                     ))}
 
-                    <Button className="btn-primary">Get Started</Button>
+                    <Button className="btn-primary">Sign in</Button>
                 </nav>
             </div>
         </nav>
