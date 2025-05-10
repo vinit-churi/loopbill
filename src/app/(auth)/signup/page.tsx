@@ -20,10 +20,10 @@ export default function SignIn() {
                 <CardContent>
                     <form className="flex flex-col gap-2">
                         <Button type="submit" variant="default" className="w-full">Sign up</Button>
-                        <span className="flex gap-1">
+                        <span className="flex gap-1 justify-center">
                             Already have an account?<Link href="/signin" className="text-primary">Sign in</Link>
                         </span>
-                        <div className="w-full flex justify-between items-center gap-2">
+                        <div className="w-full flex justify-between items-center gap-2 py-3">
                             <hr className="w-full"/>
                             <span className="flex-none text-xs">OR CONTINUE WITH</span>
                             <hr className="w-full"/>
@@ -32,7 +32,7 @@ export default function SignIn() {
                             with Google</Button>
                     </form>
                 </CardContent>
-                <CardFooter className="text-xs">By signing in you accept Privacy Policy and Terms</CardFooter>
+                <CardFooter className="text-xs">By signing up you accept Privacy Policy and Terms</CardFooter>
             </Card>
         </main>
     );
