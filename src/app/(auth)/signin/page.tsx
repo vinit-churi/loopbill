@@ -4,6 +4,7 @@ import {Input} from "@/components/ui/input";
 import {Label} from "@/components/ui/label";
 import {Mail, Phone, Lock} from "lucide-react";
 import Link from "next/link";
+import {Checkbox} from "@/components/ui/checkbox";
 
 export default function SignIn() {
     return (
@@ -34,6 +35,13 @@ export default function SignIn() {
                         <div className="flex flex-col gap-1">
                             <Label htmlFor="password"><Lock className="h-4 w-4"/>Password</Label>
                             <Input type="password" id="password" placeholder="Enter your password" required/>
+                        </div>
+                        <div className="w-full flex justify-between items-center gap-2">
+                            <div className="flex items-center gap-2">
+                                <Checkbox id="remember"/>
+                                <Label htmlFor="remember">Remember me</Label>
+                            </div>
+                            <Button type="button" variant="link" className="text-primary font-semibold">Forgot password?</Button>
                         </div>
                         <Button type="submit" variant="default" className="w-full">Sign in</Button>
                         <span className="flex gap-1 justify-center">
