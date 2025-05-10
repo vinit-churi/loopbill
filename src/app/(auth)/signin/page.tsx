@@ -22,8 +22,14 @@ export default function SignIn() {
                 <CardContent>
                     <form className="flex flex-col gap-4">
                         <div className="flex flex-col gap-1">
-                            <Label htmlFor="email"><Mail className="h-4 w-4"/>Email or<Phone className="h-4 w-4"/>Phone number</Label>
-                            <Input type="text" id="email" placeholder="Enter your email or phone number" required/>
+                            <Label htmlFor="email"><Mail className="h-4 w-4"/>Email or<Phone className="h-4 w-4"/>Phone
+                                number</Label>
+                            <Input type="text"
+                                   id="email"
+                                   placeholder="Enter your email or phone number"
+                                   pattern="^([^\s@]+@[^\s@]+\.[^\s@]+|\+?\d{10,15})$"
+                                   title="Please enter a valid email or phone number"
+                                   required/>
                         </div>
                         <div className="flex flex-col gap-1">
                             <Label htmlFor="password"><Lock className="h-4 w-4"/>Password</Label>
@@ -31,7 +37,7 @@ export default function SignIn() {
                         </div>
                         <Button type="submit" variant="default" className="w-full">Sign in</Button>
                         <span className="flex gap-1 justify-center">
-                            Don't have an account?<Link href="/signup" className="text-primary">Sign up</Link>
+                            Don't have an account?<Link href="/signup" className="text-primary font-semibold">Sign up</Link>
                         </span>
                         <div className="w-full flex justify-between items-center gap-2 py-3">
                             <hr className="w-full"/>
