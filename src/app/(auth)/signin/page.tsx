@@ -41,7 +41,7 @@ export default function SignIn() {
                                 <Checkbox id="remember"/>
                                 <Label htmlFor="remember">Remember me</Label>
                             </div>
-                            <Button type="button" variant="link" className="text-primary font-semibold">Forgot password?</Button>
+                            <Link href="/forgotpassword" className="text-sm text-primary font-semibold">Forgot password?</Link>
                         </div>
                         <Button type="submit" variant="default" className="w-full">Sign in</Button>
                         <span className="flex gap-1 justify-center">
