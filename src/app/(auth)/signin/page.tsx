@@ -1,6 +1,7 @@
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import {Button} from "@/components/ui/button";
 import {Mail} from "lucide-react";
+import Link from "next/link";
 
 export default function SignIn() {
     return (
@@ -17,16 +18,23 @@ export default function SignIn() {
                     <CardDescription>Enter your credentials to continue</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <form></form>
+                    <form className="flex flex-col gap-2">
+                        <Button type="submit" variant="default" className="w-full">Sign in</Button>
+                        <div className="w-full flex justify-between items-center gap-2">
+                            <hr className="w-full"/>
+                            <span className="flex-none text-xs">OR CONTINUE WITH</span>
+                            <hr className="w-full"/>
+                        </div>
+                        <Button type="button" variant="outline" className="w-full"><Mail className="me-2 h-4 w-4"/>Continue
+                            with Google</Button>
+                    </form>
                 </CardContent>
                 <CardFooter className="flex flex-col gap-2">
-                    <Button type="submit" variant="default" className="w-full">Sign in</Button>
-                    <div className="w-full flex justify-between items-center gap-2">
-                        <hr className="w-full" />
-                        <span className="flex-none text-xs">OR CONTINUE WITH</span>
-                        <hr className="w-full" />
-                    </div>
-                    <Button type="button" variant="outline" className="w-full"><Mail className="me-2 h-4 w-4" />Continue with Google</Button>
+                    <span className="flex gap-1">
+                        Don't have an account?
+                        <Link href="/signup" className="text-primary">Sign up</Link>
+                    </span>
+                    <p className="text-xs">By signing in you accept Privacy Policy and Terms</p>
                 </CardFooter>
             </Card>
         </main>
