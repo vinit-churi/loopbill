@@ -4,7 +4,7 @@ import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/compo
 
 export default function Admin() {
     return (
-        <main className="p-4">
+        <main className="flex flex-col gap-4 p-4">
             <div className="flex justify-between">
                 <div>
                     <h1 className="text-3xl font-bold">Dashboard</h1>
