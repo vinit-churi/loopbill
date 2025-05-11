@@ -32,7 +32,7 @@ export default function Admin() {
                     </CardFooter>
                 </Card>
 
-                <Card className="hover:shadow-md border-l-4 border-l-blue-500 ">
+                <Card className="hover:shadow-md border-l-4 border-l-green-500 ">
                     <CardHeader className="flex flex-row items-center justify-between">
                         <CardTitle className="text-sm">Total Packages</CardTitle>
                         <div className="h-8 w-8 flex justify-center items-center bg-blue-100 rounded-full">
@@ -47,7 +47,7 @@ export default function Admin() {
                     </CardFooter>
                 </Card>
 
-                <Card className="hover:shadow-md border-l-4 border-l-blue-500 ">
+                <Card className="hover:shadow-md border-l-4 border-l-yellow-500 ">
                     <CardHeader className="flex flex-row items-center justify-between">
                         <CardTitle className="text-sm">Total Packages</CardTitle>
                         <div className="h-8 w-8 flex justify-center items-center bg-blue-100 rounded-full">
@@ -62,7 +62,7 @@ export default function Admin() {
                     </CardFooter>
                 </Card>
 
-                <Card className="hover:shadow-md border-l-4 border-l-blue-500 ">
+                <Card className="hover:shadow-md border-l-4 border-l-red-500 ">
                     <CardHeader className="flex flex-row items-center justify-between">
                         <CardTitle className="text-sm">Total Packages</CardTitle>
                         <div className="h-8 w-8 flex justify-center items-center bg-blue-100 rounded-full">
