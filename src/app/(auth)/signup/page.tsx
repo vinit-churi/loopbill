@@ -7,7 +7,7 @@ import {Input} from "@/components/ui/input";
 
 export default function SignIn() {
     return (
-        <main className="min-h-screen flex flex-col justify-center items-center bg-[#edebe4]">
+        <main className="min-h-screen py-4 flex flex-col justify-center items-center bg-[#edebe4]">
             <h1 className="text-3xl font-bold text-primary text-center mb-2">
                 UrbanPestMaster
             </h1>
