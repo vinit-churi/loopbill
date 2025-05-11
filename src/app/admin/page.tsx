@@ -1,6 +1,6 @@
 import {Button} from "@/components/ui/button";
-import {Activity, Calendar} from "lucide-react";
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
+import {Activity, Calendar, TriangleAlert} from "lucide-react";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 
 export default function Admin() {
     return (
@@ -21,60 +21,52 @@ export default function Admin() {
                     <CardHeader className="flex flex-row items-center justify-between">
                         <CardTitle className="text-sm">Total Packages</CardTitle>
                         <div className="h-8 w-8 flex justify-center items-center bg-blue-100 rounded-full">
-                            <Activity color="#4387f4" size={18}/>
+                            <Activity color="oklch(62.3% 0.214 259.815)" size={18}/>
                         </div>
                     </CardHeader>
                     <CardContent>
                         <h1 className="text-2xl font-bold">1,248</h1>
+                        <CardDescription className="text-xs py-2">+20% from last month</CardDescription>
                     </CardContent>
-                    <CardFooter>
-                        <CardDescription className="text-xs">+20% from last month</CardDescription>
-                    </CardFooter>
                 </Card>
 
                 <Card className="hover:shadow-md border-l-4 border-l-green-500 ">
                     <CardHeader className="flex flex-row items-center justify-between">
-                        <CardTitle className="text-sm">Total Packages</CardTitle>
-                        <div className="h-8 w-8 flex justify-center items-center bg-blue-100 rounded-full">
-                            <Activity color="#4387f4" size={18}/>
+                        <CardTitle className="text-sm">Active Services</CardTitle>
+                        <div className="h-8 w-8 flex justify-center items-center bg-green-100 rounded-full">
+                            <Activity color="oklch(72.3% 0.219 149.579)" size={18}/>
                         </div>
                     </CardHeader>
                     <CardContent>
-                        <h1 className="text-2xl font-bold">1,248</h1>
+                        <h1 className="text-2xl font-bold">892</h1>
+                        <CardDescription className="text-xs py-2">147 completed this month</CardDescription>
                     </CardContent>
-                    <CardFooter>
-                        <CardDescription className="text-xs">+20% from last month</CardDescription>
-                    </CardFooter>
                 </Card>
 
                 <Card className="hover:shadow-md border-l-4 border-l-yellow-500 ">
                     <CardHeader className="flex flex-row items-center justify-between">
-                        <CardTitle className="text-sm">Total Packages</CardTitle>
-                        <div className="h-8 w-8 flex justify-center items-center bg-blue-100 rounded-full">
-                            <Activity color="#4387f4" size={18}/>
+                        <CardTitle className="text-sm">Expiring Soon</CardTitle>
+                        <div className="h-8 w-8 flex justify-center items-center bg-yellow-100 rounded-full">
+                            <Activity color="oklch(79.5% 0.184 86.047)" size={18}/>
                         </div>
                     </CardHeader>
                     <CardContent>
-                        <h1 className="text-2xl font-bold">1,248</h1>
+                        <h1 className="text-2xl font-bold">68</h1>
+                        <CardDescription className="text-xs py-2">Within next 15 days</CardDescription>
                     </CardContent>
-                    <CardFooter>
-                        <CardDescription className="text-xs">+20% from last month</CardDescription>
-                    </CardFooter>
                 </Card>
 
                 <Card className="hover:shadow-md border-l-4 border-l-red-500 ">
                     <CardHeader className="flex flex-row items-center justify-between">
-                        <CardTitle className="text-sm">Total Packages</CardTitle>
-                        <div className="h-8 w-8 flex justify-center items-center bg-blue-100 rounded-full">
-                            <Activity color="#4387f4" size={18}/>
+                        <CardTitle className="text-sm">Pending Complaints</CardTitle>
+                        <div className="h-8 w-8 flex justify-center items-center bg-red-100 rounded-full">
+                            <TriangleAlert color="oklch(63.7% 0.237 25.331)" size={18}/>
                         </div>
                     </CardHeader>
                     <CardContent>
-                        <h1 className="text-2xl font-bold">1,248</h1>
+                        <h1 className="text-2xl font-bold">23</h1>
+                        <CardDescription className="text-xs py-2">12 require immediate attention</CardDescription>
                     </CardContent>
-                    <CardFooter>
-                        <CardDescription className="text-xs">+20% from last month</CardDescription>
-                    </CardFooter>
                 </Card>
             </div>
         </main>
