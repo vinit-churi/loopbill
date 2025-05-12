@@ -71,6 +71,76 @@ export default function Admin() {
             </div>
 
             <hr />
+
+            <Card>
+                <CardHeader>
+                    <CardTitle>Upcoming Services</CardTitle>
+                    <CardDescription>Services scheduled for the next 7 days</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <p>Card Content</p>
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle>Recent Activities</CardTitle>
+                    <CardDescription>Latest system activities</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <p>Card Content</p>
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle>Services at Risk</CardTitle>
+                    <CardDescription>Services approaching expiration dates</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <p>Card Content</p>
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle>Pending Complaints</CardTitle>
+                    <CardDescription>Customers not happy with service</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <p>Card Content</p>
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle>Agent Performance</CardTitle>
+                    <CardDescription>Top performing agents this month</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <p>Card Content</p>
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle>Complaint status breakdown</CardTitle>
+                    <CardDescription>Pie chart representation of complaints</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <p>Card Content</p>
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle>Service Trends</CardTitle>
+                    <CardDescription>Scheduled vs Completed Services (Last 1 Year)</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <p>Card Content</p>
+                </CardContent>
+            </Card>
         </main>
     );
 }
