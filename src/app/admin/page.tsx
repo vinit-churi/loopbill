@@ -1,5 +1,5 @@
 import {Button} from "@/components/ui/button";
-import {Activity, Calendar, TriangleAlert} from "lucide-react";
+import {Activity, Calendar, CalendarClock, ShieldCheck, TriangleAlert} from "lucide-react";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 
 export default function Admin() {
@@ -34,7 +34,7 @@ export default function Admin() {
                     <CardHeader className="flex flex-row items-center justify-between">
                         <CardTitle className="text-sm">Active Services</CardTitle>
                         <div className="h-8 w-8 flex justify-center items-center bg-green-100 rounded-full">
-                            <Activity color="oklch(72.3% 0.219 149.579)" size={18}/>
+                            <ShieldCheck color="oklch(72.3% 0.219 149.579)" size={18}/>
                         </div>
                     </CardHeader>
                     <CardContent>
@@ -47,7 +47,7 @@ export default function Admin() {
                     <CardHeader className="flex flex-row items-center justify-between">
                         <CardTitle className="text-sm">Expiring Soon</CardTitle>
                         <div className="h-8 w-8 flex justify-center items-center bg-yellow-100 rounded-full">
-                            <Activity color="oklch(79.5% 0.184 86.047)" size={18}/>
+                            <CalendarClock color="oklch(79.5% 0.184 86.047)" size={18}/>
                         </div>
                     </CardHeader>
                     <CardContent>
@@ -69,6 +69,8 @@ export default function Admin() {
                     </CardContent>
                 </Card>
             </div>
+
+            <hr />
         </main>
     );
 }
