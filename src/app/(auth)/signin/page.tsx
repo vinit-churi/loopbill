@@ -43,9 +43,11 @@ export default function SignIn() {
                             </div>
                             <Link href="/forgotpassword" className="text-sm text-primary font-semibold">Forgot password?</Link>
                         </div>
-                        <Button type="submit" variant="default" className="w-full">Sign in</Button>
+                        <Link href="/admin">
+                            <Button type="submit" variant="default" className="w-full">Sign in</Button>
+                        </Link>
                         <span className="flex gap-1 justify-center">
-                            Don't have an account?<Link href="/signup" className="text-primary font-semibold">Sign up</Link>
+                            Don&#39;t have an account?<Link href="/signup" className="text-primary font-semibold">Sign up</Link>
                         </span>
                         <div className="w-full flex justify-between items-center gap-2 py-3">
                             <hr className="w-full"/>
