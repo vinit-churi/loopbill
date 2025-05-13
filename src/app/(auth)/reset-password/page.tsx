@@ -2,9 +2,8 @@ import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} f
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import {Label} from "@/components/ui/label";
-import {Mail, Phone, Lock} from "lucide-react";
+import {Lock, Mail} from "lucide-react";
 import Link from "next/link";
-import {Checkbox} from "@/components/ui/checkbox";
 
 export default function ResetPassword() {
     return (
@@ -17,37 +16,24 @@ export default function ResetPassword() {
             </p>
             <Card className="w-88">
                 <CardHeader>
-                    <CardTitle>Sign in</CardTitle>
+                    <CardTitle>Reset Password</CardTitle>
                     <CardDescription>Enter your credentials to continue</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <form className="flex flex-col gap-4">
                         <div className="flex flex-col gap-1">
-                            <Label htmlFor="email"><Mail className="h-4 w-4"/>Email or<Phone className="h-4 w-4"/>Phone
-                                number</Label>
-                            <Input type="text"
-                                   id="email"
-                                   placeholder="Enter your email or phone number"
-                                   pattern="^([^\s@]+@[^\s@]+\.[^\s@]+|\+?\d{10,15})$"
-                                   title="Please enter a valid email or phone number"
-                                   required/>
-                        </div>
-                        <div className="flex flex-col gap-1">
                             <Label htmlFor="password"><Lock className="h-4 w-4"/>Password</Label>
                             <Input type="password" id="password" placeholder="Enter your password" required/>
                         </div>
-                        <div className="w-full flex justify-between items-center gap-2">
-                            <div className="flex items-center gap-2">
-                                <Checkbox id="remember"/>
-                                <Label htmlFor="remember">Remember me</Label>
-                            </div>
-                            <Link href="/forgotpassword" className="text-sm text-primary font-semibold">Forgot password?</Link>
+                        <div className="flex flex-col gap-1">
+                            <Label htmlFor="password"><Lock className="h-4 w-4"/>Confirm Password</Label>
+                            <Input type="password" id="password" placeholder="Enter your password again" required/>
                         </div>
                         <Link href="/admin">
-                            <Button type="submit" variant="default" className="w-full">Sign in</Button>
+                            <Button type="submit" variant="default" className="w-full">Reset password</Button>
                         </Link>
                         <span className="flex gap-1 justify-center">
-                            Don&#39;t have an account?<Link href="/signup" className="text-primary font-semibold">Sign up</Link>
+                            Remembered password?<Link href="/signin" className="text-primary font-semibold">Sign in</Link>
                         </span>
                         <div className="w-full flex justify-between items-center gap-2 py-3">
                             <hr className="w-full"/>
