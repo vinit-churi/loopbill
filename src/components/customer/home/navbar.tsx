@@ -2,11 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {Button} from '@/components/ui/button'
 import {
-    Sheet,
-    SheetContent,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
+    Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger,
 } from '@/components/ui/sheet'
 
 const links = [
@@ -35,15 +31,26 @@ export default function Navbar() {
                         <SheetHeader className="space-y-4">
                             {links.map(({id, label}) => (
                                 <SheetTitle key={id}>
-                                    <Link
-                                        href={{pathname: '/', hash: id}}
-                                        scroll
-                                        className="block"
-                                    >
-                                        {label}
-                                    </Link>
+                                    <SheetClose asChild>
+                                        <Link
+                                            href={{pathname: '/', hash: id}}
+                                            scroll
+                                            className="block"
+                                        >
+                                            {label}
+                                        </Link>
+                                    </SheetClose>
                                 </SheetTitle>
                             ))}
+                            <SheetDescription>
+                                <SheetClose asChild>
+                                    <Link href="/signin">
+                                        <Button className="btn-primary w-full">
+                                            Sign in
+                                        </Button>
+                                    </Link>
+                                </SheetClose>
+                            </SheetDescription>
                         </SheetHeader>
                     </SheetContent>
                 </Sheet>

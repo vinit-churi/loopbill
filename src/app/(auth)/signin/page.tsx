@@ -8,10 +8,10 @@ import {Checkbox} from "@/components/ui/checkbox";
 
 export default function SignIn() {
     return (
-        <main className="min-h-screen flex flex-col justify-center items-center bg-[#edebe4]">
-            <h1 className="text-3xl font-bold text-primary text-center mb-2">
+        <main className="min-h-screen py-4 flex flex-col justify-center items-center bg-[#edebe4]">
+            <Link href="/" className="text-3xl font-bold text-primary text-center mb-2">
                 UrbanPestMaster
-            </h1>
+            </Link>
             <p className="text-gray-600 text-base text-center max-w-76 pb-6">
                 Professional pest control solutions for your home and business
             </p>
@@ -43,9 +43,11 @@ export default function SignIn() {
                             </div>
                             <Link href="/forgotpassword" className="text-sm text-primary font-semibold">Forgot password?</Link>
                         </div>
-                        <Button type="submit" variant="default" className="w-full">Sign in</Button>
+                        <Link href="/admin">
+                            <Button type="submit" variant="default" className="w-full">Sign in</Button>
+                        </Link>
                         <span className="flex gap-1 justify-center">
-                            Don't have an account?<Link href="/signup" className="text-primary font-semibold">Sign up</Link>
+                            Don&#39;t have an account?<Link href="/signup" className="text-primary font-semibold">Sign up</Link>
                         </span>
                         <div className="w-full flex justify-between items-center gap-2 py-3">
                             <hr className="w-full"/>
