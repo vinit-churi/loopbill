@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "@/components/customer/home/navbar";
 
 interface Props {
     children: React.ReactNode;
@@ -8,7 +7,6 @@ interface Props {
 const Layout = ({ children }: Props) => {
     return (
         <div>
-            <Navbar />
             {children}
         </div>
     );
