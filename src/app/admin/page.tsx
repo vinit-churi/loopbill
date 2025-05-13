@@ -5,6 +5,7 @@ import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/compo
 export default function Admin() {
     return (
         <main className="flex flex-col gap-4 p-4">
+            {/*Heading and Description*/}
             <div className="flex justify-between">
                 <div>
                     <h1 className="text-3xl font-bold">Dashboard</h1>
@@ -16,6 +17,7 @@ export default function Admin() {
                 </div>
             </div>
 
+            {/*Top statistics card*/}
             <div className="grid gap-4 lg:grid-cols-4 md:grid-cols-2 grid-cols-1">
                 <Card className="hover:shadow-md border-l-4 border-l-blue-500 ">
                     <CardHeader className="flex flex-row items-center justify-between">
@@ -70,8 +72,10 @@ export default function Admin() {
                 </Card>
             </div>
 
+            {/*Divider line separating statistics from cards*/}
             <hr />
 
+            {/*Upcoming Services*/}
             <Card>
                 <CardHeader>
                     <CardTitle>Upcoming Services</CardTitle>
@@ -82,6 +86,7 @@ export default function Admin() {
                 </CardContent>
             </Card>
 
+            {/*Recent Activities*/}
             <Card>
                 <CardHeader>
                     <CardTitle>Recent Activities</CardTitle>
@@ -92,6 +97,7 @@ export default function Admin() {
                 </CardContent>
             </Card>
 
+            {/*Services at Risk*/}
             <Card>
                 <CardHeader>
                     <CardTitle>Services at Risk</CardTitle>
@@ -102,6 +108,7 @@ export default function Admin() {
                 </CardContent>
             </Card>
 
+            {/*Pending Complaints*/}
             <Card>
                 <CardHeader>
                     <CardTitle>Pending Complaints</CardTitle>
@@ -112,6 +119,7 @@ export default function Admin() {
                 </CardContent>
             </Card>
 
+            {/*Agent Performance*/}
             <Card>
                 <CardHeader>
                     <CardTitle>Agent Performance</CardTitle>
@@ -122,6 +130,7 @@ export default function Admin() {
                 </CardContent>
             </Card>
 
+            {/*Complaint Status Breakdown*/}
             <Card>
                 <CardHeader>
                     <CardTitle>Complaint status breakdown</CardTitle>
@@ -132,6 +141,7 @@ export default function Admin() {
                 </CardContent>
             </Card>
 
+            {/*Service Trends*/}
             <Card>
                 <CardHeader>
                     <CardTitle>Service Trends</CardTitle>
