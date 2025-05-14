@@ -4,7 +4,7 @@ import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/compo
 
 export default function Admin() {
     return (
-        <main className="flex flex-col gap-4 p-4">
+        <main className="w-full flex flex-col gap-4">
             {/*Heading and Description*/}
             <div className="flex justify-between flex-col md:flex-row items-start md:items-center gap-2">
                 <div>
