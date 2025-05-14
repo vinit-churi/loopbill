@@ -1,11 +1,16 @@
-import {Bell, Home, NotepadText, ReceiptText, ShieldCheck, TriangleAlert, UserRoundCog} from "lucide-react";
+import {Bell, ChartSpline, Home, ReceiptText, Settings, ShieldCheck, TriangleAlert, UserRoundCog} from "lucide-react";
 
 import {
     Sidebar,
     SidebarContent,
     SidebarFooter,
-    SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
-    SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem,
+    SidebarGroup,
+    SidebarGroupContent,
+    SidebarGroupLabel,
+    SidebarHeader,
+    SidebarMenu,
+    SidebarMenuButton,
+    SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
 // Menu items
@@ -25,7 +30,7 @@ const items = [
     {
         id: '3',
         label: 'Reports',
-        icon: NotepadText,
+        icon: ChartSpline,
         href: '/admin/Reports',
     },
     {
@@ -55,7 +60,7 @@ const items = [
     {
         id: '8',
         label: 'Settings',
-        icon: ShieldCheck,
+        icon: Settings,
         href: '/admin/settings',
     }
 ]
@@ -63,7 +68,7 @@ const items = [
 export function AppSidebar() {
     return (
         <Sidebar>
-            <SidebarHeader />
+            <SidebarHeader/>
             <SidebarContent>
                 <SidebarGroup>
                     <SidebarGroupLabel>Application</SidebarGroupLabel>
@@ -73,7 +78,7 @@ export function AppSidebar() {
                                 <SidebarMenuItem key={item.label}>
                                     <SidebarMenuButton asChild>
                                         <a href={item.href}>
-                                            <item.icon />
+                                            <item.icon/>
                                             <span>{item.label}</span>
                                         </a>
                                     </SidebarMenuButton>
@@ -83,7 +88,7 @@ export function AppSidebar() {
                     </SidebarGroupContent>
                 </SidebarGroup>
             </SidebarContent>
-            <SidebarFooter />
+            <SidebarFooter/>
         </Sidebar>
     )
 }
