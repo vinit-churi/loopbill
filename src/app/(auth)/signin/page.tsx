@@ -5,6 +5,7 @@ import {Label} from "@/components/ui/label";
 import {Mail, Phone, Lock} from "lucide-react";
 import Link from "next/link";
 import {Checkbox} from "@/components/ui/checkbox";
+import AdvancedOptions from "@/components/auth/signin/advancedOption";
 
 export default function SignIn() {
     return (
@@ -43,6 +44,10 @@ export default function SignIn() {
                             </div>
                             <Link href="/forgotpassword" className="text-sm text-primary font-semibold">Forgot password?</Link>
                         </div>
+
+                        {/* Advanced options */}
+                        <AdvancedOptions />
+
                         <Link href="/admin">
                             <Button type="submit" variant="default" className="w-full">Sign in</Button>
                         </Link>

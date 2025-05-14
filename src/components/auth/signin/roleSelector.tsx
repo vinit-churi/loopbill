@@ -1,4 +1,6 @@
-import {RadioGroup} from "@radix-ui/react-menu";
+'use client'
+
+import {RadioGroup} from "@/components/ui/radio-group";
 import {RadioGroupItem} from "@/components/ui/radio-group";
 import {Label} from "@/components/ui/label";
 

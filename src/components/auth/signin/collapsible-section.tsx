@@ -1,3 +1,5 @@
+'use client'
+
 import { ChevronDown, ChevronUp } from "lucide-react";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -22,7 +24,7 @@ export default function CollapsibleSection({ title, children, className }: Colla
             <CollapsibleTrigger asChild>
                 <Button
                     variant="ghost"
-                    className="flex w-full justify-between p-0 h-auto"
+                    className="flex w-full justify-between p-0 h-auto cursor-pointer"
                 >
                     <span className="text-sm text-muted-foreground">{title}</span>
                     {isOpen ? (
