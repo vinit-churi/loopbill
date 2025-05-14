@@ -1,13 +1,13 @@
 import {
     Bell,
     ChartSpline,
-    ChevronUp,
+    ChevronsUpDown,
+    CircleUserRound,
     Home,
     ReceiptText,
     Settings,
     ShieldCheck,
     TriangleAlert,
-    User2,
     UserRoundCog
 } from "lucide-react";
 
@@ -113,19 +113,16 @@ export function AppSidebar() {
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <SidebarMenuButton>
-                                    <User2 /> Username
-                                    <ChevronUp className="ml-auto" />
+                                    <CircleUserRound /> Username
+                                    <ChevronsUpDown className="ml-auto" />
                                 </SidebarMenuButton>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent
-                                side="top"
+                                side="right"
                                 className="w-[--radix-popper-anchor-width]"
                             >
                                 <DropdownMenuItem>
                                     <span>Account</span>
-                                </DropdownMenuItem>
-                                <DropdownMenuItem>
-                                    <span>Billing</span>
                                 </DropdownMenuItem>
                                 <DropdownMenuItem>
                                     <span>Sign out</span>
