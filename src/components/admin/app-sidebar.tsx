@@ -6,12 +6,12 @@ import {
     SidebarFooter,
     SidebarGroup,
     SidebarGroupContent,
-    SidebarGroupLabel,
     SidebarHeader,
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import Link from "next/link";
 
 // Menu items
 const items = [
@@ -31,7 +31,7 @@ const items = [
         id: '3',
         label: 'Reports',
         icon: ChartSpline,
-        href: '/admin/Reports',
+        href: '/admin/reports',
     },
     {
         id: '4',
@@ -67,11 +67,16 @@ const items = [
 
 export function AppSidebar() {
     return (
-        <Sidebar>
-            <SidebarHeader/>
+        <Sidebar collapsible="offcanvas">
+            <SidebarHeader>
+                {/* Brand */}
+                <Link href="/admin" className="text-2xl font-bold text-primary p-2">
+                    UrbanPestMaster
+                </Link>
+                <hr/>
+            </SidebarHeader>
             <SidebarContent>
                 <SidebarGroup>
-                    <SidebarGroupLabel>Application</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
                             {items.map((item) => (
