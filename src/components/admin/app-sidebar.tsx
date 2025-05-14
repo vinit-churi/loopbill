@@ -1,4 +1,15 @@
-import {Bell, ChartSpline, Home, ReceiptText, Settings, ShieldCheck, TriangleAlert, UserRoundCog} from "lucide-react";
+import {
+    Bell,
+    ChartSpline,
+    ChevronUp,
+    Home,
+    ReceiptText,
+    Settings,
+    ShieldCheck,
+    TriangleAlert,
+    User2,
+    UserRoundCog
+} from "lucide-react";
 
 import {
     Sidebar,
@@ -12,6 +23,7 @@ import {
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import Link from "next/link";
+import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu";
 
 // Menu items
 const items = [
@@ -75,6 +87,7 @@ export function AppSidebar() {
                 </Link>
                 <hr/>
             </SidebarHeader>
+
             <SidebarContent>
                 <SidebarGroup>
                     <SidebarGroupContent>
@@ -93,7 +106,35 @@ export function AppSidebar() {
                     </SidebarGroupContent>
                 </SidebarGroup>
             </SidebarContent>
-            <SidebarFooter/>
+
+            <SidebarFooter>
+                <SidebarMenu>
+                    <SidebarMenuItem>
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <SidebarMenuButton>
+                                    <User2 /> Username
+                                    <ChevronUp className="ml-auto" />
+                                </SidebarMenuButton>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent
+                                side="top"
+                                className="w-[--radix-popper-anchor-width]"
+                            >
+                                <DropdownMenuItem>
+                                    <span>Account</span>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem>
+                                    <span>Billing</span>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem>
+                                    <span>Sign out</span>
+                                </DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
+                    </SidebarMenuItem>
+                </SidebarMenu>
+            </SidebarFooter>
         </Sidebar>
     )
 }
