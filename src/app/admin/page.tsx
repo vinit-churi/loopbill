@@ -6,9 +6,9 @@ export default function Admin() {
     return (
         <main className="flex flex-col gap-4 p-4">
             {/*Heading and Description*/}
-            <div className="flex justify-between">
+            <div className="flex justify-between flex-col md:flex-row items-start md:items-center gap-2">
                 <div>
-                    <h1 className="text-3xl font-bold">Dashboard</h1>
+                    <h1 className="text-2xl md:text-3xl font-bold">Dashboard</h1>
                     <p className="text-muted-foreground">Overview of UrbanPestMaster operations</p>
                 </div>
                 <div className="flex gap-2 items-center">
