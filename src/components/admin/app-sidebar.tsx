@@ -112,8 +112,8 @@ export function AppSidebar() {
                     <SidebarMenuItem>
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
-                                <SidebarMenuButton>
-                                    <CircleUserRound /> Username
+                                <SidebarMenuButton className="cursor-pointer">
+                                    <CircleUserRound /> Vidyesh Churi
                                     <ChevronsUpDown className="ml-auto" />
                                 </SidebarMenuButton>
                             </DropdownMenuTrigger>
