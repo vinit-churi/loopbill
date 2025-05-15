@@ -14,7 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 
-const TopNav = () => {
+const TopNavbar = () => {
     const [activeRole, setActiveRole] = useState<string>("admin");
 
     const handleRoleChange = (role: string) => {
@@ -35,7 +35,7 @@ const TopNav = () => {
                         <Search className="absolute left-2 h-4 w-4 text-muted-foreground" />
                         <Input
                             placeholder="Search..."
-                            className="pl-8 bg-muted/30 border-none"
+                            className="pl-8 bg-[#f7f6f0] border-none"
                         />
                     </div>
                 </div>
@@ -172,4 +172,4 @@ const TopNav = () => {
     );
 };
 
-export default TopNav;
+export default TopNavbar;
