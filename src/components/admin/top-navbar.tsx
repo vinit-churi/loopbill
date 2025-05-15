@@ -1,5 +1,5 @@
-// temp
 'use client'
+
 import { useState } from "react";
 import { Bell, Calendar, Menu, Search, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -41,7 +41,7 @@ const TopNav = () => {
                 </div>
                 <div className="flex items-center gap-2">
                     <DropdownMenu>
-                        <DropdownMenuTrigger>
+                        <DropdownMenuTrigger asChild>
                             <Button variant="outline" size="icon">
                                 <Bell className="h-5 w-5" />
                                 <span className="sr-only">Notifications</span>
@@ -71,7 +71,7 @@ const TopNav = () => {
                     </DropdownMenu>
 
                     <DropdownMenu>
-                        <DropdownMenuTrigger>
+                        <DropdownMenuTrigger asChild>
                             <Button variant="outline" size="icon">
                                 <Calendar className="h-5 w-5" />
                                 <span className="sr-only">Calendar</span>
@@ -101,7 +101,7 @@ const TopNav = () => {
                     </DropdownMenu>
 
                     <DropdownMenu>
-                        <DropdownMenuTrigger>
+                        <DropdownMenuTrigger asChild>
                             <Button variant="outline" size="icon">
                                 <Settings className="h-5 w-5" />
                                 <span className="sr-only">Settings</span>
@@ -139,7 +139,7 @@ const TopNav = () => {
                     </DropdownMenu>
 
                     <DropdownMenu>
-                        <DropdownMenuTrigger>
+                        <DropdownMenuTrigger asChild>
                             <Button
                                 variant="outline"
                                 size="sm"
