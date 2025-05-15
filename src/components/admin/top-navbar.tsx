@@ -23,7 +23,7 @@ const TopNavbar = () => {
 
     return (
         <header className="border-b bg-white dark:bg-gray-950 sticky top-0 z-30">
-            <div className="flex h-16 items-center justify-between px-4 md:px-6">
+            <div className="flex h-16 items-center justify-between px-4 md:px-6 gap-2">
                 <div className="flex items-center gap-2">
                     <SidebarTrigger>
                         <Button variant="outline" size="icon" className="md:hidden">
@@ -31,11 +31,11 @@ const TopNavbar = () => {
                             <span className="sr-only">Toggle sidebar</span>
                         </Button>
                     </SidebarTrigger>
-                    <div className="relative hidden md:flex items-center w-60">
+                    <div className="relative flex items-center w-full md:w-60">
                         <Search className="absolute left-2 h-4 w-4 text-muted-foreground" />
                         <Input
                             placeholder="Search..."
-                            className="pl-8 bg-[#f7f6f0] border-none"
+                            className="w-full pl-8 bg-[#f7f6f0] border-none"
                         />
                     </div>
                 </div>
