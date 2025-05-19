@@ -3,7 +3,7 @@ import {SidebarTrigger} from "@/components/ui/sidebar";
 
 export default function TopNavbar() {
     return (
-        <header className="flex h-16 items-center border-b bg-white sticky top-0 z-30 px-4 gap-2">
+        <header className="flex h-16 items-center bg-white border-b sticky top-0 z-30 px-4 gap-2">
             <SidebarTrigger/>
             <Input
                 placeholder="Search..."
