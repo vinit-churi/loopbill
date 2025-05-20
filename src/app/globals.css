@@ -120,3 +120,25 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  /* Define the keyframes for the marquee animation */
+  @keyframes marquee {
+    0% {
+      transform: translateX(30%);
+    }
+    100% {
+      transform: translateX(-170%);
+    }
+  }
+
+  /* Create a utility class to apply the marquee animation */
+  .animate-marquee {
+    /* If you defined a CSS variable for duration: */
+    /* animation: marquee var(--marquee-duration) linear infinite; */
+
+    /* Or directly: */
+    animation: marquee 10s linear infinite; /* Adjust '15s' to control speed */
+  }
+}
+
