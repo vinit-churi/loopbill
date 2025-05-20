@@ -1,10 +1,10 @@
 import {Input} from "@/components/ui/input";
 import {SidebarTrigger} from "@/components/ui/sidebar";
-import {Bell, Calendar, Settings} from "lucide-react";
+import {Bell, Calendar, CircleUserRound, LogOut, Settings} from "lucide-react";
 import Image from "next/image";
 import {
     DropdownMenu,
-    DropdownMenuContent,
+    DropdownMenuContent, DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger
@@ -56,7 +56,7 @@ export default function TopNavbar() {
                     <DropdownMenuLabel>
                         <div className="flex items-center gap-2">
                             <div className="w-16 h-16 rounded-full border border-gray-200 flex items-center
-                            justify-center overflow-hidden cursor-pointer">
+                            justify-center overflow-hidden">
                                 <Image src="/profile_image.png" width={64} height={64} alt="Profile image"/>
                             </div>
                             <div>
@@ -66,6 +66,19 @@ export default function TopNavbar() {
                         </div>
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator/>
+                    <DropdownMenuItem>
+                        <CircleUserRound size={24}/>
+                        Profile
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                        <Settings size={24}/>
+                        Settings
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator/>
+                    <DropdownMenuItem>
+                        <LogOut size={24}/>
+                        Logout
+                    </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
         </header>
