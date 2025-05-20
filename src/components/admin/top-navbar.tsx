@@ -25,7 +25,7 @@ export default function TopNavbar() {
                         <Bell size={18}/>
                     </div>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent>
+                <DropdownMenuContent className="w-90">
                     <DropdownMenuLabel>Notifications</DropdownMenuLabel>
                     <DropdownMenuSeparator/>
                 </DropdownMenuContent>
@@ -37,7 +37,7 @@ export default function TopNavbar() {
                         <Calendar size={18}/>
                     </div>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent>
+                <DropdownMenuContent className="w-90">
                     <DropdownMenuLabel>Upcoming Services</DropdownMenuLabel>
                     <DropdownMenuSeparator/>
                 </DropdownMenuContent>
