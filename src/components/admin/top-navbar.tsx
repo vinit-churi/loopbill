@@ -52,7 +52,7 @@ export default function TopNavbar() {
                         <Image src="/profile_image.png" width={38} height={38} alt="Profile image"/>
                     </div>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-80">
+                <DropdownMenuContent className="w-90">
                     <DropdownMenuLabel>
                         <div className="flex items-center gap-2">
                             <div className="w-16 h-16 rounded-full border border-gray-200 flex items-center
@@ -60,8 +60,8 @@ export default function TopNavbar() {
                                 <Image src="/profile_image.png" width={64} height={64} alt="Profile image"/>
                             </div>
                             <div>
-                                <h4 className="max-w-50 text-lg text-primary font-bold truncate">Jean McMaster</h4>
-                                <p className="max-w-50 text-sm text-muted-foreground truncate">admin.pestmaster@gmail.com</p>
+                                <h4 className="max-w-64 text-lg text-primary font-bold truncate">Jean McMaster</h4>
+                                <p className="max-w-64 text-sm text-muted-foreground truncate">admin.pestmaster@gmail.com</p>
                             </div>
                         </div>
                     </DropdownMenuLabel>
