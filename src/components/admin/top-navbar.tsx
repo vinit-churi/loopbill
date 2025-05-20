@@ -20,8 +20,8 @@ export default function TopNavbar() {
             <div className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center">
                 <Settings size={18}/>
             </div>
-            <div className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center">
-                <Image src="/next.svg" width={38} height={38} alt="Profile image"/>
+            <div className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center overflow-hidden">
+                <Image src="/file.svg" width={38} height={38} alt="Profile image"/>
             </div>
         </header>
     );
