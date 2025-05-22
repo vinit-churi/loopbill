@@ -14,7 +14,7 @@ import {
 export default function TopNavbar() {
     return (
         <header className="flex h-16 items-center bg-white border-b sticky top-0 z-30 px-4 gap-2">
-            <SidebarTrigger/>
+            <SidebarTrigger className="cursor-pointer"/>
 
             {/*Search bar*/}
             <Input
