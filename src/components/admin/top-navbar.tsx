@@ -14,10 +14,14 @@ export default function TopNavbar() {
     return (
         <header className="flex h-16 items-center bg-white border-b sticky top-0 z-30 px-4 gap-2">
             <SidebarTrigger/>
+
+            {/*Search bar*/}
             <Input
                 placeholder="Search..."
                 className="flex flex-1 items-center bg-[#f7f6f0] border-none"
             />
+
+            {/*Notifications*/}
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <div className="w-10 h-10 rounded-full border border-gray-200
@@ -30,6 +34,8 @@ export default function TopNavbar() {
                     <DropdownMenuSeparator/>
                 </DropdownMenuContent>
             </DropdownMenu>
+
+            {/*Upcoming services*/}
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <div className="w-10 h-10 rounded-full border border-gray-200
@@ -42,9 +48,8 @@ export default function TopNavbar() {
                     <DropdownMenuSeparator/>
                 </DropdownMenuContent>
             </DropdownMenu>
-            <div className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center">
-                <Settings size={18}/>
-            </div>
+
+            {/*Authentication and authorization*/}
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <div className="w-10 h-10 rounded-full border border-gray-200
