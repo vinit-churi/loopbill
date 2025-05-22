@@ -1,10 +1,11 @@
 import {Input} from "@/components/ui/input";
 import {SidebarTrigger} from "@/components/ui/sidebar";
-import {Bell, Calendar, CircleUserRound, LogOut, Settings} from "lucide-react";
+import {Bell, Calendar, CalendarClock, CircleUserRound, LogOut, Settings, TriangleAlert} from "lucide-react";
 import Image from "next/image";
 import {
     DropdownMenu,
-    DropdownMenuContent, DropdownMenuItem,
+    DropdownMenuContent,
+    DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger
@@ -32,6 +33,46 @@ export default function TopNavbar() {
                 <DropdownMenuContent className="w-90">
                     <DropdownMenuLabel>Notifications</DropdownMenuLabel>
                     <DropdownMenuSeparator/>
+                    <DropdownMenuItem>
+                        <div className="h-8 w-8 flex justify-center items-center bg-yellow-100 rounded-full">
+                            <CalendarClock color="oklch(79.5% 0.184 86.047)" size={18}/>
+                        </div>
+                        <div className="flex flex-col items-start gap-1">
+                            <h3>Service expiring</h3>
+                            <p>Client #128 service will expire in 7 days</p>
+                            <h6>5 minutes ago</h6>
+                        </div>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                        <div className="h-8 w-8 flex justify-center items-center bg-red-100 rounded-full">
+                            <TriangleAlert color="oklch(63.7% 0.237 25.331)" size={18}/>
+                        </div>
+                        <div className="flex flex-col items-start gap-1">
+                            <h3>Complaint raised</h3>
+                            <p>New complaint for service #329</p>
+                            <h6>2 hours ago</h6>
+                        </div>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                        <div className="h-8 w-8 flex justify-center items-center bg-yellow-100 rounded-full">
+                            <CalendarClock color="oklch(79.5% 0.184 86.047)" size={18}/>
+                        </div>
+                        <div className="flex flex-col items-start gap-1">
+                            <h3>Service expiring</h3>
+                            <p>Client #127 service will expire in 7 days</p>
+                            <h6>3 days ago</h6>
+                        </div>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                        <div className="h-8 w-8 flex justify-center items-center bg-yellow-100 rounded-full">
+                            <CalendarClock color="oklch(79.5% 0.184 86.047)" size={18}/>
+                        </div>
+                        <div className="flex flex-col items-start gap-1">
+                            <h3>Service expiring</h3>
+                            <p>Client #126 service will expire in 7 days</p>
+                            <h6>5 days ago</h6>
+                        </div>
+                    </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
 
@@ -46,6 +87,25 @@ export default function TopNavbar() {
                 <DropdownMenuContent className="w-90">
                     <DropdownMenuLabel>Upcoming Services</DropdownMenuLabel>
                     <DropdownMenuSeparator/>
+                    <DropdownMenuItem className="flex flex-col items-start gap-1">
+                        <h3 className="font-semibold">Today (3)</h3>
+                        <div>
+                            <p className="text-muted-foreground">10:00 AM - Service #421 - Cockroach Treatment</p>
+                            <p className="text-muted-foreground">2:30 PM - Service #422 - Ant Control</p>
+                            <p className="text-muted-foreground">2:30 PM - Service #422 - Cockroach Treatment</p>
+                        </div>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="flex flex-col items-start gap-1">
+                        <h3 className="font-semibold">Tomorrow (6)</h3>
+                        <div>
+                            <p className="text-muted-foreground">10:00 AM - Service #421 - Cockroach Treatment</p>
+                            <p className="text-muted-foreground">2:30 PM - Service #422 - Ant Control</p>
+                            <p className="text-muted-foreground">2:30 PM - Service #422 - Cockroach Treatment</p>
+                            <p className="text-muted-foreground">10:00 AM - Service #421 - Cockroach Treatment</p>
+                            <p className="text-muted-foreground">2:30 PM - Service #422 - Ant Control</p>
+                            <p className="text-muted-foreground">2:30 PM - Service #422 - Cockroach Treatment</p>
+                        </div>
+                    </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
 
