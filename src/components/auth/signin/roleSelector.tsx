@@ -8,15 +8,15 @@ type Role = "consumer" | "admin" | "salesperson" | "agent";
 
 interface RoleSelectorProps {
     selectedRole: Role;
-    onRoleChange: (role: Role) => void;
+    onRoleChangeAction: (role: Role) => void;
 }
 
-export function RoleSelector({ selectedRole, onRoleChange }: RoleSelectorProps) {
+export function RoleSelector({ selectedRole, onRoleChangeAction }: RoleSelectorProps) {
     return (
         <div className="mt-4">
             <RadioGroup
                 value={selectedRole}
-                onValueChange={(value) => onRoleChange(value as Role)}
+                onValueChange={(value) => onRoleChangeAction(value as Role)}
                 className="grid grid-cols-2 gap-4"
             >
                 <div className="flex items-center space-x-2 rounded-md border border-gray-200 p-3 hover:bg-pest-light transition-colors">

@@ -16,7 +16,7 @@ export default function AdvancedOptions() {
                 <Label>Select Role</Label>
                 <RoleSelector
                     selectedRole={selectedRole}
-                    onRoleChange={setSelectedRole}
+                    onRoleChangeAction={setSelectedRole}
                 />
             </div>
         </CollapsibleSection>
