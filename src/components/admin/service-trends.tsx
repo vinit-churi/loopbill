@@ -5,7 +5,7 @@ export default function ServiceTrends() {
         <Card>
             <CardHeader>
                 <CardTitle>Service Trends</CardTitle>
-                <CardDescription>Scheduled vs Completed Services (Last 1 Year)</CardDescription>
+                <CardDescription>Monthly service counts and revenue⟨₹⟩ (Last 1 Year)</CardDescription>
             </CardHeader>
             <CardContent>
                 <p>Card Content</p>

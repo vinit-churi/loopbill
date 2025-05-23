@@ -28,7 +28,7 @@ export function ComplaintStatusChart() {
                             label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
                             outerRadius={120}
                             dataKey="value"
-                            stroke="hsl(var(--border))"
+                            stroke="1px"
                         >
                             {complaintStatus.map((entry, index) => (
                                 <Cell key={`cell-${index}`} fill={entry.fill} />

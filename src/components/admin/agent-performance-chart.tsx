@@ -22,7 +22,7 @@ export function AgentPerformanceChart() {
             <CardContent>
                 <ResponsiveContainer width="100%" height={350}>
                     <BarChart data={agentPerformance}>
-                        <CartesianGrid strokeDasharray="3 3" stroke={"rgba(0, 0, 0, 0.5)"}/>
+                        <CartesianGrid strokeDasharray="3 3" stroke={"rgba(0, 0, 0, 0.3)"}/>
                         <XAxis dataKey="name" stroke="#000000" fontSize={12} tickLine={false}
                                axisLine={false}/>
                         <YAxis yAxisId="left" stroke="#000000" fontSize={12} tickLine={false}
