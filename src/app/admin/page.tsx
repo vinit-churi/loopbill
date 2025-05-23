@@ -8,9 +8,6 @@ import PendingComplaints from "@/components/admin/pending-complaints";
 import AgentPerformance from "@/components/admin/agent-performance";
 import ComplaintStatusBreakdown from "@/components/admin/complaint-status-breakdown";
 import ServiceTrends from "@/components/admin/service-trends";
-import {AgentPerformanceChart} from "@/components/admin/agent-performance-chart";
-import {ComplaintStatusChart} from "@/components/admin/complaint-status-chart";
-import {ServiceTrendsChart} from "@/components/admin/service-trends-chart";
 
 export default function Admin() {
     return (
@@ -33,11 +30,8 @@ export default function Admin() {
             <ServicesAtRisk/>
             <PendingComplaints/>
             <AgentPerformance/>
-            <AgentPerformanceChart/>
-            <ComplaintStatusChart/>
             <ComplaintStatusBreakdown/>
             <ServiceTrends/>
-            <ServiceTrendsChart/>
         </main>
     );
 }
