@@ -78,7 +78,11 @@ export default function ServicesAtRisk() {
                                         {service.status}
                                     </span>
                                 </TableCell>
-                                <TableCell>{service.action}</TableCell>
+                                <TableCell>
+                                    <Button variant={"outline"} size={"sm"}>
+                                        {service.action}
+                                    </Button>
+                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
