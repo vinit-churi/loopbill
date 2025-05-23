@@ -61,7 +61,7 @@ export default function UpcomingServices() {
                         ))}
                     </TableBody>
                 </Table>
-                <Button className="w-full mt-4">View all services</Button>
+                <Button variant={"outline"} className="w-full mt-4 cursor-pointer">View all services</Button>
             </CardContent>
         </Card>
     );
