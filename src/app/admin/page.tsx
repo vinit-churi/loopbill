@@ -20,7 +20,7 @@ export default function Admin() {
                 </div>
                 <div className="flex gap-2 items-center">
                     <Button variant="outline" className="cursor-pointer">Export</Button>
-                    <Button className="cursor-pointer"><Calendar className="h-4 w-4"/> Schedule Service</Button>
+                    <Button className="cursor-pointer"><Calendar className="h-4 w-4"/>Schedule Service</Button>
                 </div>
             </div>
             <TopStatisticsCards/>
