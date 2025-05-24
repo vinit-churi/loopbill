@@ -93,6 +93,7 @@ export default function PendingComplaints() {
                         ))}
                     </TableBody>
                 </Table>
+                <Button variant={"outline"} className="w-full mt-4 cursor-pointer">View all complaints</Button>
             </CardContent>
         </Card>
     );
