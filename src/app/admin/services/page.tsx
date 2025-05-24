@@ -1,5 +1,18 @@
 import {Button} from "@/components/ui/button";
 import {Calendar, Plus} from "lucide-react";
+import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
+import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
+import {Label} from "@/components/ui/label";
+import {Input} from "@/components/ui/input";
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue
+} from "@/components/ui/select";
 
 export default function Services() {
     return (
@@ -15,6 +28,155 @@ export default function Services() {
                     <Button className="cursor-pointer"><Plus/>New service</Button>
                 </div>
             </div>
+
+            {/*Services table*/}
+            <Tabs defaultValue="All services" className="w-full">
+                <TabsList className="grid w-full grid-cols-5">
+                    <TabsTrigger value="All services">All services</TabsTrigger>
+                    <TabsTrigger value="Upcoming">Upcoming</TabsTrigger>
+                    <TabsTrigger value="Completed">Completed</TabsTrigger>
+                    <TabsTrigger value="Redo services">Redo services</TabsTrigger>
+                    <TabsTrigger value="Expired">Expired</TabsTrigger>
+                </TabsList>
+                <TabsContent value="All services">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>All services</CardTitle>
+                            <CardDescription>
+                                View and manage all pest control services
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <Select>
+                                <SelectTrigger className="w-auto">
+                                    <SelectValue placeholder="Filter by service type" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        <SelectLabel>Filter</SelectLabel>
+                                        <SelectItem value="ant">Ant control</SelectItem>
+                                        <SelectItem value="bedbug">Bed bug control</SelectItem>
+                                        <SelectItem value="bird">Bird control</SelectItem>
+                                        <SelectItem value="cockroach">Cockroach control</SelectItem>
+                                        <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
+                                        <SelectItem value="fly">Fly control</SelectItem>
+                                        <SelectItem value="general">General pest control</SelectItem>
+                                        <SelectItem value="insect">Insect control</SelectItem>
+                                        <SelectItem value="mosquito">Mosquito control</SelectItem>
+                                        <SelectItem value="rodent">Rodent</SelectItem>
+                                        <SelectItem value="mosquito">Mosquito treatment</SelectItem>
+                                        <SelectItem value="termite">Termite control</SelectItem>
+                                        <SelectItem value="wildlife">Wildlife control</SelectItem>
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+
+
+                            <div className="space-y-1">
+                                <Label htmlFor="name">Name</Label>
+                                <Input id="name" defaultValue="Pedro Duarte"/>
+                            </div>
+                            <div className="space-y-1">
+                                <Label htmlFor="username">Username</Label>
+                                <Input id="username" defaultValue="@peduarte"/>
+                            </div>
+                        </CardContent>
+                        <CardFooter>
+                            <Button>Save changes</Button>
+                        </CardFooter>
+                    </Card>
+                </TabsContent>
+                <TabsContent value="Upcoming">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Password</CardTitle>
+                            <CardDescription>
+                                Change your password here. After saving, you'll be logged out.
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent className="space-y-2">
+                            <div className="space-y-1">
+                                <Label htmlFor="current">Current password</Label>
+                                <Input id="current" type="password"/>
+                            </div>
+                            <div className="space-y-1">
+                                <Label htmlFor="new">New password</Label>
+                                <Input id="new" type="password"/>
+                            </div>
+                        </CardContent>
+                        <CardFooter>
+                            <Button>Save password</Button>
+                        </CardFooter>
+                    </Card>
+                </TabsContent>
+                <TabsContent value={"Completed"}><Card>
+                    <CardHeader>
+                        <CardTitle>All services</CardTitle>
+                        <CardDescription>
+                            View and manage all pest control services
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-2">
+                        <div className="space-y-1">
+                            <Label htmlFor="name">Name</Label>
+                            <Input id="name" defaultValue="Pedro Duarte"/>
+                        </div>
+                        <div className="space-y-1">
+                            <Label htmlFor="username">Username</Label>
+                            <Input id="username" defaultValue="@peduarte"/>
+                        </div>
+                    </CardContent>
+                    <CardFooter>
+                        <Button>Save changes</Button>
+                    </CardFooter>
+                </Card>
+                </TabsContent>
+                <TabsContent value={"Redo services"}><Card>
+                    <CardHeader>
+                        <CardTitle>All services</CardTitle>
+                        <CardDescription>
+                            View and manage all pest control services
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-2">
+                        <div className="space-y-1">
+                            <Label htmlFor="name">Name</Label>
+                            <Input id="name" defaultValue="Pedro Duarte"/>
+                        </div>
+                        <div className="space-y-1">
+                            <Label htmlFor="username">Username</Label>
+                            <Input id="username" defaultValue="@peduarte"/>
+                        </div>
+                    </CardContent>
+                    <CardFooter>
+                        <Button>Save changes</Button>
+                    </CardFooter>
+                </Card>
+                </TabsContent>
+                <TabsContent value={"Expired"}>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>All services</CardTitle>
+                            <CardDescription>
+                                View and manage all pest control services
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent className="space-y-2">
+                            <div className="space-y-1">
+                                <Label htmlFor="name">Name</Label>
+                                <Input id="name" defaultValue="Pedro Duarte"/>
+                            </div>
+                            <div className="space-y-1">
+                                <Label htmlFor="username">Username</Label>
+                                <Input id="username" defaultValue="@peduarte"/>
+                            </div>
+                        </CardContent>
+                        <CardFooter>
+                            <Button>Save changes</Button>
+                        </CardFooter>
+                    </Card>
+                </TabsContent>
+            </Tabs>
         </main>
     );
 }
