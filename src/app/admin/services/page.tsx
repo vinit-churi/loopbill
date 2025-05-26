@@ -80,6 +80,30 @@ const allServices = [
         date: 'June 1, 2025',
         agent: 'Unassigned',
         status: 'Unscheduled'
+    },
+    {
+        id: 8,
+        customer: 'Rahul Verma',
+        serviceType: 'Ant control',
+        date: 'June 1, 2025',
+        agent: 'Unassigned',
+        status: 'Unscheduled'
+    },
+    {
+        id: 9,
+        customer: 'Suresh Menon',
+        serviceType: 'Mosquito treatment',
+        date: 'June 1, 2025',
+        agent: 'Unassigned',
+        status: 'Unscheduled'
+    },
+    {
+        id: 10,
+        customer: 'Ananya Singh',
+        serviceType: 'Basic pest control',
+        date: 'June 1, 2025',
+        agent: 'Unassigned',
+        status: 'Unscheduled'
     }
 ]
 
