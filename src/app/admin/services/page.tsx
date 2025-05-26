@@ -13,6 +13,15 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select";
+import {
+    Pagination,
+    PaginationContent,
+    PaginationEllipsis,
+    PaginationItem,
+    PaginationLink,
+    PaginationNext,
+    PaginationPrevious
+} from "@/components/ui/pagination";
 
 export default function Services() {
     return (
@@ -49,18 +58,18 @@ export default function Services() {
                         <CardContent>
                             <Select>
                                 <SelectTrigger className="w-auto">
-                                    <SelectValue placeholder="Filter by service type" />
+                                    <SelectValue placeholder="Filter by service type"/>
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectGroup>
                                         <SelectLabel>Filter</SelectLabel>
+                                        <SelectItem value="general">General pest control</SelectItem>
                                         <SelectItem value="ant">Ant control</SelectItem>
                                         <SelectItem value="bedbug">Bed bug control</SelectItem>
                                         <SelectItem value="bird">Bird control</SelectItem>
                                         <SelectItem value="cockroach">Cockroach control</SelectItem>
                                         <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
                                         <SelectItem value="fly">Fly control</SelectItem>
-                                        <SelectItem value="general">General pest control</SelectItem>
                                         <SelectItem value="insect">Insect control</SelectItem>
                                         <SelectItem value="mosquito">Mosquito control</SelectItem>
                                         <SelectItem value="rodent">Rodent</SelectItem>
@@ -71,18 +80,32 @@ export default function Services() {
                                 </SelectContent>
                             </Select>
 
-
-                            <div className="space-y-1">
-                                <Label htmlFor="name">Name</Label>
-                                <Input id="name" defaultValue="Pedro Duarte"/>
-                            </div>
-                            <div className="space-y-1">
-                                <Label htmlFor="username">Username</Label>
-                                <Input id="username" defaultValue="@peduarte"/>
-                            </div>
                         </CardContent>
                         <CardFooter>
-                            <Button>Save changes</Button>
+                            <Pagination>
+                                <PaginationContent>
+                                    <PaginationItem>
+                                        <PaginationPrevious href="#"/>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#" isActive>1</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#">
+                                            2
+                                        </PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#">3</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationEllipsis/>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationNext href="#"/>
+                                    </PaginationItem>
+                                </PaginationContent>
+                            </Pagination>
                         </CardFooter>
                     </Card>
                 </TabsContent>
