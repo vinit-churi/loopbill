@@ -22,6 +22,66 @@ import {
     PaginationNext,
     PaginationPrevious
 } from "@/components/ui/pagination";
+import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
+
+const allServices = [
+    {
+        id: 1,
+        customer: 'Amit Sharma',
+        serviceType: 'Cockroach control',
+        date: 'May 11, 2025',
+        agent: 'Raj Kumar',
+        status: 'Completed'
+    },
+    {
+        id: 2,
+        customer: 'Priya Patel',
+        serviceType: 'Rodent control',
+        date: 'May 11, 2025',
+        agent: 'Sanjay Singh',
+        status: 'Completed'
+    },
+    {
+        id: 3,
+        customer: 'Neha Kapoor',
+        serviceType: 'Mosquito control',
+        date: 'May 11, 2025',
+        agent: 'Raj Kumar',
+        status: 'Completed'
+    },
+    {
+        id: 4,
+        customer: 'Vikram Malhotra',
+        serviceType: 'Termite control',
+        date: 'May 11, 2025',
+        agent: 'Anita Desai',
+        status: 'In progress'
+    },
+    {
+        id: 5,
+        customer: 'Rahul Verma',
+        serviceType: 'Ant control',
+        date: 'May 11, 2025',
+        agent: 'Raj Kumar',
+        status: 'Scheduled'
+    },
+    {
+        id: 6,
+        customer: 'Suresh Menon',
+        serviceType: 'Mosquito treatment',
+        date: 'May 29, 2025',
+        agent: 'Unassigned',
+        status: 'Unscheduled'
+    },
+    {
+        id: 7,
+        customer: 'Ananya Singh',
+        serviceType: 'Basic pest control',
+        date: 'June 1, 2025',
+        agent: 'Unassigned',
+        status: 'Unscheduled'
+    }
+]
 
 export default function Services() {
     return (
@@ -54,10 +114,8 @@ export default function Services() {
                             <CardDescription>
                                 View and manage all pest control services
                             </CardDescription>
-                        </CardHeader>
-                        <CardContent>
                             <Select>
-                                <SelectTrigger className="w-auto">
+                                <SelectTrigger>
                                     <SelectValue placeholder="Filter by service type"/>
                                 </SelectTrigger>
                                 <SelectContent>
@@ -79,8 +137,45 @@ export default function Services() {
                                     </SelectGroup>
                                 </SelectContent>
                             </Select>
-
+                        </CardHeader>
+                        <CardContent>
+                            <Table>
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHead>Id</TableHead>
+                                        <TableHead>Customer</TableHead>
+                                        <TableHead>Service Type</TableHead>
+                                        <TableHead>Date</TableHead>
+                                        <TableHead>Agent</TableHead>
+                                        <TableHead>Status</TableHead>
+                                        <TableHead>Action</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    {allServices.map((service) => (
+                                        <TableRow key={service.id}>
+                                            <TableCell>{service.id}</TableCell>
+                                            <TableCell>{service.customer}</TableCell>
+                                            <TableCell>{service.serviceType}</TableCell>
+                                            <TableCell>{service.date}</TableCell>
+                                            <TableCell>{service.agent}</TableCell>
+                                            <TableCell>
+                                                <span
+                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Unscheduled' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : 'text-green-600 border-green-400 bg-green-100'))}`}>
+                                                    {service.status}
+                                                </span>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Button variant={"outline"} size={"sm"}>
+                                                    View details
+                                                </Button>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
                         </CardContent>
+
                         <CardFooter>
                             <Pagination>
                                 <PaginationContent>
