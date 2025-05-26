@@ -94,16 +94,16 @@ const allServices = [
         customer: 'Suresh Menon',
         serviceType: 'Mosquito treatment',
         date: 'June 1, 2025',
-        agent: 'Unassigned',
-        status: 'Unscheduled'
+        agent: 'Sanjay Singh',
+        status: 'Redo required'
     },
     {
         id: 10,
         customer: 'Ananya Singh',
         serviceType: 'Basic pest control',
-        date: 'June 1, 2025',
-        agent: 'Unassigned',
-        status: 'Unscheduled'
+        date: 'April 1, 2025',
+        agent: 'Raj Kumar',
+        status: 'Expired'
     }
 ]
 
@@ -185,7 +185,7 @@ export default function Services() {
                                             <TableCell>{service.agent}</TableCell>
                                             <TableCell>
                                                 <span
-                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Unscheduled' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : 'text-green-600 border-green-400 bg-green-100'))}`}>
+                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Redo required' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : (service.status === 'Unscheduled' ? 'text-orange-600 border-orange-400 bg-orange-100' : (service.status === 'Expired' ? 'text-gray-600 border-gray-400 bg-gray-100' :'text-green-600 border-green-400 bg-green-100'))))}`}>
                                                     {service.status}
                                                 </span>
                                             </TableCell>
