@@ -139,6 +139,41 @@ const filterServicesStatus = (staus: string) => {
     }
 }
 
+const renderServices = (services: any[]) => {
+    return (
+        <Table>
+            <TableHeader>
+                <TableRow>
+                    <TableHead>Id</TableHead>
+                    <TableHead>Customer</TableHead>
+                    <TableHead>Service Type</TableHead>
+                    <TableHead>Date</TableHead>
+                    <TableHead>Agent</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead>Action</TableHead>
+                </TableRow>
+            </TableHeader>
+            <TableBody>
+                {services.map((service) => (
+                    <TableRow key={service.id}>
+                        <TableCell>{service.id}</TableCell>
+                        <TableCell>{service.customer}</TableCell>
+                        <TableCell>{service.serviceType}</TableCell>
+                        <TableCell>{service.date}</TableCell>
+                        <TableCell>{service.agent}</TableCell>
+                        <TableCell>
+                            <span
+                                className={`px-2 py-0.5 border rounded-full font-semibold ${getStatusColor(service.status)}`}>{service.status}
+                            </span>
+                        </TableCell>
+                        <TableCell><Button variant={"outline"} size={"sm"}>View details</Button></TableCell>
+                    </TableRow>
+                ))}
+            </TableBody>
+        </Table>
+    );
+}
+
 export default function Services() {
     return (
         <main className="w-full flex flex-col gap-4">
@@ -290,41 +325,7 @@ export default function Services() {
                             </Select>
                         </CardHeader>
                         <CardContent>
-                            <Table>
-                                <TableHeader>
-                                    <TableRow>
-                                        <TableHead>Id</TableHead>
-                                        <TableHead>Customer</TableHead>
-                                        <TableHead>Service Type</TableHead>
-                                        <TableHead>Date</TableHead>
-                                        <TableHead>Agent</TableHead>
-                                        <TableHead>Status</TableHead>
-                                        <TableHead>Action</TableHead>
-                                    </TableRow>
-                                </TableHeader>
-                                <TableBody>
-                                    {allServices.map((service) => (
-                                        <TableRow key={service.id}>
-                                            <TableCell>{service.id}</TableCell>
-                                            <TableCell>{service.customer}</TableCell>
-                                            <TableCell>{service.serviceType}</TableCell>
-                                            <TableCell>{service.date}</TableCell>
-                                            <TableCell>{service.agent}</TableCell>
-                                            <TableCell>
-                                                <span
-                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${getStatusColor(service.status)}`}>
-                                                    {service.status}
-                                                </span>
-                                            </TableCell>
-                                            <TableCell>
-                                                <Button variant={"outline"} size={"sm"}>
-                                                    View details
-                                                </Button>
-                                            </TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
+                            {renderServices(filterServicesStatus('upcoming-services'))}
                         </CardContent>
                         <CardFooter>
                             <Pagination>
@@ -385,41 +386,7 @@ export default function Services() {
                             </Select>
                         </CardHeader>
                         <CardContent>
-                            <Table>
-                                <TableHeader>
-                                    <TableRow>
-                                        <TableHead>Id</TableHead>
-                                        <TableHead>Customer</TableHead>
-                                        <TableHead>Service Type</TableHead>
-                                        <TableHead>Date</TableHead>
-                                        <TableHead>Agent</TableHead>
-                                        <TableHead>Status</TableHead>
-                                        <TableHead>Action</TableHead>
-                                    </TableRow>
-                                </TableHeader>
-                                <TableBody>
-                                    {allServices.map((service) => (
-                                        <TableRow key={service.id}>
-                                            <TableCell>{service.id}</TableCell>
-                                            <TableCell>{service.customer}</TableCell>
-                                            <TableCell>{service.serviceType}</TableCell>
-                                            <TableCell>{service.date}</TableCell>
-                                            <TableCell>{service.agent}</TableCell>
-                                            <TableCell>
-                                                <span
-                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${getStatusColor(service.status)}`}>
-                                                    {service.status}
-                                                </span>
-                                            </TableCell>
-                                            <TableCell>
-                                                <Button variant={"outline"} size={"sm"}>
-                                                    View details
-                                                </Button>
-                                            </TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
+                            {renderServices(filterServicesStatus('completed-services'))}
                         </CardContent>
                         <CardFooter>
                             <Pagination>
@@ -480,41 +447,7 @@ export default function Services() {
                             </Select>
                         </CardHeader>
                         <CardContent>
-                            <Table>
-                                <TableHeader>
-                                    <TableRow>
-                                        <TableHead>Id</TableHead>
-                                        <TableHead>Customer</TableHead>
-                                        <TableHead>Service Type</TableHead>
-                                        <TableHead>Date</TableHead>
-                                        <TableHead>Agent</TableHead>
-                                        <TableHead>Status</TableHead>
-                                        <TableHead>Action</TableHead>
-                                    </TableRow>
-                                </TableHeader>
-                                <TableBody>
-                                    {allServices.map((service) => (
-                                        <TableRow key={service.id}>
-                                            <TableCell>{service.id}</TableCell>
-                                            <TableCell>{service.customer}</TableCell>
-                                            <TableCell>{service.serviceType}</TableCell>
-                                            <TableCell>{service.date}</TableCell>
-                                            <TableCell>{service.agent}</TableCell>
-                                            <TableCell>
-                                                <span
-                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${getStatusColor(service.status)}`}>
-                                                    {service.status}
-                                                </span>
-                                            </TableCell>
-                                            <TableCell>
-                                                <Button variant={"outline"} size={"sm"}>
-                                                    View details
-                                                </Button>
-                                            </TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
+                            {renderServices(filterServicesStatus('redo-services'))}
                         </CardContent>
                         <CardFooter>
                             <Pagination>
@@ -577,41 +510,7 @@ export default function Services() {
                             </Select>
                         </CardHeader>
                         <CardContent>
-                            <Table>
-                                <TableHeader>
-                                    <TableRow>
-                                        <TableHead>Id</TableHead>
-                                        <TableHead>Customer</TableHead>
-                                        <TableHead>Service Type</TableHead>
-                                        <TableHead>Date</TableHead>
-                                        <TableHead>Agent</TableHead>
-                                        <TableHead>Status</TableHead>
-                                        <TableHead>Action</TableHead>
-                                    </TableRow>
-                                </TableHeader>
-                                <TableBody>
-                                    {allServices.map((service) => (
-                                        <TableRow key={service.id}>
-                                            <TableCell>{service.id}</TableCell>
-                                            <TableCell>{service.customer}</TableCell>
-                                            <TableCell>{service.serviceType}</TableCell>
-                                            <TableCell>{service.date}</TableCell>
-                                            <TableCell>{service.agent}</TableCell>
-                                            <TableCell>
-                                                <span
-                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${getStatusColor(service.status)}`}>
-                                                    {service.status}
-                                                </span>
-                                            </TableCell>
-                                            <TableCell>
-                                                <Button variant={"outline"} size={"sm"}>
-                                                    View details
-                                                </Button>
-                                            </TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
+                            {renderServices(filterServicesStatus('expired-services'))}
                         </CardContent>
                         <CardFooter>
                             <Pagination>
