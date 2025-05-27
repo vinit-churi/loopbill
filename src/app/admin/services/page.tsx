@@ -1,3 +1,5 @@
+'use client'
+
 import {Button} from "@/components/ui/button";
 import {Calendar, Plus} from "lucide-react";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
@@ -21,6 +23,7 @@ import {
     PaginationPrevious
 } from "@/components/ui/pagination";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
+import {useState} from "react";
 
 const allServices = [
     {
@@ -139,29 +142,40 @@ const filterServicesStatus = (staus: string) => {
     }
 }
 
-const FilterByServiceType = () => {
+interface FilterByServiceTypeProps {
+    value: string;
+    onValueChange: (value: string) => void;
+}
+
+const FilterByServiceType = ({value, onValueChange}: FilterByServiceTypeProps) => {
+    const serviceTypes = [
+        'Ant control',
+        'Bed bug control',
+        'Bird control',
+        'Cockroach control',
+        'Flea and Tick control',
+        'Fly control',
+        'General pest control',
+        'Insect control',
+        'Mosquito control',
+        'Rodent',
+        'Mosquito treatment',
+        'Termite control',
+        'Wildlife control'
+    ]
+
     return (
-        <Select defaultValue="all">
+        <Select defaultValue="all" value={value} onValueChange={onValueChange}>
             <SelectTrigger className="cursor-pointer">
                 <SelectValue placeholder="Filter by service type"/>
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>
                     <SelectLabel>Filter</SelectLabel>
-                    <SelectItem value="all">Filter by service type</SelectItem>
-                    <SelectItem value="ant">Ant control</SelectItem>
-                    <SelectItem value="bedbug">Bed bug control</SelectItem>
-                    <SelectItem value="bird">Bird control</SelectItem>
-                    <SelectItem value="cockroach">Cockroach control</SelectItem>
-                    <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
-                    <SelectItem value="fly">Fly control</SelectItem>
-                    <SelectItem value="general">General pest control</SelectItem>
-                    <SelectItem value="insect">Insect control</SelectItem>
-                    <SelectItem value="mosquito">Mosquito control</SelectItem>
-                    <SelectItem value="rodent">Rodent</SelectItem>
-                    <SelectItem value="mosquito">Mosquito treatment</SelectItem>
-                    <SelectItem value="termite">Termite control</SelectItem>
-                    <SelectItem value="wildlife">Wildlife control</SelectItem>
+                    <SelectItem value="all">Filter by service type(All)</SelectItem>
+                    {serviceTypes.map((serviceType, index) => (
+                        <SelectItem key={index} value={serviceType}>{serviceType}</SelectItem>
+                    ))}
                 </SelectGroup>
             </SelectContent>
         </Select>
@@ -176,6 +190,10 @@ const renderServices = (services: {
     agent: string;
     status: string;
 }[]) => {
+    if (services.length === 0) {
+        return <p>No services match the current filters.</p>;
+    }
+
     return (
         <Table>
             <TableHeader>
@@ -238,6 +256,45 @@ const RenderPagination = () => {
 }
 
 export default function Services() {
+    // State for the 'upcoming-services' tab's service type filter
+    const [upcomingSelectedServiceType, setUpcomingSelectedServiceType] = useState<string>("all");
+    // Add similar states for other tabs if they need independent filtering
+    const [allServicesSelectedServiceType, setAllServicesSelectedServiceType] = useState<string>("all");
+    const [completedSelectedServiceType, setCompletedSelectedServiceType] = useState<string>("all");
+    const [redoSelectedServiceType, setRedoSelectedServiceType] = useState<string>("all");
+    const [expiredSelectedServiceType, setExpiredSelectedServiceType] = useState<string>("all");
+
+
+    // Logic for 'all-services' tab
+    const allServicesByStatus = filterServicesStatus('all-services');
+    const allServicesFilteredByType = allServicesSelectedServiceType === "all"
+        ? allServicesByStatus
+        : allServicesByStatus.filter(service => service.serviceType === allServicesSelectedServiceType);
+
+    // Logic for 'upcoming-services' tab
+    const upcomingServicesByStatus = filterServicesStatus('upcoming-services');
+    const upcomingServicesFilteredByType = upcomingSelectedServiceType === "all"
+        ? upcomingServicesByStatus
+        : upcomingServicesByStatus.filter(service => service.serviceType === upcomingSelectedServiceType);
+
+    // Logic for 'completed-services' tab
+    const completedServicesByStatus = filterServicesStatus('completed-services');
+    const completedServicesFilteredByType = completedSelectedServiceType === "all"
+        ? completedServicesByStatus
+        : completedServicesByStatus.filter(service => service.serviceType === completedSelectedServiceType);
+
+    // Logic for 'redo-services' tab
+    const redoServicesByStatus = filterServicesStatus('redo-services');
+    const redoServicesFilteredByType = redoSelectedServiceType === "all"
+        ? redoServicesByStatus
+        : redoServicesByStatus.filter(service => service.serviceType === redoSelectedServiceType);
+
+    // Logic for 'expired-services' tab
+    const expiredServicesByStatus = filterServicesStatus('expired-services');
+    const expiredServicesFilteredByType = expiredSelectedServiceType === "all"
+        ? expiredServicesByStatus
+        : expiredServicesByStatus.filter(service => service.serviceType === expiredSelectedServiceType);
+
     return (
         <main className="w-full flex flex-col gap-4">
             {/*Heading and Description*/}
@@ -268,10 +325,10 @@ export default function Services() {
                             <CardDescription>
                                 View and manage all pest control services
                             </CardDescription>
-                            <FilterByServiceType/>
+                            <FilterByServiceType value={allServicesSelectedServiceType} onValueChange={setAllServicesSelectedServiceType}/>
                         </CardHeader>
                         <CardContent>
-                            {renderServices(allServices)}
+                            {renderServices(allServicesFilteredByType)}
                         </CardContent>
                         <CardFooter>
                             <RenderPagination/>
@@ -286,10 +343,10 @@ export default function Services() {
                             <CardDescription>
                                 Services scheduled or in progress
                             </CardDescription>
-                            <FilterByServiceType/>
+                            <FilterByServiceType value={upcomingSelectedServiceType} onValueChange={setUpcomingSelectedServiceType}/>
                         </CardHeader>
                         <CardContent>
-                            {renderServices(filterServicesStatus('upcoming-services'))}
+                            {renderServices(upcomingServicesFilteredByType)}
                         </CardContent>
                         <CardFooter>
                             <RenderPagination/>
@@ -304,10 +361,10 @@ export default function Services() {
                             <CardDescription>
                                 Services that have been completed successfully
                             </CardDescription>
-                            <FilterByServiceType/>
+                            <FilterByServiceType value={completedSelectedServiceType} onValueChange={setCompletedSelectedServiceType}/>
                         </CardHeader>
                         <CardContent>
-                            {renderServices(filterServicesStatus('completed-services'))}
+                            {renderServices(completedServicesFilteredByType)}
                         </CardContent>
                         <CardFooter>
                             <RenderPagination/>
@@ -322,10 +379,10 @@ export default function Services() {
                             <CardDescription>
                                 Services that need to be redone due to complaints
                             </CardDescription>
-                            <FilterByServiceType/>
+                            <FilterByServiceType value={redoSelectedServiceType} onValueChange={setRedoSelectedServiceType}/>
                         </CardHeader>
                         <CardContent>
-                            {renderServices(filterServicesStatus('redo-services'))}
+                            {renderServices(redoServicesFilteredByType)}
                         </CardContent>
                         <CardFooter>
                             <RenderPagination/>
@@ -340,10 +397,10 @@ export default function Services() {
                             <CardDescription>
                                 Services that have expired without completion
                             </CardDescription>
-                            <FilterByServiceType/>
+                            <FilterByServiceType value={expiredSelectedServiceType} onValueChange={setExpiredSelectedServiceType}/>
                         </CardHeader>
                         <CardContent>
-                            {renderServices(filterServicesStatus('expired-services'))}
+                            {renderServices(expiredServicesFilteredByType)}
                         </CardContent>
                         <CardFooter>
                             <RenderPagination/>
