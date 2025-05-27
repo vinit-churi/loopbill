@@ -205,20 +205,21 @@ export default function Services() {
                             <CardDescription>
                                 View and manage all pest control services
                             </CardDescription>
-                            <Select>
+                            <Select defaultValue="all">
                                 <SelectTrigger>
                                     <SelectValue placeholder="Filter by service type"/>
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectGroup>
                                         <SelectLabel>Filter</SelectLabel>
-                                        <SelectItem value="general">General pest control</SelectItem>
+                                        <SelectItem value="all">Filter by service type</SelectItem>
                                         <SelectItem value="ant">Ant control</SelectItem>
                                         <SelectItem value="bedbug">Bed bug control</SelectItem>
                                         <SelectItem value="bird">Bird control</SelectItem>
                                         <SelectItem value="cockroach">Cockroach control</SelectItem>
                                         <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
                                         <SelectItem value="fly">Fly control</SelectItem>
+                                        <SelectItem value="general">General pest control</SelectItem>
                                         <SelectItem value="insect">Insect control</SelectItem>
                                         <SelectItem value="mosquito">Mosquito control</SelectItem>
                                         <SelectItem value="rodent">Rodent</SelectItem>
@@ -266,20 +267,21 @@ export default function Services() {
                             <CardDescription>
                                 Services scheduled or in progress
                             </CardDescription>
-                            <Select>
+                            <Select defaultValue="all">
                                 <SelectTrigger>
                                     <SelectValue placeholder="Filter by service type"/>
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectGroup>
                                         <SelectLabel>Filter</SelectLabel>
-                                        <SelectItem value="general">General pest control</SelectItem>
+                                        <SelectItem value="all">Filter by service type</SelectItem>
                                         <SelectItem value="ant">Ant control</SelectItem>
                                         <SelectItem value="bedbug">Bed bug control</SelectItem>
                                         <SelectItem value="bird">Bird control</SelectItem>
                                         <SelectItem value="cockroach">Cockroach control</SelectItem>
                                         <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
                                         <SelectItem value="fly">Fly control</SelectItem>
+                                        <SelectItem value="general">General pest control</SelectItem>
                                         <SelectItem value="insect">Insect control</SelectItem>
                                         <SelectItem value="mosquito">Mosquito control</SelectItem>
                                         <SelectItem value="rodent">Rodent</SelectItem>
@@ -327,20 +329,21 @@ export default function Services() {
                             <CardDescription>
                                 Services that have been completed successfully
                             </CardDescription>
-                            <Select>
+                            <Select defaultValue="all">
                                 <SelectTrigger>
                                     <SelectValue placeholder="Filter by service type"/>
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectGroup>
                                         <SelectLabel>Filter</SelectLabel>
-                                        <SelectItem value="general">General pest control</SelectItem>
+                                        <SelectItem value="all">Filter by service type</SelectItem>
                                         <SelectItem value="ant">Ant control</SelectItem>
                                         <SelectItem value="bedbug">Bed bug control</SelectItem>
                                         <SelectItem value="bird">Bird control</SelectItem>
                                         <SelectItem value="cockroach">Cockroach control</SelectItem>
                                         <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
                                         <SelectItem value="fly">Fly control</SelectItem>
+                                        <SelectItem value="general">General pest control</SelectItem>
                                         <SelectItem value="insect">Insect control</SelectItem>
                                         <SelectItem value="mosquito">Mosquito control</SelectItem>
                                         <SelectItem value="rodent">Rodent</SelectItem>
@@ -388,20 +391,21 @@ export default function Services() {
                             <CardDescription>
                                 Services that need to be redone due to complaints
                             </CardDescription>
-                            <Select>
+                            <Select defaultValue="all">
                                 <SelectTrigger>
                                     <SelectValue placeholder="Filter by service type"/>
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectGroup>
                                         <SelectLabel>Filter</SelectLabel>
-                                        <SelectItem value="general">General pest control</SelectItem>
+                                        <SelectItem value="all">Filter by service type</SelectItem>
                                         <SelectItem value="ant">Ant control</SelectItem>
                                         <SelectItem value="bedbug">Bed bug control</SelectItem>
                                         <SelectItem value="bird">Bird control</SelectItem>
                                         <SelectItem value="cockroach">Cockroach control</SelectItem>
                                         <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
                                         <SelectItem value="fly">Fly control</SelectItem>
+                                        <SelectItem value="general">General pest control</SelectItem>
                                         <SelectItem value="insect">Insect control</SelectItem>
                                         <SelectItem value="mosquito">Mosquito control</SelectItem>
                                         <SelectItem value="rodent">Rodent</SelectItem>
@@ -451,20 +455,21 @@ export default function Services() {
                             <CardDescription>
                                 Services that have expired without completion
                             </CardDescription>
-                            <Select>
+                            <Select defaultValue="all">
                                 <SelectTrigger>
                                     <SelectValue placeholder="Filter by service type"/>
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectGroup>
                                         <SelectLabel>Filter</SelectLabel>
-                                        <SelectItem value="general">General pest control</SelectItem>
+                                        <SelectItem value="all">Filter by service type</SelectItem>
                                         <SelectItem value="ant">Ant control</SelectItem>
                                         <SelectItem value="bedbug">Bed bug control</SelectItem>
                                         <SelectItem value="bird">Bird control</SelectItem>
                                         <SelectItem value="cockroach">Cockroach control</SelectItem>
                                         <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
                                         <SelectItem value="fly">Fly control</SelectItem>
+                                        <SelectItem value="general">General pest control</SelectItem>
                                         <SelectItem value="insect">Insect control</SelectItem>
                                         <SelectItem value="mosquito">Mosquito control</SelectItem>
                                         <SelectItem value="rodent">Rodent</SelectItem>
