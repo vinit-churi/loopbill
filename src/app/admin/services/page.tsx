@@ -203,6 +203,33 @@ const renderServices = (services: any[]) => {
     );
 }
 
+const RenderPagination = () => {
+    return (
+        <Pagination>
+            <PaginationContent>
+                <PaginationItem>
+                    <PaginationPrevious href="#"/>
+                </PaginationItem>
+                <PaginationItem>
+                    <PaginationLink href="#" isActive>1</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                    <PaginationLink href="#">2</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                    <PaginationLink href="#">3</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                    <PaginationEllipsis/>
+                </PaginationItem>
+                <PaginationItem>
+                    <PaginationNext href="#"/>
+                </PaginationItem>
+            </PaginationContent>
+        </Pagination>
+    )
+}
+
 export default function Services() {
     return (
         <main className="w-full flex flex-col gap-4">
@@ -240,28 +267,7 @@ export default function Services() {
                             {renderServices(allServices)}
                         </CardContent>
                         <CardFooter>
-                            <Pagination>
-                                <PaginationContent>
-                                    <PaginationItem>
-                                        <PaginationPrevious href="#"/>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#" isActive>1</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">2</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">3</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationEllipsis/>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationNext href="#"/>
-                                    </PaginationItem>
-                                </PaginationContent>
-                            </Pagination>
+                            <RenderPagination/>
                         </CardFooter>
                     </Card>
                 </TabsContent>
@@ -279,28 +285,7 @@ export default function Services() {
                             {renderServices(filterServicesStatus('upcoming-services'))}
                         </CardContent>
                         <CardFooter>
-                            <Pagination>
-                                <PaginationContent>
-                                    <PaginationItem>
-                                        <PaginationPrevious href="#"/>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#" isActive>1</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">2</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">3</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationEllipsis/>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationNext href="#"/>
-                                    </PaginationItem>
-                                </PaginationContent>
-                            </Pagination>
+                            <RenderPagination/>
                         </CardFooter>
                     </Card>
                 </TabsContent>
@@ -318,28 +303,7 @@ export default function Services() {
                             {renderServices(filterServicesStatus('completed-services'))}
                         </CardContent>
                         <CardFooter>
-                            <Pagination>
-                                <PaginationContent>
-                                    <PaginationItem>
-                                        <PaginationPrevious href="#"/>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#" isActive>1</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">2</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">3</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationEllipsis/>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationNext href="#"/>
-                                    </PaginationItem>
-                                </PaginationContent>
-                            </Pagination>
+                            <RenderPagination/>
                         </CardFooter>
                     </Card>
                 </TabsContent>
@@ -357,30 +321,7 @@ export default function Services() {
                             {renderServices(filterServicesStatus('redo-services'))}
                         </CardContent>
                         <CardFooter>
-                            <Pagination>
-                                <PaginationContent>
-                                    <PaginationItem>
-                                        <PaginationPrevious href="#"/>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#" isActive>1</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">
-                                            2
-                                        </PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">3</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationEllipsis/>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationNext href="#"/>
-                                    </PaginationItem>
-                                </PaginationContent>
-                            </Pagination>
+                            <RenderPagination/>
                         </CardFooter>
                     </Card>
                 </TabsContent>
@@ -398,28 +339,7 @@ export default function Services() {
                             {renderServices(filterServicesStatus('expired-services'))}
                         </CardContent>
                         <CardFooter>
-                            <Pagination>
-                                <PaginationContent>
-                                    <PaginationItem>
-                                        <PaginationPrevious href="#"/>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#" isActive>1</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">2</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">3</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationEllipsis/>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationNext href="#"/>
-                                    </PaginationItem>
-                                </PaginationContent>
-                            </Pagination>
+                            <RenderPagination/>
                         </CardFooter>
                     </Card>
                 </TabsContent>
