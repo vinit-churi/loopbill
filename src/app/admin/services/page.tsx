@@ -105,6 +105,25 @@ const allServices = [
     }
 ]
 
+const getStatusColor = (status: string) => {
+    switch (status) {
+        case 'Scheduled':
+            return 'text-yellow-600 border-yellow-400 bg-yellow-100'
+        case 'In progress':
+            return 'text-blue-600 border-blue-400 bg-blue-100'
+        case 'Unscheduled':
+            return 'text-orange-600 border-orange-400 bg-orange-100'
+        case 'Redo required':
+            return 'text-red-600 border-red-400 bg-red-100'
+        case 'Completed':
+            return 'text-green-600 border-green-400 bg-green-100'
+        case 'Expired':
+            return 'text-gray-600 border-gray-400 bg-gray-100'
+        default:
+            return 'text-gray-600 border-gray-400 bg-gray-100'
+    }
+}
+
 export default function Services() {
     return (
         <main className="w-full flex flex-col gap-4">
@@ -183,7 +202,7 @@ export default function Services() {
                                             <TableCell>{service.agent}</TableCell>
                                             <TableCell>
                                                 <span
-                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Redo required' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : (service.status === 'Unscheduled' ? 'text-orange-600 border-orange-400 bg-orange-100' : (service.status === 'Expired' ? 'text-gray-600 border-gray-400 bg-gray-100' : 'text-green-600 border-green-400 bg-green-100'))))}`}>
+                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${getStatusColor(service.status)}`}>
                                                     {service.status}
                                                 </span>
                                             </TableCell>
@@ -278,7 +297,7 @@ export default function Services() {
                                             <TableCell>{service.agent}</TableCell>
                                             <TableCell>
                                                 <span
-                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Redo required' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : (service.status === 'Unscheduled' ? 'text-orange-600 border-orange-400 bg-orange-100' : (service.status === 'Expired' ? 'text-gray-600 border-gray-400 bg-gray-100' : 'text-green-600 border-green-400 bg-green-100'))))}`}>
+                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${getStatusColor(service.status)}`}>
                                                     {service.status}
                                                 </span>
                                             </TableCell>
@@ -373,7 +392,7 @@ export default function Services() {
                                             <TableCell>{service.agent}</TableCell>
                                             <TableCell>
                                                 <span
-                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Redo required' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : (service.status === 'Unscheduled' ? 'text-orange-600 border-orange-400 bg-orange-100' : (service.status === 'Expired' ? 'text-gray-600 border-gray-400 bg-gray-100' : 'text-green-600 border-green-400 bg-green-100'))))}`}>
+                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${getStatusColor(service.status)}`}>
                                                     {service.status}
                                                 </span>
                                             </TableCell>
@@ -468,7 +487,7 @@ export default function Services() {
                                             <TableCell>{service.agent}</TableCell>
                                             <TableCell>
                                                 <span
-                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Redo required' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : (service.status === 'Unscheduled' ? 'text-orange-600 border-orange-400 bg-orange-100' : (service.status === 'Expired' ? 'text-gray-600 border-gray-400 bg-gray-100' : 'text-green-600 border-green-400 bg-green-100'))))}`}>
+                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${getStatusColor(service.status)}`}>
                                                     {service.status}
                                                 </span>
                                             </TableCell>
@@ -565,7 +584,7 @@ export default function Services() {
                                             <TableCell>{service.agent}</TableCell>
                                             <TableCell>
                                                 <span
-                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Redo required' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : (service.status === 'Unscheduled' ? 'text-orange-600 border-orange-400 bg-orange-100' : (service.status === 'Expired' ? 'text-gray-600 border-gray-400 bg-gray-100' : 'text-green-600 border-green-400 bg-green-100'))))}`}>
+                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${getStatusColor(service.status)}`}>
                                                     {service.status}
                                                 </span>
                                             </TableCell>
