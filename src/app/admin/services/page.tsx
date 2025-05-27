@@ -168,7 +168,14 @@ const FilterByServiceType = () => {
     )
 }
 
-const renderServices = (services: any[]) => {
+const renderServices = (services: {
+    id: number;
+    customer: string;
+    serviceType: string;
+    date: string;
+    agent: string;
+    status: string;
+}[]) => {
     return (
         <Table>
             <TableHeader>
