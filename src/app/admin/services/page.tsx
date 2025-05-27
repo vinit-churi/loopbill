@@ -123,13 +123,13 @@ export default function Services() {
             {/*Services table*/}
             <Tabs defaultValue="All services" className="w-full">
                 <TabsList className="grid w-full grid-cols-5">
-                    <TabsTrigger value="All services">All services</TabsTrigger>
-                    <TabsTrigger value="Upcoming">Upcoming</TabsTrigger>
-                    <TabsTrigger value="Completed">Completed</TabsTrigger>
-                    <TabsTrigger value="Redo services">Redo services</TabsTrigger>
-                    <TabsTrigger value="Expired">Expired</TabsTrigger>
+                    <TabsTrigger value="all-services">All services</TabsTrigger>
+                    <TabsTrigger value="upcoming-services">Upcoming services</TabsTrigger>
+                    <TabsTrigger value="completed-services">Completed services</TabsTrigger>
+                    <TabsTrigger value="redo-services">Redo services</TabsTrigger>
+                    <TabsTrigger value="expired-services">Expired services</TabsTrigger>
                 </TabsList>
-                <TabsContent value="All services">
+                <TabsContent value="all-services">
                     <Card>
                         <CardHeader>
                             <CardTitle>All services</CardTitle>
@@ -197,7 +197,291 @@ export default function Services() {
                                 </TableBody>
                             </Table>
                         </CardContent>
+                        <CardFooter>
+                            <Pagination>
+                                <PaginationContent>
+                                    <PaginationItem>
+                                        <PaginationPrevious href="#"/>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#" isActive>1</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#">2</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#">3</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationEllipsis/>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationNext href="#"/>
+                                    </PaginationItem>
+                                </PaginationContent>
+                            </Pagination>
+                        </CardFooter>
+                    </Card>
+                </TabsContent>
 
+                <TabsContent value="upcoming-services">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Upcoming services</CardTitle>
+                            <CardDescription>
+                                Services scheduled or in progress
+                            </CardDescription>
+                            <Select>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Filter by service type"/>
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        <SelectLabel>Filter</SelectLabel>
+                                        <SelectItem value="general">General pest control</SelectItem>
+                                        <SelectItem value="ant">Ant control</SelectItem>
+                                        <SelectItem value="bedbug">Bed bug control</SelectItem>
+                                        <SelectItem value="bird">Bird control</SelectItem>
+                                        <SelectItem value="cockroach">Cockroach control</SelectItem>
+                                        <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
+                                        <SelectItem value="fly">Fly control</SelectItem>
+                                        <SelectItem value="insect">Insect control</SelectItem>
+                                        <SelectItem value="mosquito">Mosquito control</SelectItem>
+                                        <SelectItem value="rodent">Rodent</SelectItem>
+                                        <SelectItem value="mosquito">Mosquito treatment</SelectItem>
+                                        <SelectItem value="termite">Termite control</SelectItem>
+                                        <SelectItem value="wildlife">Wildlife control</SelectItem>
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+                        </CardHeader>
+                        <CardContent>
+                            <Table>
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHead>Id</TableHead>
+                                        <TableHead>Customer</TableHead>
+                                        <TableHead>Service Type</TableHead>
+                                        <TableHead>Date</TableHead>
+                                        <TableHead>Agent</TableHead>
+                                        <TableHead>Status</TableHead>
+                                        <TableHead>Action</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    {allServices.map((service) => (
+                                        <TableRow key={service.id}>
+                                            <TableCell>{service.id}</TableCell>
+                                            <TableCell>{service.customer}</TableCell>
+                                            <TableCell>{service.serviceType}</TableCell>
+                                            <TableCell>{service.date}</TableCell>
+                                            <TableCell>{service.agent}</TableCell>
+                                            <TableCell>
+                                                <span
+                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Redo required' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : (service.status === 'Unscheduled' ? 'text-orange-600 border-orange-400 bg-orange-100' : (service.status === 'Expired' ? 'text-gray-600 border-gray-400 bg-gray-100' : 'text-green-600 border-green-400 bg-green-100'))))}`}>
+                                                    {service.status}
+                                                </span>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Button variant={"outline"} size={"sm"}>
+                                                    View details
+                                                </Button>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </CardContent>
+                        <CardFooter>
+                            <Pagination>
+                                <PaginationContent>
+                                    <PaginationItem>
+                                        <PaginationPrevious href="#"/>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#" isActive>1</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#">2</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#">3</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationEllipsis/>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationNext href="#"/>
+                                    </PaginationItem>
+                                </PaginationContent>
+                            </Pagination>
+                        </CardFooter>
+                    </Card>
+                </TabsContent>
+
+                <TabsContent value={"completed-services"}>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Completed services</CardTitle>
+                            <CardDescription>
+                                Services that have been completed successfully
+                            </CardDescription>
+                            <Select>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Filter by service type"/>
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        <SelectLabel>Filter</SelectLabel>
+                                        <SelectItem value="general">General pest control</SelectItem>
+                                        <SelectItem value="ant">Ant control</SelectItem>
+                                        <SelectItem value="bedbug">Bed bug control</SelectItem>
+                                        <SelectItem value="bird">Bird control</SelectItem>
+                                        <SelectItem value="cockroach">Cockroach control</SelectItem>
+                                        <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
+                                        <SelectItem value="fly">Fly control</SelectItem>
+                                        <SelectItem value="insect">Insect control</SelectItem>
+                                        <SelectItem value="mosquito">Mosquito control</SelectItem>
+                                        <SelectItem value="rodent">Rodent</SelectItem>
+                                        <SelectItem value="mosquito">Mosquito treatment</SelectItem>
+                                        <SelectItem value="termite">Termite control</SelectItem>
+                                        <SelectItem value="wildlife">Wildlife control</SelectItem>
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+                        </CardHeader>
+                        <CardContent>
+                            <Table>
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHead>Id</TableHead>
+                                        <TableHead>Customer</TableHead>
+                                        <TableHead>Service Type</TableHead>
+                                        <TableHead>Date</TableHead>
+                                        <TableHead>Agent</TableHead>
+                                        <TableHead>Status</TableHead>
+                                        <TableHead>Action</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    {allServices.map((service) => (
+                                        <TableRow key={service.id}>
+                                            <TableCell>{service.id}</TableCell>
+                                            <TableCell>{service.customer}</TableCell>
+                                            <TableCell>{service.serviceType}</TableCell>
+                                            <TableCell>{service.date}</TableCell>
+                                            <TableCell>{service.agent}</TableCell>
+                                            <TableCell>
+                                                <span
+                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Redo required' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : (service.status === 'Unscheduled' ? 'text-orange-600 border-orange-400 bg-orange-100' : (service.status === 'Expired' ? 'text-gray-600 border-gray-400 bg-gray-100' : 'text-green-600 border-green-400 bg-green-100'))))}`}>
+                                                    {service.status}
+                                                </span>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Button variant={"outline"} size={"sm"}>
+                                                    View details
+                                                </Button>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </CardContent>
+                        <CardFooter>
+                            <Pagination>
+                                <PaginationContent>
+                                    <PaginationItem>
+                                        <PaginationPrevious href="#"/>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#" isActive>1</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#">2</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#">3</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationEllipsis/>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationNext href="#"/>
+                                    </PaginationItem>
+                                </PaginationContent>
+                            </Pagination>
+                        </CardFooter>
+                    </Card>
+                </TabsContent>
+
+                <TabsContent value={"redo-services"}>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Redo services</CardTitle>
+                            <CardDescription>
+                                Services that need to be redone due to complaints
+                            </CardDescription>
+                            <Select>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Filter by service type"/>
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        <SelectLabel>Filter</SelectLabel>
+                                        <SelectItem value="general">General pest control</SelectItem>
+                                        <SelectItem value="ant">Ant control</SelectItem>
+                                        <SelectItem value="bedbug">Bed bug control</SelectItem>
+                                        <SelectItem value="bird">Bird control</SelectItem>
+                                        <SelectItem value="cockroach">Cockroach control</SelectItem>
+                                        <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
+                                        <SelectItem value="fly">Fly control</SelectItem>
+                                        <SelectItem value="insect">Insect control</SelectItem>
+                                        <SelectItem value="mosquito">Mosquito control</SelectItem>
+                                        <SelectItem value="rodent">Rodent</SelectItem>
+                                        <SelectItem value="mosquito">Mosquito treatment</SelectItem>
+                                        <SelectItem value="termite">Termite control</SelectItem>
+                                        <SelectItem value="wildlife">Wildlife control</SelectItem>
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+                        </CardHeader>
+                        <CardContent>
+                            <Table>
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHead>Id</TableHead>
+                                        <TableHead>Customer</TableHead>
+                                        <TableHead>Service Type</TableHead>
+                                        <TableHead>Date</TableHead>
+                                        <TableHead>Agent</TableHead>
+                                        <TableHead>Status</TableHead>
+                                        <TableHead>Action</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    {allServices.map((service) => (
+                                        <TableRow key={service.id}>
+                                            <TableCell>{service.id}</TableCell>
+                                            <TableCell>{service.customer}</TableCell>
+                                            <TableCell>{service.serviceType}</TableCell>
+                                            <TableCell>{service.date}</TableCell>
+                                            <TableCell>{service.agent}</TableCell>
+                                            <TableCell>
+                                                <span
+                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Redo required' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : (service.status === 'Unscheduled' ? 'text-orange-600 border-orange-400 bg-orange-100' : (service.status === 'Expired' ? 'text-gray-600 border-gray-400 bg-gray-100' : 'text-green-600 border-green-400 bg-green-100'))))}`}>
+                                                    {service.status}
+                                                </span>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Button variant={"outline"} size={"sm"}>
+                                                    View details
+                                                </Button>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </CardContent>
                         <CardFooter>
                             <Pagination>
                                 <PaginationContent>
@@ -226,12 +510,13 @@ export default function Services() {
                         </CardFooter>
                     </Card>
                 </TabsContent>
-                <TabsContent value="Upcoming">
+
+                <TabsContent value={"expired-services"}>
                     <Card>
                         <CardHeader>
-                            <CardTitle>All services</CardTitle>
+                            <CardTitle>Expired services</CardTitle>
                             <CardDescription>
-                                View and manage all pest control services
+                                Services that have expired without completion
                             </CardDescription>
                             <Select>
                                 <SelectTrigger>
@@ -294,7 +579,6 @@ export default function Services() {
                                 </TableBody>
                             </Table>
                         </CardContent>
-
                         <CardFooter>
                             <Pagination>
                                 <PaginationContent>
@@ -305,300 +589,7 @@ export default function Services() {
                                         <PaginationLink href="#" isActive>1</PaginationLink>
                                     </PaginationItem>
                                     <PaginationItem>
-                                        <PaginationLink href="#">
-                                            2
-                                        </PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">3</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationEllipsis/>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationNext href="#"/>
-                                    </PaginationItem>
-                                </PaginationContent>
-                            </Pagination>
-                        </CardFooter>
-                    </Card>
-                </TabsContent>
-                <TabsContent value={"Completed"}>
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>All services</CardTitle>
-                            <CardDescription>
-                                View and manage all pest control services
-                            </CardDescription>
-                            <Select>
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Filter by service type"/>
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectLabel>Filter</SelectLabel>
-                                        <SelectItem value="general">General pest control</SelectItem>
-                                        <SelectItem value="ant">Ant control</SelectItem>
-                                        <SelectItem value="bedbug">Bed bug control</SelectItem>
-                                        <SelectItem value="bird">Bird control</SelectItem>
-                                        <SelectItem value="cockroach">Cockroach control</SelectItem>
-                                        <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
-                                        <SelectItem value="fly">Fly control</SelectItem>
-                                        <SelectItem value="insect">Insect control</SelectItem>
-                                        <SelectItem value="mosquito">Mosquito control</SelectItem>
-                                        <SelectItem value="rodent">Rodent</SelectItem>
-                                        <SelectItem value="mosquito">Mosquito treatment</SelectItem>
-                                        <SelectItem value="termite">Termite control</SelectItem>
-                                        <SelectItem value="wildlife">Wildlife control</SelectItem>
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
-                        </CardHeader>
-                        <CardContent>
-                            <Table>
-                                <TableHeader>
-                                    <TableRow>
-                                        <TableHead>Id</TableHead>
-                                        <TableHead>Customer</TableHead>
-                                        <TableHead>Service Type</TableHead>
-                                        <TableHead>Date</TableHead>
-                                        <TableHead>Agent</TableHead>
-                                        <TableHead>Status</TableHead>
-                                        <TableHead>Action</TableHead>
-                                    </TableRow>
-                                </TableHeader>
-                                <TableBody>
-                                    {allServices.map((service) => (
-                                        <TableRow key={service.id}>
-                                            <TableCell>{service.id}</TableCell>
-                                            <TableCell>{service.customer}</TableCell>
-                                            <TableCell>{service.serviceType}</TableCell>
-                                            <TableCell>{service.date}</TableCell>
-                                            <TableCell>{service.agent}</TableCell>
-                                            <TableCell>
-                                                <span
-                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Redo required' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : (service.status === 'Unscheduled' ? 'text-orange-600 border-orange-400 bg-orange-100' : (service.status === 'Expired' ? 'text-gray-600 border-gray-400 bg-gray-100' : 'text-green-600 border-green-400 bg-green-100'))))}`}>
-                                                    {service.status}
-                                                </span>
-                                            </TableCell>
-                                            <TableCell>
-                                                <Button variant={"outline"} size={"sm"}>
-                                                    View details
-                                                </Button>
-                                            </TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </CardContent>
-
-                        <CardFooter>
-                            <Pagination>
-                                <PaginationContent>
-                                    <PaginationItem>
-                                        <PaginationPrevious href="#"/>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#" isActive>1</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">
-                                            2
-                                        </PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">3</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationEllipsis/>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationNext href="#"/>
-                                    </PaginationItem>
-                                </PaginationContent>
-                            </Pagination>
-                        </CardFooter>
-                    </Card>
-                </TabsContent>
-                <TabsContent value={"Redo services"}>
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>All services</CardTitle>
-                            <CardDescription>
-                                View and manage all pest control services
-                            </CardDescription>
-                            <Select>
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Filter by service type"/>
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectLabel>Filter</SelectLabel>
-                                        <SelectItem value="general">General pest control</SelectItem>
-                                        <SelectItem value="ant">Ant control</SelectItem>
-                                        <SelectItem value="bedbug">Bed bug control</SelectItem>
-                                        <SelectItem value="bird">Bird control</SelectItem>
-                                        <SelectItem value="cockroach">Cockroach control</SelectItem>
-                                        <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
-                                        <SelectItem value="fly">Fly control</SelectItem>
-                                        <SelectItem value="insect">Insect control</SelectItem>
-                                        <SelectItem value="mosquito">Mosquito control</SelectItem>
-                                        <SelectItem value="rodent">Rodent</SelectItem>
-                                        <SelectItem value="mosquito">Mosquito treatment</SelectItem>
-                                        <SelectItem value="termite">Termite control</SelectItem>
-                                        <SelectItem value="wildlife">Wildlife control</SelectItem>
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
-                        </CardHeader>
-                        <CardContent>
-                            <Table>
-                                <TableHeader>
-                                    <TableRow>
-                                        <TableHead>Id</TableHead>
-                                        <TableHead>Customer</TableHead>
-                                        <TableHead>Service Type</TableHead>
-                                        <TableHead>Date</TableHead>
-                                        <TableHead>Agent</TableHead>
-                                        <TableHead>Status</TableHead>
-                                        <TableHead>Action</TableHead>
-                                    </TableRow>
-                                </TableHeader>
-                                <TableBody>
-                                    {allServices.map((service) => (
-                                        <TableRow key={service.id}>
-                                            <TableCell>{service.id}</TableCell>
-                                            <TableCell>{service.customer}</TableCell>
-                                            <TableCell>{service.serviceType}</TableCell>
-                                            <TableCell>{service.date}</TableCell>
-                                            <TableCell>{service.agent}</TableCell>
-                                            <TableCell>
-                                                <span
-                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Redo required' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : (service.status === 'Unscheduled' ? 'text-orange-600 border-orange-400 bg-orange-100' : (service.status === 'Expired' ? 'text-gray-600 border-gray-400 bg-gray-100' : 'text-green-600 border-green-400 bg-green-100'))))}`}>
-                                                    {service.status}
-                                                </span>
-                                            </TableCell>
-                                            <TableCell>
-                                                <Button variant={"outline"} size={"sm"}>
-                                                    View details
-                                                </Button>
-                                            </TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </CardContent>
-
-                        <CardFooter>
-                            <Pagination>
-                                <PaginationContent>
-                                    <PaginationItem>
-                                        <PaginationPrevious href="#"/>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#" isActive>1</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">
-                                            2
-                                        </PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">3</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationEllipsis/>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationNext href="#"/>
-                                    </PaginationItem>
-                                </PaginationContent>
-                            </Pagination>
-                        </CardFooter>
-                    </Card>
-                </TabsContent>
-                <TabsContent value={"Expired"}>
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>All services</CardTitle>
-                            <CardDescription>
-                                View and manage all pest control services
-                            </CardDescription>
-                            <Select>
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Filter by service type"/>
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectLabel>Filter</SelectLabel>
-                                        <SelectItem value="general">General pest control</SelectItem>
-                                        <SelectItem value="ant">Ant control</SelectItem>
-                                        <SelectItem value="bedbug">Bed bug control</SelectItem>
-                                        <SelectItem value="bird">Bird control</SelectItem>
-                                        <SelectItem value="cockroach">Cockroach control</SelectItem>
-                                        <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
-                                        <SelectItem value="fly">Fly control</SelectItem>
-                                        <SelectItem value="insect">Insect control</SelectItem>
-                                        <SelectItem value="mosquito">Mosquito control</SelectItem>
-                                        <SelectItem value="rodent">Rodent</SelectItem>
-                                        <SelectItem value="mosquito">Mosquito treatment</SelectItem>
-                                        <SelectItem value="termite">Termite control</SelectItem>
-                                        <SelectItem value="wildlife">Wildlife control</SelectItem>
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
-                        </CardHeader>
-                        <CardContent>
-                            <Table>
-                                <TableHeader>
-                                    <TableRow>
-                                        <TableHead>Id</TableHead>
-                                        <TableHead>Customer</TableHead>
-                                        <TableHead>Service Type</TableHead>
-                                        <TableHead>Date</TableHead>
-                                        <TableHead>Agent</TableHead>
-                                        <TableHead>Status</TableHead>
-                                        <TableHead>Action</TableHead>
-                                    </TableRow>
-                                </TableHeader>
-                                <TableBody>
-                                    {allServices.map((service) => (
-                                        <TableRow key={service.id}>
-                                            <TableCell>{service.id}</TableCell>
-                                            <TableCell>{service.customer}</TableCell>
-                                            <TableCell>{service.serviceType}</TableCell>
-                                            <TableCell>{service.date}</TableCell>
-                                            <TableCell>{service.agent}</TableCell>
-                                            <TableCell>
-                                                <span
-                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Redo required' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : (service.status === 'Unscheduled' ? 'text-orange-600 border-orange-400 bg-orange-100' : (service.status === 'Expired' ? 'text-gray-600 border-gray-400 bg-gray-100' : 'text-green-600 border-green-400 bg-green-100'))))}`}>
-                                                    {service.status}
-                                                </span>
-                                            </TableCell>
-                                            <TableCell>
-                                                <Button variant={"outline"} size={"sm"}>
-                                                    View details
-                                                </Button>
-                                            </TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </CardContent>
-
-                        <CardFooter>
-                            <Pagination>
-                                <PaginationContent>
-                                    <PaginationItem>
-                                        <PaginationPrevious href="#"/>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#" isActive>1</PaginationLink>
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink href="#">
-                                            2
-                                        </PaginationLink>
+                                        <PaginationLink href="#">2</PaginationLink>
                                     </PaginationItem>
                                     <PaginationItem>
                                         <PaginationLink href="#">3</PaginationLink>
