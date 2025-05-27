@@ -124,6 +124,21 @@ const getStatusColor = (status: string) => {
     }
 }
 
+const filterServicesStatus = (staus: string) => {
+    switch (staus) {
+        case 'upcoming-services':
+            return allServices.filter((service) => service.status === 'Scheduled' || service.status === 'In progress' || service.status === 'Unscheduled')
+        case 'completed-services':
+            return allServices.filter((service) => service.status === 'Completed')
+        case 'redo-services':
+            return allServices.filter((service) => service.status === 'Redo required')
+        case 'expired-services':
+            return allServices.filter((service) => service.status === 'Expired')
+        default:
+            return allServices
+    }
+}
+
 export default function Services() {
     return (
         <main className="w-full flex flex-col gap-4">
