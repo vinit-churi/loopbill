@@ -190,7 +190,7 @@ export default function Services() {
             </div>
 
             {/*Services table*/}
-            <Tabs defaultValue="All services" className="w-full">
+            <Tabs defaultValue="all-services" className="w-full">
                 <TabsList className="grid w-full grid-cols-5">
                     <TabsTrigger value="all-services">All services</TabsTrigger>
                     <TabsTrigger value="upcoming-services">Upcoming services</TabsTrigger>
