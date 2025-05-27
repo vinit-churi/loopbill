@@ -230,6 +230,7 @@ export default function Services() {
                             </Select>
                         </CardHeader>
                         <CardContent>
+                            {renderServices(allServices)}
                             <Table>
                                 <TableHeader>
                                     <TableRow>
