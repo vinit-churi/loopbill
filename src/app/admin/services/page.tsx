@@ -2,8 +2,6 @@ import {Button} from "@/components/ui/button";
 import {Calendar, Plus} from "lucide-react";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
-import {Label} from "@/components/ui/label";
-import {Input} from "@/components/ui/input";
 import {
     Select,
     SelectContent,
@@ -185,7 +183,7 @@ export default function Services() {
                                             <TableCell>{service.agent}</TableCell>
                                             <TableCell>
                                                 <span
-                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Redo required' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : (service.status === 'Unscheduled' ? 'text-orange-600 border-orange-400 bg-orange-100' : (service.status === 'Expired' ? 'text-gray-600 border-gray-400 bg-gray-100' :'text-green-600 border-green-400 bg-green-100'))))}`}>
+                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Redo required' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : (service.status === 'Unscheduled' ? 'text-orange-600 border-orange-400 bg-orange-100' : (service.status === 'Expired' ? 'text-gray-600 border-gray-400 bg-gray-100' : 'text-green-600 border-green-400 bg-green-100'))))}`}>
                                                     {service.status}
                                                 </span>
                                             </TableCell>
@@ -231,69 +229,293 @@ export default function Services() {
                 <TabsContent value="Upcoming">
                     <Card>
                         <CardHeader>
-                            <CardTitle>Password</CardTitle>
+                            <CardTitle>All services</CardTitle>
                             <CardDescription>
-                                Change your password here. After saving, you'll be logged out.
+                                View and manage all pest control services
                             </CardDescription>
+                            <Select>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Filter by service type"/>
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        <SelectLabel>Filter</SelectLabel>
+                                        <SelectItem value="general">General pest control</SelectItem>
+                                        <SelectItem value="ant">Ant control</SelectItem>
+                                        <SelectItem value="bedbug">Bed bug control</SelectItem>
+                                        <SelectItem value="bird">Bird control</SelectItem>
+                                        <SelectItem value="cockroach">Cockroach control</SelectItem>
+                                        <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
+                                        <SelectItem value="fly">Fly control</SelectItem>
+                                        <SelectItem value="insect">Insect control</SelectItem>
+                                        <SelectItem value="mosquito">Mosquito control</SelectItem>
+                                        <SelectItem value="rodent">Rodent</SelectItem>
+                                        <SelectItem value="mosquito">Mosquito treatment</SelectItem>
+                                        <SelectItem value="termite">Termite control</SelectItem>
+                                        <SelectItem value="wildlife">Wildlife control</SelectItem>
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
                         </CardHeader>
-                        <CardContent className="space-y-2">
-                            <div className="space-y-1">
-                                <Label htmlFor="current">Current password</Label>
-                                <Input id="current" type="password"/>
-                            </div>
-                            <div className="space-y-1">
-                                <Label htmlFor="new">New password</Label>
-                                <Input id="new" type="password"/>
-                            </div>
+                        <CardContent>
+                            <Table>
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHead>Id</TableHead>
+                                        <TableHead>Customer</TableHead>
+                                        <TableHead>Service Type</TableHead>
+                                        <TableHead>Date</TableHead>
+                                        <TableHead>Agent</TableHead>
+                                        <TableHead>Status</TableHead>
+                                        <TableHead>Action</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    {allServices.map((service) => (
+                                        <TableRow key={service.id}>
+                                            <TableCell>{service.id}</TableCell>
+                                            <TableCell>{service.customer}</TableCell>
+                                            <TableCell>{service.serviceType}</TableCell>
+                                            <TableCell>{service.date}</TableCell>
+                                            <TableCell>{service.agent}</TableCell>
+                                            <TableCell>
+                                                <span
+                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Redo required' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : (service.status === 'Unscheduled' ? 'text-orange-600 border-orange-400 bg-orange-100' : (service.status === 'Expired' ? 'text-gray-600 border-gray-400 bg-gray-100' : 'text-green-600 border-green-400 bg-green-100'))))}`}>
+                                                    {service.status}
+                                                </span>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Button variant={"outline"} size={"sm"}>
+                                                    View details
+                                                </Button>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
                         </CardContent>
+
                         <CardFooter>
-                            <Button>Save password</Button>
+                            <Pagination>
+                                <PaginationContent>
+                                    <PaginationItem>
+                                        <PaginationPrevious href="#"/>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#" isActive>1</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#">
+                                            2
+                                        </PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#">3</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationEllipsis/>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationNext href="#"/>
+                                    </PaginationItem>
+                                </PaginationContent>
+                            </Pagination>
                         </CardFooter>
                     </Card>
                 </TabsContent>
-                <TabsContent value={"Completed"}><Card>
-                    <CardHeader>
-                        <CardTitle>All services</CardTitle>
-                        <CardDescription>
-                            View and manage all pest control services
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-2">
-                        <div className="space-y-1">
-                            <Label htmlFor="name">Name</Label>
-                            <Input id="name" defaultValue="Pedro Duarte"/>
-                        </div>
-                        <div className="space-y-1">
-                            <Label htmlFor="username">Username</Label>
-                            <Input id="username" defaultValue="@peduarte"/>
-                        </div>
-                    </CardContent>
-                    <CardFooter>
-                        <Button>Save changes</Button>
-                    </CardFooter>
-                </Card>
+                <TabsContent value={"Completed"}>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>All services</CardTitle>
+                            <CardDescription>
+                                View and manage all pest control services
+                            </CardDescription>
+                            <Select>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Filter by service type"/>
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        <SelectLabel>Filter</SelectLabel>
+                                        <SelectItem value="general">General pest control</SelectItem>
+                                        <SelectItem value="ant">Ant control</SelectItem>
+                                        <SelectItem value="bedbug">Bed bug control</SelectItem>
+                                        <SelectItem value="bird">Bird control</SelectItem>
+                                        <SelectItem value="cockroach">Cockroach control</SelectItem>
+                                        <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
+                                        <SelectItem value="fly">Fly control</SelectItem>
+                                        <SelectItem value="insect">Insect control</SelectItem>
+                                        <SelectItem value="mosquito">Mosquito control</SelectItem>
+                                        <SelectItem value="rodent">Rodent</SelectItem>
+                                        <SelectItem value="mosquito">Mosquito treatment</SelectItem>
+                                        <SelectItem value="termite">Termite control</SelectItem>
+                                        <SelectItem value="wildlife">Wildlife control</SelectItem>
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+                        </CardHeader>
+                        <CardContent>
+                            <Table>
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHead>Id</TableHead>
+                                        <TableHead>Customer</TableHead>
+                                        <TableHead>Service Type</TableHead>
+                                        <TableHead>Date</TableHead>
+                                        <TableHead>Agent</TableHead>
+                                        <TableHead>Status</TableHead>
+                                        <TableHead>Action</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    {allServices.map((service) => (
+                                        <TableRow key={service.id}>
+                                            <TableCell>{service.id}</TableCell>
+                                            <TableCell>{service.customer}</TableCell>
+                                            <TableCell>{service.serviceType}</TableCell>
+                                            <TableCell>{service.date}</TableCell>
+                                            <TableCell>{service.agent}</TableCell>
+                                            <TableCell>
+                                                <span
+                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Redo required' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : (service.status === 'Unscheduled' ? 'text-orange-600 border-orange-400 bg-orange-100' : (service.status === 'Expired' ? 'text-gray-600 border-gray-400 bg-gray-100' : 'text-green-600 border-green-400 bg-green-100'))))}`}>
+                                                    {service.status}
+                                                </span>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Button variant={"outline"} size={"sm"}>
+                                                    View details
+                                                </Button>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </CardContent>
+
+                        <CardFooter>
+                            <Pagination>
+                                <PaginationContent>
+                                    <PaginationItem>
+                                        <PaginationPrevious href="#"/>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#" isActive>1</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#">
+                                            2
+                                        </PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#">3</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationEllipsis/>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationNext href="#"/>
+                                    </PaginationItem>
+                                </PaginationContent>
+                            </Pagination>
+                        </CardFooter>
+                    </Card>
                 </TabsContent>
-                <TabsContent value={"Redo services"}><Card>
-                    <CardHeader>
-                        <CardTitle>All services</CardTitle>
-                        <CardDescription>
-                            View and manage all pest control services
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-2">
-                        <div className="space-y-1">
-                            <Label htmlFor="name">Name</Label>
-                            <Input id="name" defaultValue="Pedro Duarte"/>
-                        </div>
-                        <div className="space-y-1">
-                            <Label htmlFor="username">Username</Label>
-                            <Input id="username" defaultValue="@peduarte"/>
-                        </div>
-                    </CardContent>
-                    <CardFooter>
-                        <Button>Save changes</Button>
-                    </CardFooter>
-                </Card>
+                <TabsContent value={"Redo services"}>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>All services</CardTitle>
+                            <CardDescription>
+                                View and manage all pest control services
+                            </CardDescription>
+                            <Select>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Filter by service type"/>
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        <SelectLabel>Filter</SelectLabel>
+                                        <SelectItem value="general">General pest control</SelectItem>
+                                        <SelectItem value="ant">Ant control</SelectItem>
+                                        <SelectItem value="bedbug">Bed bug control</SelectItem>
+                                        <SelectItem value="bird">Bird control</SelectItem>
+                                        <SelectItem value="cockroach">Cockroach control</SelectItem>
+                                        <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
+                                        <SelectItem value="fly">Fly control</SelectItem>
+                                        <SelectItem value="insect">Insect control</SelectItem>
+                                        <SelectItem value="mosquito">Mosquito control</SelectItem>
+                                        <SelectItem value="rodent">Rodent</SelectItem>
+                                        <SelectItem value="mosquito">Mosquito treatment</SelectItem>
+                                        <SelectItem value="termite">Termite control</SelectItem>
+                                        <SelectItem value="wildlife">Wildlife control</SelectItem>
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+                        </CardHeader>
+                        <CardContent>
+                            <Table>
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHead>Id</TableHead>
+                                        <TableHead>Customer</TableHead>
+                                        <TableHead>Service Type</TableHead>
+                                        <TableHead>Date</TableHead>
+                                        <TableHead>Agent</TableHead>
+                                        <TableHead>Status</TableHead>
+                                        <TableHead>Action</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    {allServices.map((service) => (
+                                        <TableRow key={service.id}>
+                                            <TableCell>{service.id}</TableCell>
+                                            <TableCell>{service.customer}</TableCell>
+                                            <TableCell>{service.serviceType}</TableCell>
+                                            <TableCell>{service.date}</TableCell>
+                                            <TableCell>{service.agent}</TableCell>
+                                            <TableCell>
+                                                <span
+                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Redo required' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : (service.status === 'Unscheduled' ? 'text-orange-600 border-orange-400 bg-orange-100' : (service.status === 'Expired' ? 'text-gray-600 border-gray-400 bg-gray-100' : 'text-green-600 border-green-400 bg-green-100'))))}`}>
+                                                    {service.status}
+                                                </span>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Button variant={"outline"} size={"sm"}>
+                                                    View details
+                                                </Button>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </CardContent>
+
+                        <CardFooter>
+                            <Pagination>
+                                <PaginationContent>
+                                    <PaginationItem>
+                                        <PaginationPrevious href="#"/>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#" isActive>1</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#">
+                                            2
+                                        </PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#">3</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationEllipsis/>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationNext href="#"/>
+                                    </PaginationItem>
+                                </PaginationContent>
+                            </Pagination>
+                        </CardFooter>
+                    </Card>
                 </TabsContent>
                 <TabsContent value={"Expired"}>
                     <Card>
@@ -302,19 +524,93 @@ export default function Services() {
                             <CardDescription>
                                 View and manage all pest control services
                             </CardDescription>
+                            <Select>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Filter by service type"/>
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        <SelectLabel>Filter</SelectLabel>
+                                        <SelectItem value="general">General pest control</SelectItem>
+                                        <SelectItem value="ant">Ant control</SelectItem>
+                                        <SelectItem value="bedbug">Bed bug control</SelectItem>
+                                        <SelectItem value="bird">Bird control</SelectItem>
+                                        <SelectItem value="cockroach">Cockroach control</SelectItem>
+                                        <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
+                                        <SelectItem value="fly">Fly control</SelectItem>
+                                        <SelectItem value="insect">Insect control</SelectItem>
+                                        <SelectItem value="mosquito">Mosquito control</SelectItem>
+                                        <SelectItem value="rodent">Rodent</SelectItem>
+                                        <SelectItem value="mosquito">Mosquito treatment</SelectItem>
+                                        <SelectItem value="termite">Termite control</SelectItem>
+                                        <SelectItem value="wildlife">Wildlife control</SelectItem>
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
                         </CardHeader>
-                        <CardContent className="space-y-2">
-                            <div className="space-y-1">
-                                <Label htmlFor="name">Name</Label>
-                                <Input id="name" defaultValue="Pedro Duarte"/>
-                            </div>
-                            <div className="space-y-1">
-                                <Label htmlFor="username">Username</Label>
-                                <Input id="username" defaultValue="@peduarte"/>
-                            </div>
+                        <CardContent>
+                            <Table>
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHead>Id</TableHead>
+                                        <TableHead>Customer</TableHead>
+                                        <TableHead>Service Type</TableHead>
+                                        <TableHead>Date</TableHead>
+                                        <TableHead>Agent</TableHead>
+                                        <TableHead>Status</TableHead>
+                                        <TableHead>Action</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    {allServices.map((service) => (
+                                        <TableRow key={service.id}>
+                                            <TableCell>{service.id}</TableCell>
+                                            <TableCell>{service.customer}</TableCell>
+                                            <TableCell>{service.serviceType}</TableCell>
+                                            <TableCell>{service.date}</TableCell>
+                                            <TableCell>{service.agent}</TableCell>
+                                            <TableCell>
+                                                <span
+                                                    className={`px-2 py-0.5 border rounded-full font-semibold ${service.status === 'Redo required' ? 'text-red-600 border-red-400 bg-red-100' : (service.status === 'Scheduled' ? 'text-yellow-600 border-yellow-400 bg-yellow-100' : (service.status === 'In progress' ? 'text-blue-600 border-blue-400 bg-blue-100' : (service.status === 'Unscheduled' ? 'text-orange-600 border-orange-400 bg-orange-100' : (service.status === 'Expired' ? 'text-gray-600 border-gray-400 bg-gray-100' : 'text-green-600 border-green-400 bg-green-100'))))}`}>
+                                                    {service.status}
+                                                </span>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Button variant={"outline"} size={"sm"}>
+                                                    View details
+                                                </Button>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
                         </CardContent>
+
                         <CardFooter>
-                            <Button>Save changes</Button>
+                            <Pagination>
+                                <PaginationContent>
+                                    <PaginationItem>
+                                        <PaginationPrevious href="#"/>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#" isActive>1</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#">
+                                            2
+                                        </PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#">3</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationEllipsis/>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationNext href="#"/>
+                                    </PaginationItem>
+                                </PaginationContent>
+                            </Pagination>
                         </CardFooter>
                     </Card>
                 </TabsContent>
