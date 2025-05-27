@@ -139,6 +139,35 @@ const filterServicesStatus = (staus: string) => {
     }
 }
 
+const FilterByServiceType = () => {
+    return (
+        <Select defaultValue="all">
+            <SelectTrigger className="cursor-pointer">
+                <SelectValue placeholder="Filter by service type"/>
+            </SelectTrigger>
+            <SelectContent>
+                <SelectGroup>
+                    <SelectLabel>Filter</SelectLabel>
+                    <SelectItem value="all">Filter by service type</SelectItem>
+                    <SelectItem value="ant">Ant control</SelectItem>
+                    <SelectItem value="bedbug">Bed bug control</SelectItem>
+                    <SelectItem value="bird">Bird control</SelectItem>
+                    <SelectItem value="cockroach">Cockroach control</SelectItem>
+                    <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
+                    <SelectItem value="fly">Fly control</SelectItem>
+                    <SelectItem value="general">General pest control</SelectItem>
+                    <SelectItem value="insect">Insect control</SelectItem>
+                    <SelectItem value="mosquito">Mosquito control</SelectItem>
+                    <SelectItem value="rodent">Rodent</SelectItem>
+                    <SelectItem value="mosquito">Mosquito treatment</SelectItem>
+                    <SelectItem value="termite">Termite control</SelectItem>
+                    <SelectItem value="wildlife">Wildlife control</SelectItem>
+                </SelectGroup>
+            </SelectContent>
+        </Select>
+    )
+}
+
 const renderServices = (services: any[]) => {
     return (
         <Table>
@@ -205,30 +234,7 @@ export default function Services() {
                             <CardDescription>
                                 View and manage all pest control services
                             </CardDescription>
-                            <Select defaultValue="all">
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Filter by service type"/>
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectLabel>Filter</SelectLabel>
-                                        <SelectItem value="all">Filter by service type</SelectItem>
-                                        <SelectItem value="ant">Ant control</SelectItem>
-                                        <SelectItem value="bedbug">Bed bug control</SelectItem>
-                                        <SelectItem value="bird">Bird control</SelectItem>
-                                        <SelectItem value="cockroach">Cockroach control</SelectItem>
-                                        <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
-                                        <SelectItem value="fly">Fly control</SelectItem>
-                                        <SelectItem value="general">General pest control</SelectItem>
-                                        <SelectItem value="insect">Insect control</SelectItem>
-                                        <SelectItem value="mosquito">Mosquito control</SelectItem>
-                                        <SelectItem value="rodent">Rodent</SelectItem>
-                                        <SelectItem value="mosquito">Mosquito treatment</SelectItem>
-                                        <SelectItem value="termite">Termite control</SelectItem>
-                                        <SelectItem value="wildlife">Wildlife control</SelectItem>
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
+                            <FilterByServiceType/>
                         </CardHeader>
                         <CardContent>
                             {renderServices(allServices)}
@@ -267,30 +273,7 @@ export default function Services() {
                             <CardDescription>
                                 Services scheduled or in progress
                             </CardDescription>
-                            <Select defaultValue="all">
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Filter by service type"/>
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectLabel>Filter</SelectLabel>
-                                        <SelectItem value="all">Filter by service type</SelectItem>
-                                        <SelectItem value="ant">Ant control</SelectItem>
-                                        <SelectItem value="bedbug">Bed bug control</SelectItem>
-                                        <SelectItem value="bird">Bird control</SelectItem>
-                                        <SelectItem value="cockroach">Cockroach control</SelectItem>
-                                        <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
-                                        <SelectItem value="fly">Fly control</SelectItem>
-                                        <SelectItem value="general">General pest control</SelectItem>
-                                        <SelectItem value="insect">Insect control</SelectItem>
-                                        <SelectItem value="mosquito">Mosquito control</SelectItem>
-                                        <SelectItem value="rodent">Rodent</SelectItem>
-                                        <SelectItem value="mosquito">Mosquito treatment</SelectItem>
-                                        <SelectItem value="termite">Termite control</SelectItem>
-                                        <SelectItem value="wildlife">Wildlife control</SelectItem>
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
+                            <FilterByServiceType/>
                         </CardHeader>
                         <CardContent>
                             {renderServices(filterServicesStatus('upcoming-services'))}
@@ -329,30 +312,7 @@ export default function Services() {
                             <CardDescription>
                                 Services that have been completed successfully
                             </CardDescription>
-                            <Select defaultValue="all">
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Filter by service type"/>
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectLabel>Filter</SelectLabel>
-                                        <SelectItem value="all">Filter by service type</SelectItem>
-                                        <SelectItem value="ant">Ant control</SelectItem>
-                                        <SelectItem value="bedbug">Bed bug control</SelectItem>
-                                        <SelectItem value="bird">Bird control</SelectItem>
-                                        <SelectItem value="cockroach">Cockroach control</SelectItem>
-                                        <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
-                                        <SelectItem value="fly">Fly control</SelectItem>
-                                        <SelectItem value="general">General pest control</SelectItem>
-                                        <SelectItem value="insect">Insect control</SelectItem>
-                                        <SelectItem value="mosquito">Mosquito control</SelectItem>
-                                        <SelectItem value="rodent">Rodent</SelectItem>
-                                        <SelectItem value="mosquito">Mosquito treatment</SelectItem>
-                                        <SelectItem value="termite">Termite control</SelectItem>
-                                        <SelectItem value="wildlife">Wildlife control</SelectItem>
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
+                            <FilterByServiceType/>
                         </CardHeader>
                         <CardContent>
                             {renderServices(filterServicesStatus('completed-services'))}
@@ -391,30 +351,7 @@ export default function Services() {
                             <CardDescription>
                                 Services that need to be redone due to complaints
                             </CardDescription>
-                            <Select defaultValue="all">
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Filter by service type"/>
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectLabel>Filter</SelectLabel>
-                                        <SelectItem value="all">Filter by service type</SelectItem>
-                                        <SelectItem value="ant">Ant control</SelectItem>
-                                        <SelectItem value="bedbug">Bed bug control</SelectItem>
-                                        <SelectItem value="bird">Bird control</SelectItem>
-                                        <SelectItem value="cockroach">Cockroach control</SelectItem>
-                                        <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
-                                        <SelectItem value="fly">Fly control</SelectItem>
-                                        <SelectItem value="general">General pest control</SelectItem>
-                                        <SelectItem value="insect">Insect control</SelectItem>
-                                        <SelectItem value="mosquito">Mosquito control</SelectItem>
-                                        <SelectItem value="rodent">Rodent</SelectItem>
-                                        <SelectItem value="mosquito">Mosquito treatment</SelectItem>
-                                        <SelectItem value="termite">Termite control</SelectItem>
-                                        <SelectItem value="wildlife">Wildlife control</SelectItem>
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
+                            <FilterByServiceType/>
                         </CardHeader>
                         <CardContent>
                             {renderServices(filterServicesStatus('redo-services'))}
@@ -455,30 +392,7 @@ export default function Services() {
                             <CardDescription>
                                 Services that have expired without completion
                             </CardDescription>
-                            <Select defaultValue="all">
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Filter by service type"/>
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectLabel>Filter</SelectLabel>
-                                        <SelectItem value="all">Filter by service type</SelectItem>
-                                        <SelectItem value="ant">Ant control</SelectItem>
-                                        <SelectItem value="bedbug">Bed bug control</SelectItem>
-                                        <SelectItem value="bird">Bird control</SelectItem>
-                                        <SelectItem value="cockroach">Cockroach control</SelectItem>
-                                        <SelectItem value="fleaandtick">Flea and Tick control</SelectItem>
-                                        <SelectItem value="fly">Fly control</SelectItem>
-                                        <SelectItem value="general">General pest control</SelectItem>
-                                        <SelectItem value="insect">Insect control</SelectItem>
-                                        <SelectItem value="mosquito">Mosquito control</SelectItem>
-                                        <SelectItem value="rodent">Rodent</SelectItem>
-                                        <SelectItem value="mosquito">Mosquito treatment</SelectItem>
-                                        <SelectItem value="termite">Termite control</SelectItem>
-                                        <SelectItem value="wildlife">Wildlife control</SelectItem>
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
+                            <FilterByServiceType/>
                         </CardHeader>
                         <CardContent>
                             {renderServices(filterServicesStatus('expired-services'))}
