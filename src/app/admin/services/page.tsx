@@ -101,10 +101,26 @@ const allServices = [
     {
         id: 10,
         customer: 'Ananya Singh',
-        serviceType: 'Basic pest control',
+        serviceType: 'General pest control',
         date: 'April 1, 2025',
         agent: 'Raj Kumar',
         status: 'Expired'
+    },
+    {
+        id: 11,
+        customer: 'Rahul Verma',
+        serviceType: 'Ant control',
+        date: 'July 1, 2025',
+        agent: 'Raj Kumar',
+        status: 'Redo required'
+    },
+    {
+        id: 12,
+        customer: 'Suresh Menon',
+        serviceType: 'Mosquito treatment',
+        date: 'July 10, 2025',
+        agent: 'Sanjay Singh',
+        status: 'Redo required'
     }
 ]
 
