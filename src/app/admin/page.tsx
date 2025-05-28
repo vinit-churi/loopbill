@@ -1,13 +1,13 @@
 import {Button} from "@/components/ui/button";
 import {Calendar} from "lucide-react";
-import TopStatisticsCards from "@/components/admin/top-statistics-cards";
+import TopStatisticsCards from "@/components/admin/reports/top-statistics-cards";
 import UpcomingServices from "@/components/admin/upcoming-services";
 import RecentActivities from "@/components/admin/recent-activities";
 import ServicesAtRisk from "@/components/admin/services-at-risk";
 import PendingComplaints from "@/components/admin/pending-complaints";
-import AgentPerformance from "@/components/admin/agent-performance";
-import ComplaintStatusBreakdown from "@/components/admin/complaint-status-breakdown";
-import ServiceTrends from "@/components/admin/service-trends";
+import AgentPerformance from "@/components/admin/reports/agent-performance";
+import ComplaintStatusBreakdown from "@/components/admin/reports/complaint-status-breakdown";
+import ServiceTrends from "@/components/admin/reports/service-trends";
 
 export default function Admin() {
     return (
