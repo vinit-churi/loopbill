@@ -6,14 +6,18 @@ import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/c
 import {Button} from "@/components/ui/button";
 import ServicesTablePagination from "@/components/admin/services/services-table-pagination";
 
-const allServices = [
+export const allServices = [
     {
         id: 1,
         customer: 'Amit Sharma',
         serviceType: 'Cockroach control',
         date: 'May 11, 2025',
         agent: 'Raj Kumar',
-        status: 'Completed'
+        status: 'Completed',
+        location: "Building A, Flat 304",
+        phone: "+91 9876543210",
+        amount: "₹2,500"
+
     },
     {
         id: 2,
@@ -21,7 +25,10 @@ const allServices = [
         serviceType: 'Rodent control',
         date: 'May 11, 2025',
         agent: 'Sanjay Singh',
-        status: 'Completed'
+        status: 'Completed',
+        location: "Building C, Flat 101",
+        phone: "+91 9876543211",
+        amount: "₹3,000"
     },
     {
         id: 3,
@@ -29,7 +36,10 @@ const allServices = [
         serviceType: 'Mosquito control',
         date: 'May 11, 2025',
         agent: 'Raj Kumar',
-        status: 'Completed'
+        status: 'Completed',
+        location: "Building D, Flat 203",
+        phone: "+91 9876543212",
+        amount: "₹2,000"
     },
     {
         id: 4,
@@ -37,7 +47,10 @@ const allServices = [
         serviceType: 'Termite control',
         date: 'May 11, 2025',
         agent: 'Anita Desai',
-        status: 'In progress'
+        status: 'In progress',
+        location: "Building B, Flat 502",
+        phone: "+91 9876543213",
+        amount: "₹4,000"
     },
     {
         id: 5,
@@ -45,7 +58,10 @@ const allServices = [
         serviceType: 'Ant control',
         date: 'May 11, 2025',
         agent: 'Raj Kumar',
-        status: 'Scheduled'
+        status: 'Scheduled',
+        location: "Building B, Flat 303",
+        phone: "+91 9876543214",
+        amount: "₹2,200"
     },
     {
         id: 6,
@@ -53,7 +69,10 @@ const allServices = [
         serviceType: 'Mosquito treatment',
         date: 'May 29, 2025',
         agent: 'Unassigned',
-        status: 'Unscheduled'
+        status: 'Unscheduled',
+        location: "Building E, Flat 105",
+        phone: "+91 9876543215",
+        amount: "₹0"
     },
     {
         id: 7,
@@ -61,7 +80,10 @@ const allServices = [
         serviceType: 'Basic pest control',
         date: 'June 1, 2025',
         agent: 'Unassigned',
-        status: 'Unscheduled'
+        status: 'Unscheduled',
+        location: "Building F, Flat 201",
+        phone: "+91 9876543216",
+        amount: "₹4,000"
     },
     {
         id: 8,
@@ -69,7 +91,10 @@ const allServices = [
         serviceType: 'Ant control',
         date: 'June 1, 2025',
         agent: 'Unassigned',
-        status: 'Unscheduled'
+        status: 'Unscheduled',
+        location: "Building G, Flat 302",
+        phone: "+91 9876543217",
+        amount: "₹2,000"
     },
     {
         id: 9,
@@ -77,7 +102,10 @@ const allServices = [
         serviceType: 'Mosquito treatment',
         date: 'June 1, 2025',
         agent: 'Sanjay Singh',
-        status: 'Redo required'
+        status: 'Redo required',
+        location: "Building H, Flat 401",
+        phone: "+91 9876543218",
+        amount: "₹0"
     },
     {
         id: 10,
@@ -85,7 +113,10 @@ const allServices = [
         serviceType: 'General pest control',
         date: 'April 1, 2025',
         agent: 'Raj Kumar',
-        status: 'Expired'
+        status: 'Expired',
+        location: "Building I, Flat 503",
+        phone: "+91 9876543219",
+        amount: "₹0"
     },
     {
         id: 11,
@@ -93,7 +124,10 @@ const allServices = [
         serviceType: 'Ant control',
         date: 'July 1, 2025',
         agent: 'Raj Kumar',
-        status: 'Redo required'
+        status: 'Redo required',
+        location: "Building J, Flat 602",
+        phone: "+91 9876543220",
+        amount: "₹1000"
     },
     {
         id: 12,
@@ -101,7 +135,10 @@ const allServices = [
         serviceType: 'Mosquito treatment',
         date: 'July 10, 2025',
         agent: 'Sanjay Singh',
-        status: 'Redo required'
+        status: 'Redo required',
+        location: "Building K, Flat 701",
+        phone: "+91 9876543221",
+        amount: "₹3000"
     }
 ]
 
