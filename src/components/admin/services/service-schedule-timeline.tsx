@@ -5,7 +5,7 @@ import {
     TimelineContent,
     TimelineDescription,
     TimelineDot,
-    TimelineItem,
+    TimelineItem, TimelineOppositeContent,
     TimelineSeparator,
     TimelineTitle
 } from "@/components/ui/timeline";
@@ -21,6 +21,9 @@ export default function ServiceScheduleTimeline() {
             <CardContent>
                 <Timeline>
                     <TimelineItem>
+                        <TimelineOppositeContent>
+                            <TimelineTitle>Today</TimelineTitle>
+                        </TimelineOppositeContent>
                         <TimelineSeparator>
                             <TimelineDot>
                                 <Circle color={"oklch(62.3% 0.214 259.815)"} fill="oklch(62.3% 0.214 259.815)"/>
@@ -28,7 +31,6 @@ export default function ServiceScheduleTimeline() {
                             <TimelineConnector/>
                         </TimelineSeparator>
                         <TimelineContent>
-                            <TimelineTitle>Today</TimelineTitle>
                             <TimelineTitle>5 Services Scheduled</TimelineTitle>
                             <TimelineDescription className="flex items-center gap-1">
                                 <Clock size={12}/>9:00 AM - Amit Sharma (Cockroach Control)
@@ -49,6 +51,9 @@ export default function ServiceScheduleTimeline() {
                     </TimelineItem>
 
                     <TimelineItem>
+                        <TimelineOppositeContent>
+                            <TimelineTitle>Tomorrow</TimelineTitle>
+                        </TimelineOppositeContent>
                         <TimelineSeparator>
                             <TimelineDot>
                                 <Circle color={"oklch(72.3% 0.219 149.579)"} fill={"oklch(72.3% 0.219 149.579)"}/>
@@ -56,7 +61,6 @@ export default function ServiceScheduleTimeline() {
                             <TimelineConnector/>
                         </TimelineSeparator>
                         <TimelineContent>
-                            <TimelineTitle>Tomorrow</TimelineTitle>
                             <TimelineTitle>3 Services Scheduled</TimelineTitle>
                             <TimelineDescription className="flex items-center gap-1">
                                 <Clock size={12}/>9:30 AM - Suresh Menon (Bed Bug Treatment)
@@ -71,6 +75,9 @@ export default function ServiceScheduleTimeline() {
                     </TimelineItem>
 
                     <TimelineItem>
+                        <TimelineOppositeContent>
+                            <TimelineTitle>May 13</TimelineTitle>
+                        </TimelineOppositeContent>
                         <TimelineSeparator>
                             <TimelineDot>
                                 <Circle color={"oklch(79.5% 0.184 86.047)"} fill={"oklch(79.5% 0.184 86.047)"}/>
@@ -78,7 +85,6 @@ export default function ServiceScheduleTimeline() {
                             <TimelineConnector/>
                         </TimelineSeparator>
                         <TimelineContent>
-                            <TimelineTitle>May 13</TimelineTitle>
                             <TimelineTitle>2 Services Scheduled
                             </TimelineTitle>
                             <TimelineDescription className="flex items-center gap-1">

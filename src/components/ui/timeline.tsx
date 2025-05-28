@@ -36,7 +36,7 @@ function Timeline({
                 role="list"
                 data-orientation={orientation}
                 className={cn(
-                    "flex",
+                    "flex w-fit",
                     orientation === "vertical" && "flex-col",
                     className,
                 )}
@@ -155,6 +155,33 @@ function TimelineConnector({
     );
 }
 
+export interface TimelineOppositeContentProps
+    extends React.ComponentPropsWithoutRef<"div"> {
+    asChild?: boolean;
+}
+
+function TimelineOppositeContent({
+                                     className,
+                                     asChild,
+                                     ...props
+                                 }: TimelineOppositeContentProps) {
+    const { orientation } = useTimeline();
+    const Comp = asChild ? Slot : "div";
+
+    return (
+        <Comp
+            data-slot="timeline-opposite-content"
+            data-orientation={orientation}
+            className={cn(
+                "w-28 flex-shrink-0", // Added fixed width (e.g., w-28 for 7rem) and flex-shrink-0
+                orientation === "vertical" && "text-right pb-7 pr-4", // Added pr-4 for padding next to separator
+                className,
+            )}
+            {...props}
+        />
+    );
+}
+
 export interface TimelineContentProps
     extends React.ComponentPropsWithoutRef<"div"> {
     asChild?: boolean;
@@ -173,8 +200,7 @@ function TimelineContent({
             data-slot="timeline-content"
             data-orientation={orientation}
             className={cn(
-                "flex-1",
-                orientation === "vertical" && "pb-7 first:text-right last:text-left",
+                orientation === "vertical" && "pb-7",
                 orientation === "horizontal" && "pr-7",
                 className,
             )}
@@ -231,6 +257,7 @@ export {
     TimelineSeparator,
     TimelineDot,
     TimelineConnector,
+    TimelineOppositeContent,
     TimelineContent,
     TimelineTitle,
     TimelineDescription,
