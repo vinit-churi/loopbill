@@ -4,13 +4,7 @@ import FilterByServiceType from "@/components/admin/services/filter-by-service-t
 import {useState} from "react";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import {Button} from "@/components/ui/button";
-import {
-    Pagination,
-    PaginationContent, PaginationEllipsis,
-    PaginationItem,
-    PaginationLink, PaginationNext,
-    PaginationPrevious
-} from "@/components/ui/pagination";
+import ServicesTablePagination from "@/components/admin/services/services-table-pagination";
 
 const allServices = [
     {
@@ -191,33 +185,6 @@ const renderServices = (services: {
     );
 }
 
-const RenderPagination = () => {
-    return (
-        <Pagination>
-            <PaginationContent>
-                <PaginationItem>
-                    <PaginationPrevious href="#"/>
-                </PaginationItem>
-                <PaginationItem>
-                    <PaginationLink href="#" isActive>1</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                    <PaginationLink href="#">2</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                    <PaginationLink href="#">3</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                    <PaginationEllipsis/>
-                </PaginationItem>
-                <PaginationItem>
-                    <PaginationNext href="#"/>
-                </PaginationItem>
-            </PaginationContent>
-        </Pagination>
-    )
-}
-
 export default function ServicesTable() {
     // State for the 'upcoming-services' tab's service type filter
     const [upcomingSelectedServiceType, setUpcomingSelectedServiceType] = useState<string>("all");
@@ -274,13 +241,16 @@ export default function ServicesTable() {
                         <CardDescription>
                             View and manage all pest control services
                         </CardDescription>
-                        <FilterByServiceType value={allServicesSelectedServiceType} onValueChange={setAllServicesSelectedServiceType}/>
+                        <FilterByServiceType
+                            value={allServicesSelectedServiceType}
+                            onValueChange={setAllServicesSelectedServiceType}
+                        />
                     </CardHeader>
                     <CardContent>
                         {renderServices(allServicesFilteredByType)}
                     </CardContent>
                     <CardFooter>
-                        <RenderPagination/>
+                        <ServicesTablePagination/>
                     </CardFooter>
                 </Card>
             </TabsContent>
@@ -292,13 +262,16 @@ export default function ServicesTable() {
                         <CardDescription>
                             Services scheduled or in progress
                         </CardDescription>
-                        <FilterByServiceType value={upcomingSelectedServiceType} onValueChange={setUpcomingSelectedServiceType}/>
+                        <FilterByServiceType
+                            value={upcomingSelectedServiceType}
+                            onValueChange={setUpcomingSelectedServiceType}
+                        />
                     </CardHeader>
                     <CardContent>
                         {renderServices(upcomingServicesFilteredByType)}
                     </CardContent>
                     <CardFooter>
-                        <RenderPagination/>
+                        <ServicesTablePagination/>
                     </CardFooter>
                 </Card>
             </TabsContent>
@@ -310,13 +283,16 @@ export default function ServicesTable() {
                         <CardDescription>
                             Services that have been completed successfully
                         </CardDescription>
-                        <FilterByServiceType value={completedSelectedServiceType} onValueChange={setCompletedSelectedServiceType}/>
+                        <FilterByServiceType
+                            value={completedSelectedServiceType}
+                            onValueChange={setCompletedSelectedServiceType}
+                        />
                     </CardHeader>
                     <CardContent>
                         {renderServices(completedServicesFilteredByType)}
                     </CardContent>
                     <CardFooter>
-                        <RenderPagination/>
+                        <ServicesTablePagination/>
                     </CardFooter>
                 </Card>
             </TabsContent>
@@ -328,13 +304,16 @@ export default function ServicesTable() {
                         <CardDescription>
                             Services that need to be redone due to complaints
                         </CardDescription>
-                        <FilterByServiceType value={redoSelectedServiceType} onValueChange={setRedoSelectedServiceType}/>
+                        <FilterByServiceType
+                            value={redoSelectedServiceType}
+                            onValueChange={setRedoSelectedServiceType}
+                        />
                     </CardHeader>
                     <CardContent>
                         {renderServices(redoServicesFilteredByType)}
                     </CardContent>
                     <CardFooter>
-                        <RenderPagination/>
+                        <ServicesTablePagination/>
                     </CardFooter>
                 </Card>
             </TabsContent>
@@ -346,13 +325,16 @@ export default function ServicesTable() {
                         <CardDescription>
                             Services that have expired without completion
                         </CardDescription>
-                        <FilterByServiceType value={expiredSelectedServiceType} onValueChange={setExpiredSelectedServiceType}/>
+                        <FilterByServiceType
+                            value={expiredSelectedServiceType}
+                            onValueChange={setExpiredSelectedServiceType}
+                        />
                     </CardHeader>
                     <CardContent>
                         {renderServices(expiredServicesFilteredByType)}
                     </CardContent>
                     <CardFooter>
-                        <RenderPagination/>
+                        <ServicesTablePagination/>
                     </CardFooter>
                 </Card>
             </TabsContent>
