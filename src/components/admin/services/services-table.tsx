@@ -17,7 +17,6 @@ export const allServices = [
         location: "Building A, Flat 304",
         phone: "+91 9876543210",
         amount: "₹2,500"
-
     },
     {
         id: 2,

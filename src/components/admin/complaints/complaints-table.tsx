@@ -3,6 +3,129 @@ import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} f
 import ComplaintsTablePagination from "@/components/admin/complaints/complaints-table-pagination";
 import FilterByPriority from "@/components/admin/complaints/filter-by-priority";
 
+export const allServices = [
+    {
+        complaintId: 1,
+        customer: 'Amit Sharma',
+        serviceId: 3,
+        complaintType: 'Service quality',
+        priority: 'Normal',
+        status: 'Unscheduled',
+        date: 'May 10, 2025',
+        action: 'Assign agent'
+    },
+    {
+        complaintId: 2,
+        customer: 'Priya Patel',
+        serviceId: 1,
+        complaintType: 'Pest reappearance',
+        priority: 'High',
+        status: 'Scheduled',
+        date: 'May 11, 2025',
+        action: 'Update status'
+    },
+    {
+        complaintId: 3,
+        customer: 'Neha Kapoor',
+        serviceId: 2,
+        complaintType: 'Pest reappearance',
+        priority: 'High',
+        status: 'In progress',
+        date: 'May 11, 2025',
+        action: 'Update status'
+    },
+    {
+        complaintId: 4,
+        customer: 'Vikram Malhotra',
+        serviceId: 4,
+        complaintType: 'Agent behavior',
+        priority: 'Low',
+        status: 'Unscheduled',
+        date: 'May 11, 2025',
+        action: 'Update status'
+    },
+    {
+        complaintId: 5,
+        customer: 'Rahul Verma',
+        serviceId: 5,
+        complaintType: 'Agent behavior',
+        priority: 'Low',
+        status: 'Resolved',
+        date: 'May 11, 2025',
+        action: 'Update status'
+    },
+    {
+        complaintId: 6,
+        customer: 'Suresh Menon',
+        serviceId: 6,
+        complaintType: 'Pest reappearance',
+        priority: 'High',
+        status: 'Resolved',
+        date: 'May 29, 2025',
+        action: 'Update status'
+    },
+    {
+        complaintId: 7,
+        customer: 'Ananya Singh',
+        serviceId: 7,
+        complaintType: 'Service quality',
+        priority: 'Normal',
+        status: 'Scheduled',
+        date: 'June 1, 2025',
+        action: 'Update status'
+    },
+    {
+        complaintId: 8,
+        customer: 'Rahul Verma',
+        serviceId: 8,
+        complaintType: 'Late arrival',
+        priority: 'Low',
+        status: 'Unscheduled',
+        date: 'June 1, 2025',
+        action: 'Update status'
+    },
+    {
+        complaintId: 9,
+        customer: 'Suresh Menon',
+        serviceId: 9,
+        complaintType: 'Service quality',
+        priority: 'Normal',
+        status: 'Resolved',
+        date: 'June 1, 2025',
+        action: 'Update status'
+    },
+    {
+        complaintId: 10,
+        customer: 'Ananya Singh',
+        serviceId: 10,
+        complaintType: 'Pest reappearance',
+        priority: 'High',
+        status: 'Resolved',
+        date: 'April 1, 2025',
+        action: 'Update status'
+    },
+    {
+        complaintId: 11,
+        customer: 'Rahul Verma',
+        serviceId: 11,
+        complaintType: 'Late arrival',
+        priority: 'Low',
+        status: 'Resolved',
+        date: 'July 1, 2025',
+        action: 'Update status'
+    },
+    {
+        complaintId: 12,
+        customer: 'Suresh Menon',
+        serviceId: 12,
+        complaintType: 'Service quality',
+        priority: 'Normal',
+        status: 'Resolved',
+        date: 'July 10, 2025',
+        action: 'Update status'
+    }
+]
+
 const getStatusColor = (status: string) => {
     switch (status) {
         case 'Unscheduled':
