@@ -152,10 +152,10 @@ const NewServiceModal = ({isOpen, onClose}: NewServiceModalProps) => {
                     </div>
 
                     <div className="flex gap-3 pt-4">
-                        <Button type="button" variant="outline" onClick={onClose} className="flex-1">
+                        <Button type="button" variant="outline" onClick={onClose} className="flex-1 cursor-pointer">
                             Cancel
                         </Button>
-                        <Button type="submit" className="flex-1">
+                        <Button type="submit" className="flex-1 cursor-pointer">
                             Schedule Service
                         </Button>
                     </div>
