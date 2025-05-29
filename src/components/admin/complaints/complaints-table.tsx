@@ -156,14 +156,65 @@ const getPriorityColor = (priority: string) => {
     }
 }
 
+const renderComplaints = () => {
+    if (allComplaints.length === 0) {
+        return <p>No services match the current filters.</p>;
+    }
+    return (
+        <Table>
+            <TableHeader>
+                <TableRow>
+                    <TableHead>Complaint Id</TableHead>
+                    <TableHead>Customer</TableHead>
+                    <TableHead>Service Id</TableHead>
+                    <TableHead>Complaint type</TableHead>
+                    <TableHead>Priority</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead>Date</TableHead>
+                    <TableHead>Action</TableHead>
+                </TableRow>
+            </TableHeader>
+            <TableBody>
+                {allComplaints.map((complaint) => (
+                    <TableRow key={complaint.complaintId}>
+                        <TableCell>{complaint.complaintId}</TableCell>
+                        <TableCell>{complaint.customer}</TableCell>
+                        <TableCell>{complaint.serviceId}</TableCell>
+                        <TableCell>{complaint.complaintType}</TableCell>
+                        <TableCell>
+                            <span className={`px-2 py-0.5 border rounded-full font-semibold ${getPriorityColor(complaint.priority)}`}>
+                                {complaint.priority}
+                            </span>
+                        </TableCell>
+                        <TableCell>
+                            <span className={`px-2 py-0.5 border rounded-full font-semibold ${getStatusColor(complaint.status)}`}>
+                                {complaint.status}
+                            </span>
+                        </TableCell>
+                        <TableCell>{complaint.date}</TableCell>
+                        <TableCell className="flex gap-1">
+                            <Button variant={"outline"} size={"sm"}>View details</Button>
+                            <Button size={"sm"}>{complaint.action}</Button>
+                        </TableCell>
+                    </TableRow>
+                ))}
+            </TableBody>
+        </Table>
+    )
+}
+
 export default function ComplaintsTable() {
     return (
         <Tabs defaultValue="all-complaints" className="w-full">
             <TabsList className="grid w-full grid-cols-5">
                 <TabsTrigger value="all-complaints" className="cursor-pointer">All complaints</TabsTrigger>
-                <TabsTrigger value="unscheduled-complaints" className="cursor-pointer">Unscheduled complaints</TabsTrigger>
+                <TabsTrigger value="unscheduled-complaints" className="cursor-pointer">
+                    Unscheduled complaints
+                </TabsTrigger>
                 <TabsTrigger value="scheduled-complaints" className="cursor-pointer">Scheduled complaints</TabsTrigger>
-                <TabsTrigger value="in-progress-complaints" className="cursor-pointer">In progress complaints</TabsTrigger>
+                <TabsTrigger value="in-progress-complaints" className="cursor-pointer">
+                    In progress complaints
+                </TabsTrigger>
                 <TabsTrigger value="resolved-complaints" className="cursor-pointer">Resolved complaints</TabsTrigger>
             </TabsList>
             <TabsContent value="all-complaints">
@@ -176,43 +227,7 @@ export default function ComplaintsTable() {
                         <FilterByPriority/>
                     </CardHeader>
                     <CardContent>
-                        {/*{renderServices(allServicesFilteredByType)}*/}
-                        <Table>
-                            <TableHeader>
-                                <TableRow>
-                                    <TableHead>Complaint Id</TableHead>
-                                    <TableHead>Customer</TableHead>
-                                    <TableHead>Service Id</TableHead>
-                                    <TableHead>Complaint type</TableHead>
-                                    <TableHead>Priority</TableHead>
-                                    <TableHead>Status</TableHead>
-                                    <TableHead>Date</TableHead>
-                                    <TableHead>Action</TableHead>
-                                </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                {allComplaints.map((complaint) => (
-                                    <TableRow key={complaint.complaintId}>
-                                        <TableCell>{complaint.complaintId}</TableCell>
-                                        <TableCell>{complaint.customer}</TableCell>
-                                        <TableCell>{complaint.serviceId}</TableCell>
-                                        <TableCell>{complaint.complaintType}</TableCell>
-                                        <TableCell>
-                                            <span className={`px-2 py-0.5 border rounded-full font-semibold ${getPriorityColor(complaint.priority)}`}>
-                                                {complaint.priority}
-                                            </span>
-                                        </TableCell>
-                                        <TableCell>
-                                            <span className={`px-2 py-0.5 border rounded-full font-semibold ${getStatusColor(complaint.status)}`}>
-                                                {complaint.status}
-                                            </span>
-                                        </TableCell>
-                                        <TableCell>{complaint.date}</TableCell>
-                                        <TableCell className="flex gap-1"><Button variant={"outline"} size={"sm"}>View details</Button><Button size={"sm"}>{complaint.action}</Button></TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
+                        {renderComplaints()}
                     </CardContent>
                     <CardFooter>
                         <ComplaintsTablePagination/>
@@ -230,7 +245,7 @@ export default function ComplaintsTable() {
                         <FilterByPriority/>
                     </CardHeader>
                     <CardContent>
-
+                        {renderComplaints()}
                     </CardContent>
                     <CardFooter>
                         <ComplaintsTablePagination/>
@@ -248,7 +263,7 @@ export default function ComplaintsTable() {
                         <FilterByPriority/>
                     </CardHeader>
                     <CardContent>
-
+                        {renderComplaints()}
                     </CardContent>
                     <CardFooter>
                         <ComplaintsTablePagination/>
@@ -266,7 +281,7 @@ export default function ComplaintsTable() {
                         <FilterByPriority/>
                     </CardHeader>
                     <CardContent>
-
+                        {renderComplaints()}
                     </CardContent>
                     <CardFooter>
                         <ComplaintsTablePagination/>
@@ -284,7 +299,7 @@ export default function ComplaintsTable() {
                         <FilterByPriority/>
                     </CardHeader>
                     <CardContent>
-
+                        {renderComplaints()}
                     </CardContent>
                     <CardFooter>
                         <ComplaintsTablePagination/>
