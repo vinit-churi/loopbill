@@ -1,6 +1,7 @@
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import ComplaintsTablePagination from "@/components/admin/complaints/complaints-table-pagination";
+import FilterByPriority from "@/components/admin/complaints/filter-by-priority";
 
 const getStatusColor = (status: string) => {
     switch (status) {
@@ -47,10 +48,7 @@ export default function ComplaintsTable() {
                         <CardDescription>
                             View and manage all pest control services
                         </CardDescription>
-                        {/*<FilterByServiceType*/}
-                        {/*    value={allServicesSelectedServiceType}*/}
-                        {/*    onValueChange={setAllServicesSelectedServiceType}*/}
-                        {/*/>*/}
+                        <FilterByPriority/>
                     </CardHeader>
                     <CardContent>
                         {/*{renderServices(allServicesFilteredByType)}*/}
@@ -68,7 +66,7 @@ export default function ComplaintsTable() {
                         <CardDescription>
                             Complaints unscheduled for investigation and resolution
                         </CardDescription>
-
+                        <FilterByPriority/>
                     </CardHeader>
                     <CardContent>
 
@@ -86,7 +84,7 @@ export default function ComplaintsTable() {
                         <CardDescription>
                             Complaints scheduled for investigation and resolution
                         </CardDescription>
-
+                        <FilterByPriority/>
                     </CardHeader>
                     <CardContent>
 
@@ -104,7 +102,7 @@ export default function ComplaintsTable() {
                         <CardDescription>
                             Complaints currently being investigated and resolved
                         </CardDescription>
-
+                        <FilterByPriority/>
                     </CardHeader>
                     <CardContent>
 
@@ -122,7 +120,7 @@ export default function ComplaintsTable() {
                         <CardDescription>
                             Successfully resolved complaints
                         </CardDescription>
-
+                        <FilterByPriority/>
                     </CardHeader>
                     <CardContent>
 
