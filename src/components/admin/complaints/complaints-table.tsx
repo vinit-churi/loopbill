@@ -2,8 +2,10 @@ import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import ComplaintsTablePagination from "@/components/admin/complaints/complaints-table-pagination";
 import FilterByPriority from "@/components/admin/complaints/filter-by-priority";
+import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
+import {Button} from "@/components/ui/button";
 
-export const allServices = [
+export const allComplaints = [
     {
         complaintId: 1,
         customer: 'Amit Sharma',
@@ -100,9 +102,9 @@ export const allServices = [
         serviceId: 10,
         complaintType: 'Pest reappearance',
         priority: 'High',
-        status: 'Resolved',
+        status: 'Unscheduled',
         date: 'April 1, 2025',
-        action: 'Update status'
+        action: 'Assign agent'
     },
     {
         complaintId: 11,
@@ -144,11 +146,11 @@ const getStatusColor = (status: string) => {
 const getPriorityColor = (priority: string) => {
     switch (priority) {
         case 'High':
-            return 'text-green-600 border-green-400 bg-green-100'
+            return 'text-red-600 border-red-400 bg-red-100'
         case 'Normal':
             return 'text-yellow-600 border-yellow-400 bg-yellow-100'
         case 'Low':
-            return 'text-red-600 border-red-400 bg-red-100'
+            return 'text-green-600 border-green-400 bg-green-100'
         default:
             return 'text-gray-600 border-gray-400 bg-gray-100'
     }
@@ -175,6 +177,42 @@ export default function ComplaintsTable() {
                     </CardHeader>
                     <CardContent>
                         {/*{renderServices(allServicesFilteredByType)}*/}
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead>Complaint Id</TableHead>
+                                    <TableHead>Customer</TableHead>
+                                    <TableHead>Service Id</TableHead>
+                                    <TableHead>Complaint type</TableHead>
+                                    <TableHead>Priority</TableHead>
+                                    <TableHead>Status</TableHead>
+                                    <TableHead>Date</TableHead>
+                                    <TableHead>Action</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                {allComplaints.map((complaint) => (
+                                    <TableRow key={complaint.complaintId}>
+                                        <TableCell>{complaint.complaintId}</TableCell>
+                                        <TableCell>{complaint.customer}</TableCell>
+                                        <TableCell>{complaint.serviceId}</TableCell>
+                                        <TableCell>{complaint.complaintType}</TableCell>
+                                        <TableCell>
+                                            <span className={`px-2 py-0.5 border rounded-full font-semibold ${getPriorityColor(complaint.priority)}`}>
+                                                {complaint.priority}
+                                            </span>
+                                        </TableCell>
+                                        <TableCell>
+                                            <span className={`px-2 py-0.5 border rounded-full font-semibold ${getStatusColor(complaint.status)}`}>
+                                                {complaint.status}
+                                            </span>
+                                        </TableCell>
+                                        <TableCell>{complaint.date}</TableCell>
+                                        <TableCell className="flex gap-1"><Button variant={"outline"} size={"sm"}>View details</Button><Button size={"sm"}>{complaint.action}</Button></TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
                     </CardContent>
                     <CardFooter>
                         <ComplaintsTablePagination/>
