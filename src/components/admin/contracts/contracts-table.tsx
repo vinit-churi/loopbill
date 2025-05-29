@@ -95,7 +95,12 @@ const renderContracts = () => {
                 {allContracts.map((contract) => (
                     <TableRow key={contract.contractId}>
                         <TableCell>{contract.contractId}</TableCell>
-                        <TableCell className="flex flex-row">{contract.customerName}{contract.customerAddress}</TableCell>
+                        <TableCell >
+                            <div className="flex flex-col">
+                                <span className="font-semibold">{contract.customerName}</span>
+                            <span className="text-wrap whitespace-normal">{contract.customerAddress}</span>
+                            </div>
+                        </TableCell>
                         <TableCell>{contract.serviceType}</TableCell>
                         <TableCell>{contract.contractValue}</TableCell>
                         <TableCell>
