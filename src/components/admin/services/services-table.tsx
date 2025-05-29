@@ -265,11 +265,11 @@ export default function ServicesTable() {
     return (
         <Tabs defaultValue="all-services" className="w-full">
             <TabsList className="grid w-full grid-cols-5">
-                <TabsTrigger value="all-services">All services</TabsTrigger>
-                <TabsTrigger value="upcoming-services">Upcoming services</TabsTrigger>
-                <TabsTrigger value="completed-services">Completed services</TabsTrigger>
-                <TabsTrigger value="redo-services">Redo services</TabsTrigger>
-                <TabsTrigger value="expired-services">Expired services</TabsTrigger>
+                <TabsTrigger value="all-services" className="cursor-pointer">All services</TabsTrigger>
+                <TabsTrigger value="upcoming-services" className="cursor-pointer">Upcoming services</TabsTrigger>
+                <TabsTrigger value="completed-services" className="cursor-pointer">Completed services</TabsTrigger>
+                <TabsTrigger value="redo-services" className="cursor-pointer">Redo services</TabsTrigger>
+                <TabsTrigger value="expired-services" className="cursor-pointer">Expired services</TabsTrigger>
             </TabsList>
             <TabsContent value="all-services">
                 <Card>
