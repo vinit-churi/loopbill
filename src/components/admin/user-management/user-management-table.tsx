@@ -4,6 +4,7 @@ import UserManagementTablePagination from "@/components/admin/user-management/us
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import {Button} from "@/components/ui/button";
 import {Clock4, Eye, Shield, SquarePen, Trash2} from "lucide-react";
+import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip";
 
 const users = [
     {
@@ -139,20 +140,48 @@ const renderUsers = () => {
                                 {user.status}
                             </span>
                         </TableCell>
-                        <TableCell><Clock4/>{user.lastLogin}</TableCell>
+                        <TableCell className={"flex gap-1 items-center"}><Clock4 size={14}/>{user.lastLogin}</TableCell>
                         <TableCell>
-                            <Button variant={"outline"} size={"sm"} className={"hover:bg-blue-500 hover:text-white"}>
-                                <Eye/>
-                            </Button>
-                            <Button variant={"outline"} size={"sm"} className="ml-1 hover:bg-blue-500 hover:text-white">
-                                <SquarePen/>
-                            </Button>
-                            <Button variant={"outline"} size={"sm"} className="ml-1 hover:bg-green-500 hover:text-white">
-                                <Shield/>
-                            </Button>
-                            <Button variant={"outline"} size={"sm"} className="ml-1 text-red-500 hover:bg-red-500 hover:text-white">
-                                <Trash2/>
-                            </Button>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <Button variant={"outline"} size={"sm"} className={"hover:bg-blue-500 hover:text-white"}>
+                                        <Eye/>
+                                    </Button>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p>User details</p>
+                                </TooltipContent>
+                            </Tooltip>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <Button variant={"outline"} size={"sm"} className="ml-1 hover:bg-blue-500 hover:text-white">
+                                        <SquarePen/>
+                                    </Button>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p>Edit user</p>
+                                </TooltipContent>
+                            </Tooltip>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <Button variant={"outline"} size={"sm"} className="ml-1 hover:bg-green-500 hover:text-white">
+                                        <Shield/>
+                                    </Button>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p>Manage permissions</p>
+                                </TooltipContent>
+                            </Tooltip>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <Button variant={"outline"} size={"sm"} className="ml-1 text-red-500 hover:bg-red-500 hover:text-white">
+                                        <Trash2/>
+                                    </Button>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p>Permanently delete user</p>
+                                </TooltipContent>
+                            </Tooltip>
                         </TableCell>
                     </TableRow>
                 ))}
