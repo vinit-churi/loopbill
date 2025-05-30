@@ -141,10 +141,18 @@ const renderUsers = () => {
                         </TableCell>
                         <TableCell><Clock4/>{user.lastLogin}</TableCell>
                         <TableCell>
-                            <Button variant={"outline"} size={"sm"}><Eye/></Button>
-                            <Button size={"sm"} className="ml-1"><SquarePen/></Button>
-                            <Button size={"sm"} className="ml-1"><Shield/></Button>
-                            <Button size={"sm"} className="ml-1"><Trash2/></Button>
+                            <Button variant={"outline"} size={"sm"} className={"hover:bg-blue-500 hover:text-white"}>
+                                <Eye/>
+                            </Button>
+                            <Button variant={"outline"} size={"sm"} className="ml-1 hover:bg-blue-500 hover:text-white">
+                                <SquarePen/>
+                            </Button>
+                            <Button variant={"outline"} size={"sm"} className="ml-1 hover:bg-green-500 hover:text-white">
+                                <Shield/>
+                            </Button>
+                            <Button variant={"outline"} size={"sm"} className="ml-1 text-red-500 hover:bg-red-500 hover:text-white">
+                                <Trash2/>
+                            </Button>
                         </TableCell>
                     </TableRow>
                 ))}
