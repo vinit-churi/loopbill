@@ -81,42 +81,46 @@ const renderContracts = () => {
         <Table>
             <TableHeader>
                 <TableRow>
-                    <TableHead>Contract Id</TableHead>
-                    <TableHead>Customer details</TableHead>
-                    <TableHead>Service type</TableHead>
-                    <TableHead>Contract value</TableHead>
-                    <TableHead>Payment status</TableHead>
-                    <TableHead>Next payment</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Actions</TableHead>
+                    <TableHead className="align-top text-wrap whitespace-normal">Contract Id</TableHead>
+                    <TableHead className="align-top">Customer details</TableHead>
+                    <TableHead className="align-top">Service type</TableHead>
+                    <TableHead className="align-top text-wrap whitespace-normal">Contract value</TableHead>
+                    <TableHead className="align-top text-wrap whitespace-normal">Payment status</TableHead>
+                    <TableHead className="align-top text-wrap whitespace-normal">Next payment</TableHead>
+                    <TableHead className="align-top">Status</TableHead>
+                    <TableHead className="align-top">Actions</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
                 {allContracts.map((contract) => (
                     <TableRow key={contract.contractId}>
                         <TableCell>{contract.contractId}</TableCell>
-                        <TableCell >
+                        <TableCell>
                             <div className="flex flex-col">
                                 <span className="font-semibold">{contract.customerName}</span>
-                            <span className="text-wrap whitespace-normal">{contract.customerAddress}</span>
+                                <span className="text-wrap whitespace-normal">{contract.customerAddress}</span>
                             </div>
                         </TableCell>
-                        <TableCell>{contract.serviceType}</TableCell>
+                        <TableCell>
+                            <span className="text-wrap whitespace-normal">{contract.serviceType}</span>
+                        </TableCell>
                         <TableCell>{contract.contractValue}</TableCell>
                         <TableCell>
-                            <span className={`px-2 py-0.5 border rounded-full font-semibold ${getPaymentStatusColor(contract.paymentStatus)}`}>
+                            <span
+                                className={`px-2 py-0.5 border rounded-full font-semibold ${getPaymentStatusColor(contract.paymentStatus)}`}>
                                 {contract.paymentStatus}
                             </span>
                         </TableCell>
                         <TableCell>{contract.nextPayment}</TableCell>
                         <TableCell>
-                            <span className={`px-2 py-0.5 border rounded-full font-semibold ${getStatusColor(contract.status)}`}>
+                            <span
+                                className={`px-2 py-0.5 border rounded-full font-semibold ${getStatusColor(contract.status)}`}>
                                 {contract.status}
                             </span>
                         </TableCell>
-                        <TableCell className="flex gap-1">
+                        <TableCell>
                             <Button variant={"outline"} size={"sm"}><Eye/></Button>
-                            <Button size={"sm"}><Download/></Button>
+                            <Button size={"sm"} className="ml-1"><Download/></Button>
                         </TableCell>
                     </TableRow>
                 ))}
