@@ -54,7 +54,11 @@ export default function UserManagement() {
                     </Button>
                 </div>
             </div>
-            <UserManagementTable />
+            <UserManagementTable
+                handleUserDetails={handleUserDetails}
+                handleEditUserDetails={handleEditUserDetails}
+                handleManageUserRole={handleManageUserRole}
+            />
 
             <AddNewUserModal
                 isOpen={isAddNewUserOpen}

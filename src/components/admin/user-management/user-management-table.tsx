@@ -6,7 +6,28 @@ import {Button} from "@/components/ui/button";
 import {Clock4, Eye, Shield, SquarePen, Trash2} from "lucide-react";
 import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip";
 
-const users = [
+interface User {
+    userId: number;
+    name: string;
+    email: string;
+    phone: string;
+    role: string;
+    status: string;
+    lastLogin: string;
+    createdDate: string;
+    department: string;
+    permissions: string[];
+}
+
+interface RenderUsersProps {
+    usersData: User[];
+    handleUserDetails: (user: User) => void;
+    handleEditUserDetails: (user: User) => void;
+    handleManageUserRole: (user: User) => void;
+}
+
+
+const users: User[] = [
     {
         userId: 1,
         name: "Rajesh Kumar",
@@ -97,9 +118,9 @@ const getStatusColor = (status: string) => {
     }
 }
 
-const renderUsers = () => {
-    if (users.length === 0) {
-        return <p>No contracts match the current filters.</p>;
+const renderUsers = ({ usersData: usersData, handleUserDetails, handleEditUserDetails, handleManageUserRole }: RenderUsersProps) => {
+    if (usersData.length === 0) {
+        return <p>No Users match the current filters.</p>;
     }
     return (
         <Table>
@@ -170,7 +191,7 @@ const renderUsers = () => {
                                 <TooltipTrigger asChild>
                                     <Button variant={"outline"} size={"sm"}
                                             className="ml-1 hover:bg-green-500 hover:text-white"
-                                            onClick={()=> handleManageUserPermissions(user)}>
+                                            onClick={()=> handleManageUserRole(user)}>
                                         <Shield/>
                                     </Button>
                                 </TooltipTrigger>
@@ -197,7 +218,20 @@ const renderUsers = () => {
     )
 }
 
-export default function UserManagementTable() {
+interface UserManagementTableProps {
+    handleUserDetails: (user: User) => void;
+    handleEditUserDetails: (user: User) => void;
+    handleManageUserRole: (user: User) => void; // Renamed from handleManageUserPermissions for consistency
+}
+
+export default function UserManagementTable({handleUserDetails, handleEditUserDetails, handleManageUserRole}: UserManagementTableProps) {
+    const renderUsersArgs: RenderUsersProps = {
+        usersData: users,
+        handleUserDetails: handleUserDetails,
+        handleEditUserDetails: handleEditUserDetails,
+        handleManageUserRole: handleManageUserRole
+    }
+
     return (
         <Tabs defaultValue="all-users" className="w-full">
             <TabsList className="grid w-full grid-cols-4">
@@ -215,7 +249,7 @@ export default function UserManagementTable() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        {renderUsers()}
+                        {renderUsers(renderUsersArgs)}
                     </CardContent>
                     <CardFooter>
                         <UserManagementTablePagination/>
@@ -232,7 +266,7 @@ export default function UserManagementTable() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        {renderUsers()}
+                        {renderUsers(renderUsersArgs)}
                     </CardContent>
                     <CardFooter>
                         <UserManagementTablePagination/>
@@ -249,7 +283,7 @@ export default function UserManagementTable() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        {renderUsers()}
+                        {renderUsers(renderUsersArgs)}
                     </CardContent>
                     <CardFooter>
                         <UserManagementTablePagination/>
@@ -266,7 +300,7 @@ export default function UserManagementTable() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        {renderUsers()}
+                        {renderUsers(renderUsersArgs)}
                     </CardContent>
                     <CardFooter>
                         <UserManagementTablePagination/>
