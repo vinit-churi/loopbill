@@ -144,7 +144,9 @@ const renderUsers = () => {
                         <TableCell>
                             <Tooltip>
                                 <TooltipTrigger asChild>
-                                    <Button variant={"outline"} size={"sm"} className={"hover:bg-blue-500 hover:text-white"}>
+                                    <Button variant={"outline"} size={"sm"}
+                                            className={"hover:bg-blue-500 hover:text-white"}
+                                            onClick={()=> handleUserDetails(user)}>
                                         <Eye/>
                                     </Button>
                                 </TooltipTrigger>
@@ -154,27 +156,32 @@ const renderUsers = () => {
                             </Tooltip>
                             <Tooltip>
                                 <TooltipTrigger asChild>
-                                    <Button variant={"outline"} size={"sm"} className="ml-1 hover:bg-blue-500 hover:text-white">
+                                    <Button variant={"outline"} size={"sm"}
+                                            className="ml-1 hover:bg-blue-500 hover:text-white"
+                                            onClick={()=> handleEditUserDetails(user)}>
                                         <SquarePen/>
                                     </Button>
                                 </TooltipTrigger>
                                 <TooltipContent>
-                                    <p>Edit user</p>
+                                    <p>Edit user details</p>
                                 </TooltipContent>
                             </Tooltip>
                             <Tooltip>
                                 <TooltipTrigger asChild>
-                                    <Button variant={"outline"} size={"sm"} className="ml-1 hover:bg-green-500 hover:text-white">
+                                    <Button variant={"outline"} size={"sm"}
+                                            className="ml-1 hover:bg-green-500 hover:text-white"
+                                            onClick={()=> handleManageUserPermissions(user)}>
                                         <Shield/>
                                     </Button>
                                 </TooltipTrigger>
                                 <TooltipContent>
-                                    <p>Manage permissions</p>
+                                    <p>Manage user permissions</p>
                                 </TooltipContent>
                             </Tooltip>
                             <Tooltip>
                                 <TooltipTrigger asChild>
-                                    <Button variant={"outline"} size={"sm"} className="ml-1 text-red-500 hover:bg-red-500 hover:text-white">
+                                    <Button variant={"outline"} size={"sm"}
+                                            className="ml-1 text-red-500 hover:bg-red-500 hover:text-white">
                                         <Trash2/>
                                     </Button>
                                 </TooltipTrigger>

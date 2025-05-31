@@ -5,9 +5,32 @@ import {Download, UserPlus} from "lucide-react";
 import {useState} from "react";
 import AddNewUserModal from "@/components/admin/user-management/add-new-user-modal";
 import UserManagementTable from "@/components/admin/user-management/user-management-table";
+import UserDetailsModal from "@/components/admin/user-management/user-details-modal";
+import EditUserDetailsModal from "@/components/admin/user-management/edit-user-details-modal";
+import ManageUserRoleModal from "@/components/admin/user-management/manage-user-role-modal";
 
 export default function UserManagement() {
     const [isAddNewUserOpen, setIsAddNewUserOpen] = useState(false)
+    const [isUserDetailsModalOpen, setIsUserDetailsModalOpen] = useState(false)
+    const [isEditUserDetailsModalOpen, setIsEditUserDetailsModalOpen] = useState(false)
+    const [isManageUserRoleModalOpen, setIsManageUserRoleModalOpen] = useState(false)
+    const [selectedUser, setSelectedUser] = useState<any>(null)
+
+    const handleUserDetails = (user: any) => {
+        setSelectedUser(user)
+        setIsUserDetailsModalOpen(true)
+    }
+
+    const handleEditUserDetails = (user: any) => {
+        setSelectedUser(user)
+        setIsEditUserDetailsModalOpen(true)
+    }
+
+    const handleManageUserRole = (user: any) => {
+        setSelectedUser(user)
+        setIsManageUserRoleModalOpen(true)
+    }
+
     return (
         <main className="w-full flex flex-col gap-4">
             {/*Heading and Description*/}
@@ -31,11 +54,29 @@ export default function UserManagement() {
                     </Button>
                 </div>
             </div>
-            <UserManagementTable/>
+            <UserManagementTable />
 
             <AddNewUserModal
                 isOpen={isAddNewUserOpen}
                 onClose={() => setIsAddNewUserOpen(false)}
+            />
+
+            <UserDetailsModal
+                isOpen={isUserDetailsModalOpen}
+                onClose={() => setIsUserDetailsModalOpen(false)}
+                user={selectedUser}
+            />
+
+            <EditUserDetailsModal
+                isOpen={isEditUserDetailsModalOpen}
+                onClose={() => setIsEditUserDetailsModalOpen(false)}
+                user={selectedUser}
+            />
+
+            <ManageUserRoleModal
+                isOpen={isManageUserRoleModalOpen}
+                onClose={() => setIsManageUserRoleModalOpen(false)}
+                user={selectedUser}
             />
         </main>
     );
