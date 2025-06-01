@@ -4,19 +4,19 @@ import NotificationsTablePagination from "@/components/admin/notifications/notif
 
 export default function NotificationsTable() {
     return (
-        <Tabs defaultValue="all-contracts" className="w-full">
+        <Tabs defaultValue="recent-notifications" className="w-full">
             <TabsList className="grid w-full grid-cols-4">
-                <TabsTrigger value="all-contracts" className="cursor-pointer">All contracts</TabsTrigger>
-                <TabsTrigger value="active-contracts" className="cursor-pointer">Active contracts</TabsTrigger>
-                <TabsTrigger value="payment-pending-contracts" className="cursor-pointer">Payment pending</TabsTrigger>
-                <TabsTrigger value="expiring-contracts" className="cursor-pointer">Expiring soon</TabsTrigger>
+                <TabsTrigger value="recent-notifications" className="cursor-pointer">Recent notifications</TabsTrigger>
+                <TabsTrigger value="scheduled" className="cursor-pointer">Scheduled</TabsTrigger>
+                <TabsTrigger value="templates" className="cursor-pointer">Templates</TabsTrigger>
+                <TabsTrigger value="analytics" className="cursor-pointer">Analytics</TabsTrigger>
             </TabsList>
-            <TabsContent value="all-contracts">
+            <TabsContent value="recent-notifications">
                 <Card>
                     <CardHeader>
-                        <CardTitle>All customer contracts</CardTitle>
+                        <CardTitle>Recent Notifications</CardTitle>
                         <CardDescription>
-                            Complete list of all customer service contracts
+                            Recently sent notifications and their delivery status
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -28,12 +28,12 @@ export default function NotificationsTable() {
                 </Card>
             </TabsContent>
 
-            <TabsContent value="active-contracts">
+            <TabsContent value="scheduled">
                 <Card>
                     <CardHeader>
-                        <CardTitle>Active contracts</CardTitle>
+                        <CardTitle>Scheduled Notifications</CardTitle>
                         <CardDescription>
-                            Currently active customer service contracts
+                            Notifications scheduled for future delivery
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -45,12 +45,12 @@ export default function NotificationsTable() {
                 </Card>
             </TabsContent>
 
-            <TabsContent value={"payment-pending-contracts"}>
+            <TabsContent value={"templates"}>
                 <Card>
                     <CardHeader>
-                        <CardTitle>Payment pending</CardTitle>
+                        <CardTitle>Notifications templates</CardTitle>
                         <CardDescription>
-                            Contracts with pending or overdue payments
+                            Predefined templates for common notifications
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -62,12 +62,12 @@ export default function NotificationsTable() {
                 </Card>
             </TabsContent>
 
-            <TabsContent value={"expiring-contracts"}>
+            <TabsContent value={"analytics"}>
                 <Card>
                     <CardHeader>
-                        <CardTitle>Expiring soon</CardTitle>
+                        <CardTitle>Notification analytics</CardTitle>
                         <CardDescription>
-                            Contracts that are expiring within the next 30 days
+                            Insights into notification delivery and engagement
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
