@@ -12,7 +12,7 @@ const allNotifications = [
         type: 'Service Reminder',
         method: 'Email, Push',
         status: 'Delivered',
-        sentDate: 'Today, 9:30 AM',
+        dateTime: 'Today, 9:30 AM',
         action: 'View details',
     },
     {
@@ -22,7 +22,7 @@ const allNotifications = [
         type: 'Payment Due',
         method: 'Email, Push, SMS',
         status: 'Sending',
-        sentDate: 'Yesterday, 10:00 AM',
+        dateTime: 'Yesterday, 10:00 AM',
         action: 'View Progress',
     },
     {
@@ -32,7 +32,7 @@ const allNotifications = [
         type: 'Service Completion',
         method: 'Email, Push',
         status: 'Delivered',
-        sentDate: 'Yesterday, 2:15 PM',
+        dateTime: 'Yesterday, 2:15 PM',
         action: 'View details',
     },
     {
@@ -42,7 +42,7 @@ const allNotifications = [
         type: 'Promotional',
         method: 'Email, Push, SMS',
         status: 'Delivered',
-        sentDate: 'Today, 11:00 AM',
+        dateTime: 'Today, 11:00 AM',
         action: 'View details',
     },
     {
@@ -52,7 +52,7 @@ const allNotifications = [
         type: 'Feedback Request',
         method: 'Email, Push',
         status: 'Sending',
-        sentDate: 'Today, 12:30 PM',
+        dateTime: 'Today, 12:30 PM',
         action: 'View Progress',
     },
     {
@@ -62,7 +62,7 @@ const allNotifications = [
         type: 'Service Reminder',
         method: 'Email, Push, SMS',
         status: 'Delivered',
-        sentDate: 'Today, 1:00 PM',
+        dateTime: 'Today, 1:00 PM',
         action: 'View details',
     },
     {
@@ -72,7 +72,7 @@ const allNotifications = [
         type: 'Payment Confirmation',
         method: 'Email, Push',
         status: 'Delivered',
-        sentDate: 'Today, 3:00 PM',
+        dateTime: 'Today, 3:00 PM',
         action: 'View details',
     },
     {
@@ -82,7 +82,7 @@ const allNotifications = [
         type: 'Feedback Request',
         method: 'Email, Push, SMS',
         status: 'Sending',
-        sentDate: 'Today, 4:00 PM',
+        dateTime: 'Today, 4:00 PM',
         action: 'View Progress',
     },
     {
@@ -91,8 +91,8 @@ const allNotifications = [
         recipients: 'Amit Patel',
         type: 'Promotional',
         method: 'Email, Push',
-        status: 'Delivered',
-        sentDate: 'Today, 5:00 PM',
+        status: 'Scheduled',
+        dateTime: 'Tomorrow, 5:00 PM',
         action: 'View details',
     },
     {
@@ -101,8 +101,28 @@ const allNotifications = [
         recipients: 'All Customers(124)',
         type: 'Service Reminder',
         method: 'Email, Push, SMS',
+        status: 'Scheduled',
+        dateTime: 'May 15, 2025, 6:00 PM',
+        action: 'View Progress',
+    },
+    {
+        notificationId: 11,
+        subject: 'Payment Due Reminder',
+        recipients: 'Rajesh Kumar',
+        type: 'Payment Due',
+        method: 'Email, Push',
+        status: 'Delivered',
+        dateTime: 'Today, 7:00 PM',
+        action: 'View details',
+    },
+    {
+        notificationId: 12,
+        subject: 'Service Completion Confirmation',
+        recipients: 'Priya Sharma',
+        type: 'Service Completion',
+        method: 'Email, Push, SMS',
         status: 'Sending',
-        sentDate: 'Today, 6:00 PM',
+        dateTime: 'Today, 8:00 PM',
         action: 'View Progress',
     }
 ]
@@ -111,8 +131,10 @@ const getStatusColor = (status: string) => {
     switch (status) {
         case 'Delivered':
             return 'text-green-600 border-green-400 bg-green-100'
-        case 'Sending':
+        case 'Scheduled':
             return 'text-yellow-600 border-yellow-400 bg-yellow-100'
+        case 'Sending':
+            return 'text-orange-600 border-orange-400 bg-orange-100'
         default:
             return 'text-yellow-600 border-yellow-400 bg-yellow-100'
     }
@@ -148,7 +170,7 @@ const renderRecentNotificationsTable = () => {
                                 {notification.status}
                             </span>
                         </TableCell>
-                        <TableCell className="text-wrap whitespace-normal">{notification.sentDate}</TableCell>
+                        <TableCell className="text-wrap whitespace-normal">{notification.dateTime}</TableCell>
                         <TableCell>
                             <Button variant={"outline"} size={"sm"}>{notification.action}</Button>
                         </TableCell>
