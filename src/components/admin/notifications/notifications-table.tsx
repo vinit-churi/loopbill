@@ -13,7 +13,7 @@ const allNotifications = [
         method: 'Email, Push',
         status: 'Delivered',
         dateTime: 'Today, 9:30 AM',
-        action: 'View details',
+        actions: 'View details',
     },
     {
         notificationId: 2,
@@ -23,7 +23,7 @@ const allNotifications = [
         method: 'Email, Push, SMS',
         status: 'Sending',
         dateTime: 'Yesterday, 10:00 AM',
-        action: 'View Progress',
+        actions: 'View Progress',
     },
     {
         notificationId: 3,
@@ -33,7 +33,7 @@ const allNotifications = [
         method: 'Email, Push',
         status: 'Delivered',
         dateTime: 'Yesterday, 2:15 PM',
-        action: 'View details',
+        actions: 'View details',
     },
     {
         notificationId: 4,
@@ -43,7 +43,7 @@ const allNotifications = [
         method: 'Email, Push, SMS',
         status: 'Delivered',
         dateTime: 'Today, 11:00 AM',
-        action: 'View details',
+        actions: 'View details',
     },
     {
         notificationId: 5,
@@ -53,7 +53,7 @@ const allNotifications = [
         method: 'Email, Push',
         status: 'Sending',
         dateTime: 'Today, 12:30 PM',
-        action: 'View Progress',
+        actions: 'View Progress',
     },
     {
         notificationId: 6,
@@ -63,7 +63,7 @@ const allNotifications = [
         method: 'Email, Push, SMS',
         status: 'Delivered',
         dateTime: 'Today, 1:00 PM',
-        action: 'View details',
+        actions: 'View details',
     },
     {
         notificationId: 7,
@@ -73,7 +73,7 @@ const allNotifications = [
         method: 'Email, Push',
         status: 'Delivered',
         dateTime: 'Today, 3:00 PM',
-        action: 'View details',
+        actions: 'View details',
     },
     {
         notificationId: 8,
@@ -83,7 +83,7 @@ const allNotifications = [
         method: 'Email, Push, SMS',
         status: 'Sending',
         dateTime: 'Today, 4:00 PM',
-        action: 'View Progress',
+        actions: 'View Progress',
     },
     {
         notificationId: 9,
@@ -93,7 +93,7 @@ const allNotifications = [
         method: 'Email, Push',
         status: 'Scheduled',
         dateTime: 'Tomorrow, 5:00 PM',
-        action: 'View details',
+        actions: 'Edit, Cancel',
     },
     {
         notificationId: 10,
@@ -103,7 +103,7 @@ const allNotifications = [
         method: 'Email, Push, SMS',
         status: 'Scheduled',
         dateTime: 'May 15, 2025, 6:00 PM',
-        action: 'View Progress',
+        actions: 'Edit, Cancel',
     },
     {
         notificationId: 11,
@@ -113,7 +113,7 @@ const allNotifications = [
         method: 'Email, Push',
         status: 'Delivered',
         dateTime: 'Today, 7:00 PM',
-        action: 'View details',
+        actions: 'View details',
     },
     {
         notificationId: 12,
@@ -123,7 +123,7 @@ const allNotifications = [
         method: 'Email, Push, SMS',
         status: 'Sending',
         dateTime: 'Today, 8:00 PM',
-        action: 'View Progress',
+        actions: 'View Progress',
     }
 ]
 
@@ -141,7 +141,8 @@ const getStatusColor = (status: string) => {
 }
 
 const renderRecentNotificationsTable = () => {
-    if (allNotifications.length === 0) {
+    const recentNotifications = allNotifications.filter(notification => notification.status !== 'Scheduled');
+    if (recentNotifications.length === 0) {
         return <p>No notifications match the current filters.</p>;
     }
     return (
@@ -158,7 +159,7 @@ const renderRecentNotificationsTable = () => {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {allNotifications.map((notification) => (
+                {recentNotifications.map((notification) => (
                     <TableRow key={notification.notificationId}>
                         <TableCell className="text-wrap whitespace-normal">{notification.subject}</TableCell>
                         <TableCell className="text-wrap whitespace-normal">{notification.recipients}</TableCell>
@@ -172,7 +173,49 @@ const renderRecentNotificationsTable = () => {
                         </TableCell>
                         <TableCell className="text-wrap whitespace-normal">{notification.dateTime}</TableCell>
                         <TableCell>
-                            <Button variant={"outline"} size={"sm"}>{notification.action}</Button>
+                            <Button variant={"outline"} size={"sm"}>{notification.actions}</Button>
+                        </TableCell>
+                    </TableRow>
+                ))}
+            </TableBody>
+        </Table>
+    )
+}
+
+const renderScheduledNotificationsTable = () => {
+    const scheduledNotifications = allNotifications.filter(notification => notification.status !== 'Delivered' && notification.status !== 'Sending');
+    if (scheduledNotifications.length === 0) {
+        return <p>No notifications match the current filters.</p>;
+    }
+    return (
+        <Table>
+            <TableHeader>
+                <TableRow>
+                    <TableHead className="font-semibold">Subject</TableHead>
+                    <TableHead className="font-semibold">Recipients</TableHead>
+                    <TableHead className="font-semibold">Type</TableHead>
+                    <TableHead className="font-semibold">Method</TableHead>
+                    <TableHead className="font-semibold">Status</TableHead>
+                    <TableHead className="font-semibold text-wrap whitespace-normal">Sent date & time</TableHead>
+                    <TableHead className="font-semibold">Actions</TableHead>
+                </TableRow>
+            </TableHeader>
+            <TableBody>
+                {scheduledNotifications.map((notification) => (
+                    <TableRow key={notification.notificationId}>
+                        <TableCell className="text-wrap whitespace-normal">{notification.subject}</TableCell>
+                        <TableCell className="text-wrap whitespace-normal">{notification.recipients}</TableCell>
+                        <TableCell className="text-wrap whitespace-normal">{notification.type}</TableCell>
+                        <TableCell className="text-wrap whitespace-normal">{notification.method}</TableCell>
+                        <TableCell>
+                            <span
+                                className={`px-2 py-0.5 border rounded-full font-semibold ${getStatusColor(notification.status)}`}>
+                                {notification.status}
+                            </span>
+                        </TableCell>
+                        <TableCell className="text-wrap whitespace-normal">{notification.dateTime}</TableCell>
+                        <TableCell>
+                            <Button variant={"outline"} size={"sm"}>{notification.actions}</Button>
                         </TableCell>
                     </TableRow>
                 ))}
@@ -216,7 +259,7 @@ export default function NotificationsTable() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        {renderRecentNotificationsTable()}
+                        {renderScheduledNotificationsTable()}
                     </CardContent>
                     <CardFooter>
                         <NotificationsTablePagination/>
