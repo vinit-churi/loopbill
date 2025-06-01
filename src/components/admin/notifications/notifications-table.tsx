@@ -216,7 +216,7 @@ export default function NotificationsTable() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        {/*{renderContracts()}*/}
+                        {renderRecentNotificationsTable()}
                     </CardContent>
                     <CardFooter>
                         <NotificationsTablePagination/>
