@@ -215,7 +215,11 @@ const renderScheduledNotificationsTable = () => {
                         </TableCell>
                         <TableCell className="text-wrap whitespace-normal">{notification.dateTime}</TableCell>
                         <TableCell>
-                            <Button variant={"outline"} size={"sm"}>{notification.actions}</Button>
+                            {notification.actions.split(',').map(action => (
+                                <Button key={action.trim()} variant={"outline"} size={"sm"} className="mr-2 last:mr-0">
+                                    {action.trim()}
+                                </Button>
+                            ))}
                         </TableCell>
                     </TableRow>
                 ))}
