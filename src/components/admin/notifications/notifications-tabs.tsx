@@ -3,6 +3,7 @@ import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} f
 import NotificationsTablePagination from "@/components/admin/notifications/notifications-table-pagination";
 import RecentNotificationsTable from "@/components/admin/notifications/recent-notifications-table";
 import ScheduledNotificationsTable from "@/components/admin/notifications/scheduled-notifications-table";
+import NotificationTemplates from "@/components/admin/notifications/notification-templates";
 
 const allNotifications = [
     {
@@ -186,7 +187,7 @@ export default function NotificationsTabs() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        {/*{renderContracts()}*/}
+                        <NotificationTemplates/>
                     </CardContent>
                     <CardFooter>
                         <NotificationsTablePagination/>
