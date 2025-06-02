@@ -3,8 +3,8 @@
 import {Button} from "@/components/ui/button";
 import {Bell, Plus} from "lucide-react";
 import {useState} from "react";
-import NotificationsTable from "@/components/admin/notifications/notifications-table";
 import SendNewNotificationModal from "@/components/admin/notifications/send-new-notification-modal";
+import NotificationsTabs from "@/components/admin/notifications/notifications-tabs";
 
 export default function Notifications() {
     const [isSendNewNotificationOpen, setIsSendNewNotificationOpen] = useState(false)
@@ -31,7 +31,7 @@ export default function Notifications() {
                     </Button>
                 </div>
             </div>
-            <NotificationsTable/>
+            <NotificationsTabs/>
 
             <SendNewNotificationModal
                 isOpen={isSendNewNotificationOpen}
