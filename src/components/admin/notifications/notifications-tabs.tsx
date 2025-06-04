@@ -4,6 +4,7 @@ import NotificationsTablePagination from "@/components/admin/notifications/notif
 import RecentNotificationsTable from "@/components/admin/notifications/recent-notifications-table";
 import ScheduledNotificationsTable from "@/components/admin/notifications/scheduled-notifications-table";
 import NotificationTemplates from "@/components/admin/notifications/notification-templates";
+import NotificationAnalytics from "@/components/admin/notifications/notification-analytics";
 
 const allNotifications = [
     {
@@ -204,7 +205,7 @@ export default function NotificationsTabs() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        {/*{renderContracts()}*/}
+                        <NotificationAnalytics/>
                     </CardContent>
                     <CardFooter>
                         <NotificationsTablePagination/>
