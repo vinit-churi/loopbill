@@ -207,9 +207,6 @@ export default function NotificationsTabs() {
                     <CardContent>
                         <NotificationAnalytics/>
                     </CardContent>
-                    <CardFooter>
-                        <NotificationsTablePagination/>
-                    </CardFooter>
                 </Card>
             </TabsContent>
         </Tabs>
