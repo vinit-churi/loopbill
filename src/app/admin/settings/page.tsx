@@ -10,7 +10,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {useForm} from "react-hook-form";
 import {z} from "zod/v4";
 import {Checkbox} from "@/components/ui/checkbox";
-import {useEffect} from "react";
+import {useMemo, useEffect} from "react";
 
 const allServiceConfigurations = [
     {
@@ -99,11 +99,15 @@ export default function Settings() {
     const sms = form.watch("smsNotifications")
     const push = form.watch("pushNotifications")
 
+    const computedNotificationsEnabled = useMemo(() => {
+        return email || sms || push;
+    }, [email, sms, push]);
+
     useEffect(() => {
-        if (!email && !sms && !push && form.getValues("notificationsEnabled")) {
-            form.setValue("notificationsEnabled", false)
+        if (form.getValues("notificationsEnabled") !== computedNotificationsEnabled) {
+            form.setValue("notificationsEnabled", computedNotificationsEnabled);
         }
-    }, [email, sms, push, form])
+    }, [computedNotificationsEnabled, form])
 
     function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values)
