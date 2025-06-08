@@ -1,5 +1,6 @@
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
-import {Settings as SettingsIcon} from "lucide-react";
+import {Bell, HandPlatter, Settings as SettingsIcon} from "lucide-react";
+import {Button} from "@/components/ui/button";
 
 export default function Settings() {
     return (
@@ -15,14 +16,43 @@ export default function Settings() {
             {/* Settings content goes here */}
             <Card>
                 <CardHeader>
-                    <CardTitle className={"flex gap-1"}><SettingsIcon size={18} color={"oklch(62.3% 0.214 259.815)"}/>General settings</CardTitle>
+                    <CardTitle className={"flex gap-1"}><SettingsIcon size={18} color={"oklch(62.3% 0.214 259.815)"}/>General
+                        settings</CardTitle>
                     <CardDescription>Configure general system preferences</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <p>Card Content</p>
                 </CardContent>
                 <CardFooter>
-                    <p>Card Footer</p>
+                    <Button type={"submit"}>Save changes</Button>
+                </CardFooter>
+            </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle className={"flex gap-1"}><Bell size={18} color={"oklch(72.3% 0.219 149.579)"}/>Notification
+                        settings</CardTitle>
+                    <CardDescription>Configure notification preferences</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <p>Card Content</p>
+                </CardContent>
+                <CardFooter>
+                    <Button type={"submit"}>Update preferences</Button>
+                </CardFooter>
+            </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle className={"flex gap-1"}><HandPlatter size={18} color={"oklch(65.6% 0.241 354.308)"}/>Service
+                        configuration</CardTitle>
+                    <CardDescription>Configure service types and pricing</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <p>Card Content</p>
+                </CardContent>
+                <CardFooter>
+                    Pager
                 </CardFooter>
             </Card>
         </main>
