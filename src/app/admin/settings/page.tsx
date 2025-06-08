@@ -93,6 +93,8 @@ export default function Settings() {
         },
     })
 
+    const notificationEnabled = form.watch("notificationsEnabled")
+
     function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values)
     }
@@ -111,9 +113,8 @@ export default function Settings() {
             <section className={"grid gap-4 grid-cols-1 md:grid-cols-2"}>
                 <Card>
                     <CardHeader>
-                        <CardTitle className={"flex gap-1"}><SettingsIcon size={18}
-                                                                          color={"oklch(62.3% 0.214 259.815)"}/>General
-                            settings</CardTitle>
+                        <CardTitle className={"flex gap-1"}>
+                            <SettingsIcon size={18} color={"oklch(62.3% 0.214 259.815)"}/>General settings</CardTitle>
                         <CardDescription>Configure general system preferences</CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -126,8 +127,8 @@ export default function Settings() {
 
                 <Card>
                     <CardHeader>
-                        <CardTitle className={"flex gap-1"}><Bell size={18} color={"oklch(72.3% 0.219 149.579)"}/>Notification
-                            settings</CardTitle>
+                        <CardTitle className={"flex gap-1"}>
+                            <Bell size={18} color={"oklch(72.3% 0.219 149.579)"}/>Notification settings</CardTitle>
                         <CardDescription>Configure notification preferences</CardDescription>
                     </CardHeader>
                     <Form {...form}>
@@ -162,6 +163,7 @@ export default function Settings() {
                                             </div>
                                             <FormControl>
                                                 <Checkbox
+                                                    disabled={!notificationEnabled}
                                                     checked={field.value}
                                                     onCheckedChange={(checked) => field.onChange(checked)}
                                                 />
@@ -180,6 +182,7 @@ export default function Settings() {
                                             </div>
                                             <FormControl>
                                                 <Checkbox
+                                                    disabled={!notificationEnabled}
                                                     checked={field.value}
                                                     onCheckedChange={(checked) => field.onChange(checked)}
                                                 />
@@ -198,6 +201,7 @@ export default function Settings() {
                                             </div>
                                             <FormControl>
                                                 <Checkbox
+                                                    disabled={!notificationEnabled}
                                                     checked={field.value}
                                                     onCheckedChange={(checked) => field.onChange(checked)}
                                                 />
@@ -216,8 +220,8 @@ export default function Settings() {
 
             <Card>
                 <CardHeader>
-                    <CardTitle className={"flex gap-1"}><HandPlatter size={18} color={"oklch(65.6% 0.241 354.308)"}/>Service
-                        configuration</CardTitle>
+                    <CardTitle className={"flex gap-1"}>
+                        <HandPlatter size={18} color={"oklch(65.6% 0.241 354.308)"}/>Service configuration</CardTitle>
                     <CardDescription>Configure service types and pricing</CardDescription>
                 </CardHeader>
                 <CardContent>
