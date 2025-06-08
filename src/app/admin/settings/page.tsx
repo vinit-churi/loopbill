@@ -62,21 +62,25 @@ const allServiceConfigurations = [
     }
 ];
 
-const formSchema = z.object({
-    notificationsEnabled: z.boolean(),
-    emailNotifications: z.boolean(),
-    smsNotifications: z.boolean(),
-    pushNotifications: z.boolean()
-}).refine((data) => {
-    if (!data.notificationsEnabled) {
-        return (!data.emailNotifications && !data.smsNotifications && !data.pushNotifications)
+const formSchema = z.object(
+    {
+        notificationsEnabled: z.boolean(),
+        emailNotifications: z.boolean(),
+        smsNotifications: z.boolean(),
+        pushNotifications: z.boolean()
     }
-    return (data.emailNotifications || data.smsNotifications || data.pushNotifications)
-}, {
-    error:
-        "If notifications are disabled, email, SMS, and push must be false. If enabled, at least one must be true.",
-    path: ["notificationsEnabled"],
-})
+).refine(
+    (data) => {
+        if (!data.notificationsEnabled) {
+            return (!data.emailNotifications && !data.smsNotifications && !data.pushNotifications)
+        }
+        return (data.emailNotifications || data.smsNotifications || data.pushNotifications)
+    }, {
+        error:
+            "If notifications are disabled, email, SMS, and push must be false. If enabled, at least one must be true.",
+        path: ["notificationsEnabled"],
+    }
+)
 
 export default function Settings() {
     const form = useForm<z.infer<typeof formSchema>>({
