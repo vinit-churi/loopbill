@@ -1,6 +1,59 @@
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import {Bell, HandPlatter, Settings as SettingsIcon} from "lucide-react";
 import {Button} from "@/components/ui/button";
+import SettingsTablePagination from "@/components/admin/settings/settings-table-pagination";
+import SettingsServiceConfigurationTable from "@/components/admin/settings/settings-service-configuration-table";
+
+const allServiceConfigurations = [
+    {
+        serviceId: 1,
+        serviceType: 'Cockroach Treatment',
+        serviceDuration: '30 minutes',
+        servicePrice: '₹50',
+        serviceStatus: 'Active',
+        serviceActions: 'Edit | Delete',
+    },
+    {
+        serviceId: 2,
+        serviceType: 'Termite Control',
+        serviceDuration: '45 minutes',
+        servicePrice: '₹75',
+        serviceStatus: 'Active',
+        serviceActions: 'Edit | Delete',
+    },
+    {
+        serviceId: 3,
+        serviceType: 'Bed Bug Treatment',
+        serviceDuration: '60 minutes',
+        servicePrice: '₹100',
+        serviceStatus: 'Inactive',
+        serviceActions: 'Edit | Delete',
+    },
+    {
+        serviceId: 4,
+        serviceType: 'Pest Inspection',
+        serviceDuration: '20 minutes',
+        servicePrice: '₹30',
+        serviceStatus: 'Seasonal',
+        serviceActions: 'Edit | Delete',
+    },
+    {
+        serviceId: 5,
+        serviceType: 'Mosquito Control',
+        serviceDuration: '40 minutes',
+        servicePrice: '₹60',
+        serviceStatus: 'Active',
+        serviceActions: 'Edit | Delete',
+    },
+    {
+        serviceId: 6,
+        serviceType: 'Rodent Control',
+        serviceDuration: '50 minutes',
+        servicePrice: '₹80',
+        serviceStatus: 'Active',
+        serviceActions: 'Edit | Delete',
+    }
+];
 
 export default function Settings() {
     return (
@@ -14,33 +67,36 @@ export default function Settings() {
             </div>
             <hr/>
             {/* Settings content goes here */}
-            <Card>
-                <CardHeader>
-                    <CardTitle className={"flex gap-1"}><SettingsIcon size={18} color={"oklch(62.3% 0.214 259.815)"}/>General
-                        settings</CardTitle>
-                    <CardDescription>Configure general system preferences</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <p>Card Content</p>
-                </CardContent>
-                <CardFooter>
-                    <Button type={"submit"}>Save changes</Button>
-                </CardFooter>
-            </Card>
+            <section className={"grid gap-4 grid-cols-1 md:grid-cols-2"}>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className={"flex gap-1"}><SettingsIcon size={18}
+                                                                          color={"oklch(62.3% 0.214 259.815)"}/>General
+                            settings</CardTitle>
+                        <CardDescription>Configure general system preferences</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <p>Card Content</p>
+                    </CardContent>
+                    <CardFooter>
+                        <Button type={"submit"} className={"w-full"}>Save changes</Button>
+                    </CardFooter>
+                </Card>
 
-            <Card>
-                <CardHeader>
-                    <CardTitle className={"flex gap-1"}><Bell size={18} color={"oklch(72.3% 0.219 149.579)"}/>Notification
-                        settings</CardTitle>
-                    <CardDescription>Configure notification preferences</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <p>Card Content</p>
-                </CardContent>
-                <CardFooter>
-                    <Button type={"submit"}>Update preferences</Button>
-                </CardFooter>
-            </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className={"flex gap-1"}><Bell size={18} color={"oklch(72.3% 0.219 149.579)"}/>Notification
+                            settings</CardTitle>
+                        <CardDescription>Configure notification preferences</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <p>Card Content</p>
+                    </CardContent>
+                    <CardFooter>
+                        <Button type={"submit"} className={"w-full"}>Update preferences</Button>
+                    </CardFooter>
+                </Card>
+            </section>
 
             <Card>
                 <CardHeader>
@@ -49,10 +105,10 @@ export default function Settings() {
                     <CardDescription>Configure service types and pricing</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <p>Card Content</p>
+                    <SettingsServiceConfigurationTable serviceConfigurations={allServiceConfigurations}/>
                 </CardContent>
                 <CardFooter>
-                    Pager
+                    <SettingsTablePagination/>
                 </CardFooter>
             </Card>
         </main>
