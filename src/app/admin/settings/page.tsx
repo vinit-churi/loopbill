@@ -4,6 +4,7 @@ import {Button} from "@/components/ui/button";
 import SettingsTablePagination from "@/components/admin/settings/settings-table-pagination";
 import SettingsServiceConfigurationTable from "@/components/admin/settings/settings-service-configuration-table";
 import NotificationsSettings from "@/components/admin/settings/notifications-settings";
+import GeneralSettings from "@/components/admin/settings/general-settings";
 
 const allServiceConfigurations = [
     {
@@ -67,22 +68,9 @@ export default function Settings() {
                 </div>
             </div>
             <hr/>
-            {/* Settings content goes here */}
+            {/*Settings content*/}
             <section className={"grid gap-4 grid-cols-1 md:grid-cols-2"}>
-                <Card>
-                    <CardHeader>
-                        <CardTitle className={"flex gap-1"}>
-                            <SettingsIcon size={18} color={"oklch(62.3% 0.214 259.815)"}/>General settings</CardTitle>
-                        <CardDescription>Configure general system preferences</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        <p>Card Content</p>
-                    </CardContent>
-                    <CardFooter>
-                        <Button type={"submit"} className={"w-full cursor-pointer"}>Save changes</Button>
-                    </CardFooter>
-                </Card>
-
+                <GeneralSettings/>
                 <NotificationsSettings/>
             </section>
 
