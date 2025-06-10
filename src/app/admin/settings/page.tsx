@@ -57,8 +57,6 @@ const allServiceConfigurations = [
 ];
 
 export default function Settings() {
-
-
     return (
         <main className="w-full flex flex-col gap-4">
             {/*Heading and Description*/}
