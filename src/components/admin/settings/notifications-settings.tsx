@@ -73,10 +73,10 @@ export default function NotificationsSettings() {
                                 <FormItem>
                                     <FormLabel className={"flex items-center gap-2 justify-between cursor-pointer"}>
                                         <div className={"flex flex-col gap-1"}>
-                                            <span className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                                                All notifications
-                                            </span>
-                                            <FormDescription>Receive all notifications</FormDescription>
+                                            All notifications
+                                            <FormDescription className={"font-normal"}>
+                                                Receive all notifications
+                                            </FormDescription>
                                         </div>
                                         <FormControl>
                                             <Checkbox
@@ -92,18 +92,22 @@ export default function NotificationsSettings() {
                             control={form.control}
                             name={"emailNotifications"}
                             render={({field}) => (
-                                <FormItem className={"flex items-center gap-2 justify-between"}>
-                                    <div className={"flex flex-col gap-1"}>
-                                        <FormLabel>Email notifications</FormLabel>
-                                        <FormDescription>Receive notifications by email</FormDescription>
-                                    </div>
-                                    <FormControl>
-                                        <Checkbox
-                                            disabled={!notificationEnabled}
-                                            checked={field.value}
-                                            onCheckedChange={(checked) => field.onChange(checked)}
-                                        />
-                                    </FormControl>
+                                <FormItem>
+                                    <FormLabel className={"flex items-center gap-2 justify-between cursor-pointer"}>
+                                        <div className={"flex flex-col gap-1"}>
+                                            Email notifications
+                                            <FormDescription className={"font-normal"}>
+                                                Receive notifications by email
+                                            </FormDescription>
+                                        </div>
+                                        <FormControl>
+                                            <Checkbox
+                                                disabled={!notificationEnabled}
+                                                checked={field.value}
+                                                onCheckedChange={(checked) => field.onChange(checked)}
+                                            />
+                                        </FormControl>
+                                    </FormLabel>
                                 </FormItem>
                             )}
                         />
@@ -111,18 +115,20 @@ export default function NotificationsSettings() {
                             control={form.control}
                             name={"smsNotifications"}
                             render={({field}) => (
-                                <FormItem className={"flex items-center gap-2 justify-between"}>
-                                    <div className={"flex flex-col gap-1"}>
-                                        <FormLabel>SMS notifications</FormLabel>
-                                        <FormDescription>Receive notifications by SMS</FormDescription>
-                                    </div>
-                                    <FormControl>
-                                        <Checkbox
-                                            disabled={!notificationEnabled}
-                                            checked={field.value}
-                                            onCheckedChange={(checked) => field.onChange(checked)}
-                                        />
-                                    </FormControl>
+                                <FormItem>
+                                    <FormLabel className={"flex items-center gap-2 justify-between cursor-pointer"}>
+                                        <div className={"flex flex-col gap-1"}>
+                                            SMS notifications
+                                            <FormDescription>Receive notifications by SMS</FormDescription>
+                                        </div>
+                                        <FormControl>
+                                            <Checkbox
+                                                disabled={!notificationEnabled}
+                                                checked={field.value}
+                                                onCheckedChange={(checked) => field.onChange(checked)}
+                                            />
+                                        </FormControl>
+                                    </FormLabel>
                                 </FormItem>
                             )}
                         />
@@ -130,18 +136,20 @@ export default function NotificationsSettings() {
                             control={form.control}
                             name={"pushNotifications"}
                             render={({field}) => (
-                                <FormItem className={"flex items-center gap-2 justify-between"}>
-                                    <div className={"flex flex-col gap-1"}>
-                                        <FormLabel>Push notifications</FormLabel>
-                                        <FormDescription>Receive push notifications</FormDescription>
-                                    </div>
-                                    <FormControl>
-                                        <Checkbox
-                                            disabled={!notificationEnabled}
-                                            checked={field.value}
-                                            onCheckedChange={(checked) => field.onChange(checked)}
-                                        />
-                                    </FormControl>
+                                <FormItem>
+                                    <FormLabel className={"flex items-center gap-2 justify-between cursor-pointer"}>
+                                        <div className={"flex flex-col gap-1"}>
+                                            Push notifications
+                                            <FormDescription>Receive push notifications</FormDescription>
+                                        </div>
+                                        <FormControl>
+                                            <Checkbox
+                                                disabled={!notificationEnabled}
+                                                checked={field.value}
+                                                onCheckedChange={(checked) => field.onChange(checked)}
+                                            />
+                                        </FormControl>
+                                    </FormLabel>
                                 </FormItem>
                             )}
                         />
