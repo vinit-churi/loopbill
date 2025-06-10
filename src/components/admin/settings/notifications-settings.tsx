@@ -70,17 +70,21 @@ export default function NotificationsSettings() {
                             control={form.control}
                             name={"notificationsEnabled"}
                             render={({field}) => (
-                                <FormItem className={"flex items-center gap-2 justify-between"}>
-                                    <div className={"flex flex-col gap-1"}>
-                                        <FormLabel>All notifications</FormLabel>
-                                        <FormDescription>Receive all notifications</FormDescription>
-                                    </div>
-                                    <FormControl>
-                                        <Checkbox
-                                            checked={field.value}
-                                            onCheckedChange={(checked) => field.onChange(checked)}
-                                        />
-                                    </FormControl>
+                                <FormItem>
+                                    <FormLabel className={"flex items-center gap-2 justify-between cursor-pointer"}>
+                                        <div className={"flex flex-col gap-1"}>
+                                            <span className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                                All notifications
+                                            </span>
+                                            <FormDescription>Receive all notifications</FormDescription>
+                                        </div>
+                                        <FormControl>
+                                            <Checkbox
+                                                checked={field.value}
+                                                onCheckedChange={(checked) => field.onChange(checked)}
+                                            />
+                                        </FormControl>
+                                    </FormLabel>
                                 </FormItem>
                             )}
                         />
