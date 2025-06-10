@@ -79,7 +79,7 @@ export default function Settings() {
                         <p>Card Content</p>
                     </CardContent>
                     <CardFooter>
-                        <Button type={"submit"} className={"w-full"}>Save changes</Button>
+                        <Button type={"submit"} className={"w-full cursor-pointer"}>Save changes</Button>
                     </CardFooter>
                 </Card>
 
