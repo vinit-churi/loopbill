@@ -147,7 +147,7 @@ export default function NotificationsSettings() {
                         />
                     </CardContent>
                     <CardFooter>
-                        <Button type={"submit"} className={"w-full"}>Update preferences</Button>
+                        <Button type={"submit"} className={"w-full cursor-pointer"}>Update preferences</Button>
                     </CardFooter>
                 </form>
             </Form>
