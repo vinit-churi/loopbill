@@ -1,11 +1,10 @@
 'use client'
 
-import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel} from "@/components/ui/form";
+import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useForm} from "react-hook-form";
 import {z} from "zod/v4";
 import {Checkbox} from "@/components/ui/checkbox";
-import {useEffect} from "react";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import {Bell} from "lucide-react";
 import {Button} from "@/components/ui/button";
@@ -17,15 +16,15 @@ const formSchema = z.object(
         smsNotifications: z.boolean(),
         pushNotifications: z.boolean()
     }
-).refine(
-    (data) => {
-        if (!data.notificationsEnabled) {
-            return (!data.emailNotifications && !data.smsNotifications && !data.pushNotifications)
+).refine((value) => {
+        // If notifications are disabled, all must be false
+        if (!value.notificationsEnabled) {
+            return (!value.emailNotifications && !value.smsNotifications && !value.pushNotifications)
         }
-        return (data.emailNotifications || data.smsNotifications || data.pushNotifications)
+        // If notifications are enabled, at least one must be true
+        return (value.emailNotifications || value.smsNotifications || value.pushNotifications)
     }, {
-        error:
-            "If notifications are disabled, email, SMS, and push must be false. If enabled, at least one must be true.",
+        error: "If notifications are enabled, at least one of email, SMS, and push must be enabled.",
         path: ["notificationsEnabled"],
     }
 )
@@ -42,15 +41,6 @@ export default function NotificationsSettings() {
     })
 
     const notificationEnabled = form.watch("notificationsEnabled")
-    const email = form.watch("emailNotifications")
-    const sms = form.watch("smsNotifications")
-    const push = form.watch("pushNotifications")
-
-    useEffect(() => {
-        if (!email && !sms && !push && form.getValues("notificationsEnabled")) {
-            form.setValue("notificationsEnabled", false);
-        }
-    }, [email, sms, push, form])
 
     function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values)
@@ -85,6 +75,7 @@ export default function NotificationsSettings() {
                                             />
                                         </FormControl>
                                     </FormLabel>
+                                    <FormMessage/>
                                 </FormItem>
                             )}
                         />
@@ -119,7 +110,9 @@ export default function NotificationsSettings() {
                                     <FormLabel className={"flex items-center gap-2 justify-between cursor-pointer"}>
                                         <div className={"flex flex-col gap-1"}>
                                             SMS notifications
-                                            <FormDescription>Receive notifications by SMS</FormDescription>
+                                            <FormDescription className={"font-normal"}>
+                                                Receive notifications by SMS
+                                            </FormDescription>
                                         </div>
                                         <FormControl>
                                             <Checkbox
@@ -140,7 +133,9 @@ export default function NotificationsSettings() {
                                     <FormLabel className={"flex items-center gap-2 justify-between cursor-pointer"}>
                                         <div className={"flex flex-col gap-1"}>
                                             Push notifications
-                                            <FormDescription>Receive push notifications</FormDescription>
+                                            <FormDescription className={"font-normal"}>
+                                                Receive push notifications
+                                            </FormDescription>
                                         </div>
                                         <FormControl>
                                             <Checkbox
