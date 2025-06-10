@@ -5,7 +5,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {useForm} from "react-hook-form";
 import {z} from "zod/v4";
 import {Checkbox} from "@/components/ui/checkbox";
-import {useMemo, useEffect} from "react";
+import {useEffect} from "react";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import {Bell} from "lucide-react";
 import {Button} from "@/components/ui/button";
@@ -46,15 +46,11 @@ export default function NotificationsSettings() {
     const sms = form.watch("smsNotifications")
     const push = form.watch("pushNotifications")
 
-    const computedNotificationsEnabled = useMemo(() => {
-        return email || sms || push;
-    }, [email, sms, push]);
-
     useEffect(() => {
-        if (form.getValues("notificationsEnabled") !== computedNotificationsEnabled) {
-            form.setValue("notificationsEnabled", computedNotificationsEnabled);
+        if (!email && !sms && !push && form.getValues("notificationsEnabled")) {
+            form.setValue("notificationsEnabled", false);
         }
-    }, [computedNotificationsEnabled, form])
+    }, [email, sms, push, form])
 
     function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values)
