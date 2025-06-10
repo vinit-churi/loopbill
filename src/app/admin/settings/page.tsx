@@ -1,10 +1,7 @@
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
-import {HandPlatter, Settings as SettingsIcon} from "lucide-react";
-import {Button} from "@/components/ui/button";
-import SettingsTablePagination from "@/components/admin/settings/settings-table-pagination";
 import SettingsServiceConfigurationTable from "@/components/admin/settings/settings-service-configuration-table";
+import CompanyInformation from "@/components/admin/settings/company-information";
+import ServiceConfiguration from "@/components/admin/settings/service-configuration";
 import NotificationsSettings from "@/components/admin/settings/notifications-settings";
-import GeneralSettings from "@/components/admin/settings/general-settings";
 
 const allServiceConfigurations = [
     {
@@ -60,7 +57,6 @@ const allServiceConfigurations = [
 export default function Settings() {
     return (
         <main className="w-full flex flex-col gap-4">
-            {/*Heading and Description*/}
             <div className="flex justify-between flex-col md:flex-row items-start md:items-center gap-2">
                 <div>
                     <h1 className="text-2xl md:text-3xl font-bold">Settings</h1>
@@ -68,25 +64,12 @@ export default function Settings() {
                 </div>
             </div>
             <hr/>
-            {/*Settings content*/}
-            <section className={"grid gap-4 grid-cols-1 md:grid-cols-2"}>
-                <GeneralSettings/>
-                <NotificationsSettings/>
-            </section>
 
-            <Card>
-                <CardHeader>
-                    <CardTitle className={"flex gap-1"}>
-                        <HandPlatter size={18} color={"oklch(65.6% 0.241 354.308)"}/>Service configuration</CardTitle>
-                    <CardDescription>Configure service types and pricing</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <SettingsServiceConfigurationTable serviceConfigurations={allServiceConfigurations}/>
-                </CardContent>
-                <CardFooter>
-                    <SettingsTablePagination/>
-                </CardFooter>
-            </Card>
+            <CompanyInformation/>
+            <ServiceConfiguration/>
+            <NotificationsSettings/>
+
+            <SettingsServiceConfigurationTable serviceConfigurations={allServiceConfigurations}/>
         </main>
     );
 }
