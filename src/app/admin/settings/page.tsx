@@ -1,6 +1,7 @@
+import NotificationsSettings from "@/components/admin/settings/notifications-settings";
 import CompanyInformation from "@/components/admin/settings/company-information";
 import ServiceConfiguration from "@/components/admin/settings/service-configuration";
-import NotificationsSettings from "@/components/admin/settings/notifications-settings";
+import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 
 export default function Settings() {
     return (
@@ -12,9 +13,16 @@ export default function Settings() {
                 </div>
             </div>
             <hr/>
-            <CompanyInformation/>
-            <ServiceConfiguration/>
-            <NotificationsSettings/>
+            <Tabs defaultValue="notification-settings">
+                <TabsList className={"w-full"}>
+                    <TabsTrigger value="notification-settings">Notification settings</TabsTrigger>
+                    <TabsTrigger value="company-information">Company information</TabsTrigger>
+                    <TabsTrigger value="service-configuration">Service configuration</TabsTrigger>
+                </TabsList>
+                <TabsContent value="notification-settings"><NotificationsSettings/></TabsContent>
+                <TabsContent value="company-information"><CompanyInformation/></TabsContent>
+                <TabsContent value="service-configuration"><ServiceConfiguration/></TabsContent>
+            </Tabs>
         </main>
     );
 }
