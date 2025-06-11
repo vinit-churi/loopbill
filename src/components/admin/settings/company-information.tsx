@@ -77,7 +77,7 @@ export default function CompanyInformation() {
                 <CardDescription>Configure company and branch details in one place</CardDescription>
             </CardHeader>
             <CardContent>
-                <h4 class={"font-semibold text-blue-500 mb-2"}>Main Company</h4>
+                <h4 className={"font-semibold text-blue-500 mb-2"}>Main Company</h4>
                 <hr/>
             </CardContent>
             <CardFooter>
