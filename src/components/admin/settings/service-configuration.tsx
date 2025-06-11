@@ -43,8 +43,11 @@ export default function ServiceConfiguration() {
                 <Card>
                     <CardHeader>
                         <CardTitle className={"text-pink-500"}>Service 1</CardTitle>
-                        <CardAction><Button variant={"outline"}><Trash2
-                            color={"oklch(63.7% 0.237 25.331)"}/></Button></CardAction>
+                        <CardAction>
+                            <Button variant={"outline"} className={"cursor-pointer"}>
+                                <Trash2 color={"oklch(63.7% 0.237 25.331)"}/>
+                            </Button>
+                        </CardAction>
                     </CardHeader>
                     <CardContent className={"grid grid-cols-1 md:grid-cols-2 gap-4"}>
                         <div className={"space-y-2"}>
@@ -55,7 +58,7 @@ export default function ServiceConfiguration() {
                         <div className={"space-y-2"}>
                             <Label htmlFor={"service-duration-type"}>Service duration type</Label>
                             <Select defaultValue={"one-time"}>
-                                <SelectTrigger id={"service-duration-type"} className="w-full">
+                                <SelectTrigger id={"service-duration-type"} className="w-full cursor-pointer">
                                     <SelectValue placeholder="Service duration type"/>
                                 </SelectTrigger>
                                 <SelectContent>
@@ -81,7 +84,7 @@ export default function ServiceConfiguration() {
                         <div className={"space-y-2"}>
                             <Label htmlFor={"service-status"}>Service status</Label>
                             <Select defaultValue={"active"}>
-                                <SelectTrigger id={"service-status"} className="w-full">
+                                <SelectTrigger id={"service-status"} className="w-full cursor-pointer">
                                     <SelectValue placeholder="Service status"/>
                                 </SelectTrigger>
                                 <SelectContent>
