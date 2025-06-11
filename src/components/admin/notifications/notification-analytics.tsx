@@ -1,36 +1,40 @@
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {MailOpen, MailX, Percent, Send} from "lucide-react";
 import {ChartContainer, ChartTooltip, ChartTooltipContent} from "@/components/ui/chart";
-import {CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis} from "recharts";
+import {Area, AreaChart, CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis} from "recharts";
 
-const chartData = [
-    { month: "Jan", sent: 2400, delivered: 2350, opened: 1800 },
-    { month: "Feb", sent: 2100, delivered: 2050, opened: 1650 },
-    { month: "Mar", sent: 2800, delivered: 2720, opened: 2100 },
-    { month: "Apr", sent: 3200, delivered: 3150, opened: 2400 },
-    { month: "May", sent: 2847, delivered: 2801, opened: 2112 },
-    { month: "Jun", sent: 3000, delivered: 2950, opened: 2300 },
-    { month: "Jul", sent: 3500, delivered: 3400, opened: 2700 },
-    { month: "Aug", sent: 3700, delivered: 3600, opened: 2900 },
-    { month: "Sep", sent: 4000, delivered: 3900, opened: 3100 },
-    { month: "Oct", sent: 4200, delivered: 4100, opened: 3300 },
-    { month: "Nov", sent: 4500, delivered: 4400, opened: 3600 },
-    { month: "Dec", sent: 4800, delivered: 4700, opened: 3900 },
+const performanceData = [
+    { month: "Jan", sent: 1200, delivered: 1150, opened: 850, clicked: 320 },
+    { month: "Feb", sent: 1400, delivered: 1350, opened: 1020, clicked: 410 },
+    { month: "Mar", sent: 1600, delivered: 1520, opened: 1180, clicked: 475 },
+    { month: "Apr", sent: 1800, delivered: 1730, opened: 1350, clicked: 540 },
+    { month: "May", sent: 2000, delivered: 1900, opened: 1520, clicked: 608 },
+    { month: "Jun", sent: 1750, delivered: 1680, opened: 1260, clicked: 504 },
+    { month: "Jul", sent: 3500, delivered: 3400, opened: 2700, clicked: 1080 },
+    { month: "Aug", sent: 3700, delivered: 3600, opened: 2900, clicked: 1160 },
+    { month: "Sep", sent: 4000, delivered: 3900, opened: 3100, clicked: 1240 },
+    { month: "Oct", sent: 4200, delivered: 4100, opened: 3300, clicked: 1320 },
+    { month: "Nov", sent: 4500, delivered: 4400, opened: 3600, clicked: 1440 },
+    { month: "Dec", sent: 4800, delivered: 4700, opened: 3900, clicked: 1560 },
 ];
 
 const chartConfig = {
     sent: {
         label: "Sent",
-        color: "#4285f4",
+        color: "hsl(220, 70%, 50%)"
     },
     delivered: {
         label: "Delivered",
-        color: "#34a853",
+        color: "hsl(142, 71%, 45%)"
     },
     opened: {
         label: "Opened",
-        color: "#fbbc04",
+        color: "hsl(346, 87%, 43%)"
     },
+    clicked: {
+        label: "Clicked",
+        color: "hsl(262, 83%, 58%)"
+    }
 };
 
 export default function NotificationAnalytics() {
@@ -91,23 +95,75 @@ export default function NotificationAnalytics() {
             </div>
             <Card>
                 <CardHeader>
-                    <CardTitle>Notification performance</CardTitle>
-                    <CardDescription>Delivery and engagement metrics over time</CardDescription>
+                    <CardTitle>Notification analytics</CardTitle>
+                    <CardDescription>Performance metrics and engagement statistics</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <ChartContainer config={chartConfig}>
-                        <ResponsiveContainer width="100%" height="100%">
-                            <LineChart data={chartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="month" />
-                                <YAxis />
-                                <ChartTooltip content={<ChartTooltipContent />} />
-                                <Line type="monotone" dataKey="sent" stroke="var(--color-sent)" strokeWidth={2} />
-                                <Line type="monotone" dataKey="delivered" stroke="var(--color-delivered)" strokeWidth={2} />
-                                <Line type="monotone" dataKey="opened" stroke="var(--color-opened)" strokeWidth={2} />
-                            </LineChart>
-                        </ResponsiveContainer>
-                    </ChartContainer>
+                    <div className="grid gap-4 md:grid-cols-2">
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>Notification Delivery Rates</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <ChartContainer config={chartConfig} className="h-[300px]">
+                                    <ResponsiveContainer width="100%" height="100%">
+                                        <AreaChart data={performanceData}>
+                                            <CartesianGrid strokeDasharray="3 3" />
+                                            <XAxis dataKey="month" />
+                                            <YAxis />
+                                            <ChartTooltip content={<ChartTooltipContent />} />
+                                            <Area
+                                                type="monotone"
+                                                dataKey="sent"
+                                                stackId="1"
+                                                stroke="hsl(220, 70%, 50%)"
+                                                fill="hsl(220, 70%, 50%)"
+                                                fillOpacity={0.6}
+                                            />
+                                            <Area
+                                                type="monotone"
+                                                dataKey="delivered"
+                                                stackId="1"
+                                                stroke="hsl(142, 71%, 45%)"
+                                                fill="hsl(142, 71%, 45%)"
+                                                fillOpacity={0.6}
+                                            />
+                                        </AreaChart>
+                                    </ResponsiveContainer>
+                                </ChartContainer>
+                            </CardContent>
+                        </Card>
+
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>Engagement Metrics</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <ChartContainer config={chartConfig} className="h-[300px]">
+                                    <ResponsiveContainer width="100%" height="100%">
+                                        <LineChart data={performanceData}>
+                                            <CartesianGrid strokeDasharray="3 3" />
+                                            <XAxis dataKey="month" />
+                                            <YAxis />
+                                            <ChartTooltip content={<ChartTooltipContent />} />
+                                            <Line
+                                                type="monotone"
+                                                dataKey="opened"
+                                                stroke="hsl(346, 87%, 43%)"
+                                                strokeWidth={2}
+                                            />
+                                            <Line
+                                                type="monotone"
+                                                dataKey="clicked"
+                                                stroke="hsl(262, 83%, 58%)"
+                                                strokeWidth={2}
+                                            />
+                                        </LineChart>
+                                    </ResponsiveContainer>
+                                </ChartContainer>
+                            </CardContent>
+                        </Card>
+                    </div>
                 </CardContent>
             </Card>
         </main>
