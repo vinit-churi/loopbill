@@ -7,6 +7,9 @@ import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, Form
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useForm} from "react-hook-form";
 import {z} from "zod/v4";
+import {Label} from "@/components/ui/label";
+import {Input} from "@/components/ui/input";
+import {Textarea} from "@/components/ui/textarea";
 
 // Accepts “9:00 AM”, “02:15 pm”, “12:00 PM”, etc
 const TIME_12H_REGEX = /^(0?[1-9]|1[0-2]):[0-5][0-9]\s?(AM|PM)$/i;
@@ -76,8 +79,21 @@ export default function CompanyInformation() {
                 </CardTitle>
                 <CardDescription>Configure company and branch details in one place</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className={"space-y-4"}>
                 <h4 className={"font-semibold text-blue-500 mb-2"}>Main Company</h4>
+                <hr/>
+                <div className={"space-y-2"}>
+                    <Label htmlFor={"company-name"}>Company name</Label>
+                    <Input id={"company-name"} type={"text"} placeholder={"Registered Company name"}/>
+                </div>
+                <div className={"space-y-2"}>
+                    <Label htmlFor={"company-address"}>Company address</Label>
+                    <Textarea id={"company-address"} placeholder={"Type your company address here"}/>
+                </div>
+                <div className={"flex flex-row items-center justify-between"}>
+                    <h4 className={"text-sm font-semibold"}>Phone</h4>
+                    <Button variant={"outline"}><Plus/>Add phone</Button>
+                </div>
                 <hr/>
             </CardContent>
             <CardFooter>
