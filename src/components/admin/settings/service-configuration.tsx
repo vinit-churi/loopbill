@@ -36,14 +36,14 @@ const serviceConfigurationSchema = z.object({
 // Types for the form values
 type ServiceFormValues = z.infer<typeof serviceConfigurationSchema>
 
-// Types
-type ServiceFormInput = z.input<typeof serviceConfigurationSchema>;  // raw values
-type ServiceFormOutput = z.output<typeof singleServiceSchema>; // parsed values
+// Types from schema
+type ServiceFormInput = z.input<typeof serviceConfigurationSchema>;  // // raw (unknown numbers)
+type ServiceFormOutput = z.output<typeof serviceConfigurationSchema>; // parsed (real numbers)
 
 // Submit handler
 function onSubmit(raw: ServiceFormInput) {
     // raw = strings
-    const parsed: ServiceFormOutput = singleServiceSchema.parse(raw);
+    const parsed: ServiceFormOutput = serviceConfigurationSchema.parse(raw);
     // parsed.pricePer100SqFt & deliveryChargePerKm are numbers here
     console.log(parsed);
 }
