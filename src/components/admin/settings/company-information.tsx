@@ -92,7 +92,7 @@ export default function CompanyInformation() {
                 </div>
                 <div className={"flex flex-row items-center justify-between"}>
                     <h4 className={"text-sm font-semibold"}>Phone</h4>
-                    <Button variant={"outline"}><Plus/>Add phone</Button>
+                    <Button variant={"outline"} className={"cursor-pointer"}><Plus/>Add phone</Button>
                 </div>
                 <div className={"flex flex-row gap-2"}>
                     <Input id={"phone-type"} type={"text"} placeholder={"Phone type"} className={"w-30"}/>
@@ -103,7 +103,7 @@ export default function CompanyInformation() {
                 </div>
                 <div className={"flex flex-row items-center justify-between"}>
                     <h4 className={"text-sm font-semibold"}>Email</h4>
-                    <Button variant={"outline"}><Plus/>Add email</Button>
+                    <Button variant={"outline"} className={"cursor-pointer"}><Plus/>Add email</Button>
                 </div>
                 <div className={"flex flex-row gap-2"}>
                     <Input id={"email-type"} type={"text"} placeholder={"Email type"} className={"w-30"}/>
@@ -146,7 +146,7 @@ export default function CompanyInformation() {
 
                 <div className={"flex flex-row items-center justify-between"}>
                     <h4 className={"font-semibold text-green-500 mb-2"}>Branches</h4>
-                    <Button variant={"outline"}><Plus/>Add branch</Button>
+                    <Button variant={"outline"} className={"cursor-pointer"}><Plus/>Add branch</Button>
                 </div>
                 <hr/>
                 <Card>
@@ -167,7 +167,7 @@ export default function CompanyInformation() {
                         </div>
                         <div className={"flex flex-row items-center justify-between"}>
                             <h4 className={"text-sm font-semibold"}>Phone</h4>
-                            <Button variant={"outline"}><Plus/>Add phone</Button>
+                            <Button variant={"outline"} className={"cursor-pointer"}><Plus/>Add phone</Button>
                         </div>
                         <div className={"flex flex-row gap-2"}>
                             <Input id={"phone-type"} type={"text"} placeholder={"Phone type"} className={"w-30"}/>
@@ -178,7 +178,7 @@ export default function CompanyInformation() {
                         </div>
                         <div className={"flex flex-row items-center justify-between"}>
                             <h4 className={"text-sm font-semibold"}>Email</h4>
-                            <Button variant={"outline"}><Plus/>Add email</Button>
+                            <Button variant={"outline"} className={"cursor-pointer"}><Plus/>Add email</Button>
                         </div>
                         <div className={"flex flex-row gap-2"}>
                             <Input id={"email-type"} type={"text"} placeholder={"Email type"} className={"w-30"}/>
