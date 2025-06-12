@@ -41,16 +41,13 @@ type ServiceFormInput = z.input<typeof serviceConfigurationSchema>;  // // raw (
 type ServiceFormOutput = z.output<typeof serviceConfigurationSchema>; // parsed (real numbers)
 
 // Submit handler
-function onSubmit(raw: ServiceFormInput) {
-    // raw = strings
-    const parsed: ServiceFormOutput = serviceConfigurationSchema.parse(raw);
-    // parsed.pricePer100SqFt & deliveryChargePerKm are numbers here
-    console.log(parsed);
+function onSubmit(values: ServiceFormOutput) {
+    console.log(values);
 }
 
 // RHF setup
 export default function ServiceConfiguration() {
-    const form = useForm<ServiceFormInput>(
+    const form = useForm<ServiceFormInput, any, ServiceFormOutput>(
         {
             resolver: zodResolver(serviceConfigurationSchema),
             defaultValues: {
