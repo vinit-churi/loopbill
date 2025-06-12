@@ -37,7 +37,7 @@ const serviceConfigurationSchema = z.object({
 type ServiceFormValues = z.infer<typeof serviceConfigurationSchema>
 
 // Types
-type ServiceFormInput = z.input<typeof singleServiceSchema>;  // raw values
+type ServiceFormInput = z.input<typeof serviceConfigurationSchema>;  // raw values
 type ServiceFormOutput = z.output<typeof singleServiceSchema>; // parsed values
 
 // Submit handler
@@ -52,13 +52,15 @@ function onSubmit(raw: ServiceFormInput) {
 export default function ServiceConfiguration() {
     const form = useForm<ServiceFormInput>(
         {
-            resolver: zodResolver(singleServiceSchema),
+            resolver: zodResolver(serviceConfigurationSchema),
             defaultValues: {
-                serviceName: "",
-                durationType: "one-time",
-                pricePer100SqFt: 0,
-                deliveryChargePerKm: 0,
-                serviceStatus: "active",
+                services: [{
+                    serviceName: "",
+                    durationType: "one-time",
+                    pricePer100SqFt: 0,
+                    deliveryChargePerKm: 0,
+                    serviceStatus: "active",
+                }]
             },
         }
     )
