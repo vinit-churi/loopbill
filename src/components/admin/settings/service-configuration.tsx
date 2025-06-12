@@ -33,9 +33,6 @@ const serviceConfigurationSchema = z.object({
     services: z.array(singleServiceSchema)
 })
 
-// Types for the form values
-type ServiceFormValues = z.infer<typeof serviceConfigurationSchema>
-
 // Types from schema
 type ServiceFormInput = z.input<typeof serviceConfigurationSchema>;  // // raw (unknown numbers)
 type ServiceFormOutput = z.output<typeof serviceConfigurationSchema>; // parsed (real numbers)
