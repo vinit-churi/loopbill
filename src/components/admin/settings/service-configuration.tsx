@@ -28,6 +28,14 @@ const singleServiceSchema = z.object({
     serviceStatus: z.enum(["active", "inactive"], {error: "Select a service status"}),
 })
 
+// Schema for the entire service configuration form with an array of services
+const serviceConfigurationSchema = z.object({
+    services: z.array(singleServiceSchema)
+})
+
+// Types for the form values
+type ServiceFormValues = z.infer<typeof serviceConfigurationSchema>
+
 // Types
 type ServiceFormInput = z.input<typeof singleServiceSchema>;  // raw values
 type ServiceFormOutput = z.output<typeof singleServiceSchema>; // parsed values
