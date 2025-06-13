@@ -5,7 +5,7 @@ import {HandPlatter, Plus, Trash2} from "lucide-react";
 import {Button} from "@/components/ui/button"
 import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {useForm} from "react-hook-form";
+import {useFieldArray, useForm} from "react-hook-form";
 import {z} from "zod/v4";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
@@ -59,6 +59,8 @@ export default function ServiceConfiguration() {
         }
     )
 
+    const {fields, append, remove} = useFieldArray({control: form.control, name: "services"})
+
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -78,16 +80,18 @@ export default function ServiceConfiguration() {
                         </div>
                         <hr className={"my-4"}/>
                         <section className={"space-y-4"}>
-                            <Card>
+                            {fields.map((field, index) => (
+                            <Card key={field.id}>
                                 <CardHeader>
-                                    <CardTitle className={"text-pink-500"}>Service 1</CardTitle>
+                                    <CardTitle className={"text-pink-500"}>Service&nbsp;{index+1}</CardTitle>
                                     <CardAction>
-                                        <Button variant={"outline"} className={"cursor-pointer"}>
+                                        <Button variant={"outline"} type={"button"} className={"cursor-pointer"} onClick={()=>remove(index)}>
                                             <Trash2 color={"oklch(63.7% 0.237 25.331)"}/>
                                         </Button>
                                     </CardAction>
                                 </CardHeader>
                                 <CardContent className={"grid grid-cols-1 md:grid-cols-2 gap-4"}>
+
                                     <div className={"space-y-2"}>
                                         <Label htmlFor={"service-name"}>Service name</Label>
                                         <Input id={"service-name"} type={"text"} placeholder={"Service name"}/>
@@ -133,6 +137,7 @@ export default function ServiceConfiguration() {
                                     </div>
                                 </CardContent>
                             </Card>
+                            ))}
                         </section>
                     </CardContent>
                     <CardFooter>
