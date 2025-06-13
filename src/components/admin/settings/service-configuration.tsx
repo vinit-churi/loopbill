@@ -7,7 +7,6 @@ import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, Form
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useFieldArray, useForm} from "react-hook-form";
 import {z} from "zod/v4";
-import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {
     Select,
@@ -42,19 +41,22 @@ function onSubmit(values: ServiceFormOutput) {
     console.log(values);
 }
 
+// Default values for the form
+const defaultService:ServiceFormOutput["services"][0] = {
+    serviceName: "",
+    durationType: "one-time",
+    pricePer100SqFt: 0,
+    deliveryChargePerKm: 0,
+    serviceStatus: "active"
+}
+
 // RHF setup
 export default function ServiceConfiguration() {
     const form = useForm<ServiceFormInput, any, ServiceFormOutput>(
         {
             resolver: zodResolver(serviceConfigurationSchema),
             defaultValues: {
-                services: [{
-                    serviceName: "",
-                    durationType: "one-time",
-                    pricePer100SqFt: 0,
-                    deliveryChargePerKm: 0,
-                    serviceStatus: "active",
-                }]
+                services: [defaultService]
             },
         }
     )
@@ -74,7 +76,12 @@ export default function ServiceConfiguration() {
                     <CardContent>
                         <div className={"flex flex-row justify-between"}>
                             <h4 className={"font-semibold mt-4 text-pink-500"}>Services</h4>
-                            <Button variant={"outline"} className={"cursor-pointer"}>
+                            <Button
+                                variant={"outline"}
+                                type={"button"}
+                                className={"cursor-pointer"}
+                                onClick={()=>append({...defaultService})}
+                            >
                                 <Plus/>Add service
                             </Button>
                         </div>
@@ -85,63 +92,138 @@ export default function ServiceConfiguration() {
                                 <CardHeader>
                                     <CardTitle className={"text-pink-500"}>Service&nbsp;{index+1}</CardTitle>
                                     <CardAction>
-                                        <Button variant={"outline"} type={"button"} className={"cursor-pointer"} onClick={()=>remove(index)}>
+                                        <Button
+                                            variant={"outline"}
+                                            type={"button"}
+                                            className={"cursor-pointer"}
+                                            onClick={()=>remove(index)}>
                                             <Trash2 color={"oklch(63.7% 0.237 25.331)"}/>
                                         </Button>
                                     </CardAction>
                                 </CardHeader>
                                 <CardContent className={"grid grid-cols-1 md:grid-cols-2 gap-4"}>
+                                    <FormField
+                                        control={form.control}
+                                        name={`services.${index}.serviceName`}
+                                        render={({field})=>(
+                                            <FormItem className={"space-y-2"}>
+                                                <FormLabel htmlFor={`service-name-${index}`}>Service name</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        id={`service-name-${index}`}
+                                                        type={"text"}
+                                                        placeholder={"Service name"}
+                                                        {...field}/>
+                                                </FormControl>
+                                                <FormMessage/>
+                                            </FormItem>
+                                        )}/>
 
-                                    <div className={"space-y-2"}>
-                                        <Label htmlFor={"service-name"}>Service name</Label>
-                                        <Input id={"service-name"} type={"text"} placeholder={"Service name"}/>
-                                    </div>
+                                    <FormField
+                                        control={form.control}
+                                        name={`services.${index}.durationType`}
+                                        render={({field})=>(
+                                    <FormItem className={"space-y-2"}>
+                                        <FormLabel htmlFor={`service-duration-type-${index}`}>
+                                            Service duration type
+                                        </FormLabel>
+                                            <Select
+                                                defaultValue={field.value}
+                                                onValueChange={field.onChange}
+                                            >
+                                                <FormControl>
+                                                    <SelectTrigger
+                                                        id={`service-duration-type-${index}`}
+                                                        className="w-full cursor-pointer"
+                                                    >
+                                                        <SelectValue placeholder="Service duration type"/>
+                                                    </SelectTrigger>
+                                                </FormControl>
+                                                <SelectContent>
+                                                    <SelectItem value="one-time">One time</SelectItem>
+                                                    <SelectItem value="one-year">1 Year</SelectItem>
+                                                    <SelectItem value="two-years">2 Years</SelectItem>
+                                                </SelectContent>
+                                            </Select>
+                                        <FormMessage/>
+                                    </FormItem>
+                                    )}/>
 
-                                    <div className={"space-y-2"}>
-                                        <Label htmlFor={"service-duration-type"}>Service duration type</Label>
-                                        <Select defaultValue={"one-time"}>
-                                            <SelectTrigger id={"service-duration-type"} className="w-full cursor-pointer">
-                                                <SelectValue placeholder="Service duration type"/>
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                <SelectItem value="one-time">One time</SelectItem>
-                                                <SelectItem value="one-year">1 Year</SelectItem>
-                                                <SelectItem value="two-years">2 Years</SelectItem>
-                                            </SelectContent>
-                                        </Select>
-                                    </div>
+                                    <FormField
+                                        control={form.control}
+                                        name={`services.${index}.pricePer100SqFt`}
+                                        render={({field})=>(
+                                        <FormItem className={"space-y-2"}>
+                                            <FormLabel htmlFor={`price-per-100sqft-${index}`}>
+                                                Price per 100 Square Feet(₹)
+                                            </FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    id={`price-per-100sqft-${index}`}
+                                                    type={"number"}
+                                                    placeholder={"Price per 100 Square Feet(₹)"}
+                                                />
+                                            </FormControl>
+                                        <FormMessage/>
+                                    </FormItem>
+                                    )}/>
 
-                                    <div className={"space-y-2"}>
-                                        <Label htmlFor={"price-per-100sqft"}>Price per 100 Square Feet(₹)</Label>
-                                        <Input id={"price-per-100sqft"} type={"number"}
-                                               placeholder={"Price per 100 Square Feet(₹)"}/>
-                                    </div>
+                                    <FormField
+                                        control={form.control}
+                                        name={`services.${index}.deliveryChargePerKm`}
+                                        render={({field})=>(
+                                        <FormItem className={"space-y-2"}>
+                                            <FormLabel htmlFor={`delivery-charge-per-km-${index}`}>
+                                                Delivery charge per Km(₹)
+                                            </FormLabel>
+                                            <FormControl>
+                                            <Input
+                                                id={`delivery-charge-per-km-${index}`}
+                                                type={"number"}
+                                                placeholder={"Delivery charge per Km(₹)"}
+                                            />
+                                            </FormControl>
+                                        <FormMessage/>
+                                    </FormItem>
+                                    )}/>
 
-                                    <div className={"space-y-2"}>
-                                        <Label htmlFor={"delivery-charge-per-km"}>Delivery charge per Km(₹)</Label>
-                                        <Input id={"delivery-charge-per-km"} type={"number"}
-                                               placeholder={"Delivery charge per Km(₹)"}/>
-                                    </div>
-
-                                    <div className={"space-y-2"}>
-                                        <Label htmlFor={"service-status"}>Service status</Label>
-                                        <Select defaultValue={"active"}>
-                                            <SelectTrigger id={"service-status"} className="w-full cursor-pointer">
-                                                <SelectValue placeholder="Service status"/>
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                <SelectItem value="active">Active</SelectItem>
-                                                <SelectItem value="inactive">Inactive</SelectItem>
-                                            </SelectContent>
-                                        </Select>
-                                    </div>
+                                    <FormField
+                                        control={form.control}
+                                        name={`services.${index}.serviceStatus`}
+                                        render={({field})=>(
+                                        <FormItem className={"space-y-2"}>
+                                            <FormLabel htmlFor={`service-status-${index}`}>
+                                                Service status
+                                            </FormLabel>
+                                            <Select
+                                                defaultValue={field.value}
+                                                onValueChange={field.onChange}
+                                            >
+                                                <FormControl>
+                                                <SelectTrigger
+                                                    id={`service-status-${index}`}
+                                                    className="w-full cursor-pointer"
+                                                >
+                                                    <SelectValue placeholder="Service status"/>
+                                                </SelectTrigger>
+                                                </FormControl>
+                                                <SelectContent>
+                                                    <SelectItem value="active">Active</SelectItem>
+                                                    <SelectItem value="inactive">Inactive</SelectItem>
+                                                </SelectContent>
+                                            </Select>
+                                        <FormMessage/>
+                                    </FormItem>
+                                    )}/>
                                 </CardContent>
                             </Card>
                             ))}
                         </section>
                     </CardContent>
                     <CardFooter>
-                        <Button type={"submit"} className={"w-full cursor-pointer"}>Save changes</Button>
+                        <Button type={"submit"} className={"w-full cursor-pointer"}>
+                            Save changes
+                        </Button>
                     </CardFooter>
                 </Card>
             </form>
