@@ -162,6 +162,7 @@ export default function ServiceConfiguration() {
                                                     id={`price-per-100sqft-${index}`}
                                                     type={"number"}
                                                     placeholder={"Price per 100 Square Feet(₹)"}
+                                                    onChange={(event)=>field.onChange(Number(event.target.value))}
                                                 />
                                             </FormControl>
                                         <FormMessage/>
@@ -181,6 +182,7 @@ export default function ServiceConfiguration() {
                                                 id={`delivery-charge-per-km-${index}`}
                                                 type={"number"}
                                                 placeholder={"Delivery charge per Km(₹)"}
+                                                onChange={(event)=>field.onChange(Number(event.target.value))}
                                             />
                                             </FormControl>
                                         <FormMessage/>
