@@ -162,7 +162,7 @@ export default function ServiceConfiguration() {
                                                     <FormControl>
                                                         <Input
                                                             {...field}
-                                                            value={field.value as number | ''}
+                                                            value={field.value as number}
                                                             id={`price-per-100sqft-${index}`}
                                                             type={"number"}
                                                             placeholder={"Price per 100 Square Feet(₹)"}
@@ -184,7 +184,7 @@ export default function ServiceConfiguration() {
                                                     <FormControl>
                                                         <Input
                                                             {...field}
-                                                            value={field.value as number | ''}
+                                                            value={field.value as number}
                                                             id={`delivery-charge-per-km-${index}`}
                                                             type={"number"}
                                                             placeholder={"Delivery charge per Km(₹)"}
