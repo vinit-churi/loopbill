@@ -3,7 +3,7 @@
 import {Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import {HandPlatter, Plus, Trash2} from "lucide-react";
 import {Button} from "@/components/ui/button"
-import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useFieldArray, useForm} from "react-hook-form";
 import {z} from "zod/v4";
@@ -110,10 +110,10 @@ export default function ServiceConfiguration() {
                                                 <FormLabel htmlFor={`service-name-${index}`}>Service name</FormLabel>
                                                 <FormControl>
                                                     <Input
+                                                        {...field}
                                                         id={`service-name-${index}`}
                                                         type={"text"}
-                                                        placeholder={"Service name"}
-                                                        {...field}/>
+                                                        placeholder={"Service name"}/>
                                                 </FormControl>
                                                 <FormMessage/>
                                             </FormItem>
@@ -159,10 +159,12 @@ export default function ServiceConfiguration() {
                                             </FormLabel>
                                             <FormControl>
                                                 <Input
+                                                    {...field}
+                                                    value={field.value as number|''}
                                                     id={`price-per-100sqft-${index}`}
                                                     type={"number"}
                                                     placeholder={"Price per 100 Square Feet(₹)"}
-                                                    onChange={(event)=>field.onChange(Number(event.target.value))}
+                                                    onChange={(event)=>field.onChange(Number(event.target.valueAsNumber))}
                                                 />
                                             </FormControl>
                                         <FormMessage/>
@@ -179,10 +181,12 @@ export default function ServiceConfiguration() {
                                             </FormLabel>
                                             <FormControl>
                                             <Input
+                                                {...field}
+                                                value={field.value as number|''}
                                                 id={`delivery-charge-per-km-${index}`}
                                                 type={"number"}
                                                 placeholder={"Delivery charge per Km(₹)"}
-                                                onChange={(event)=>field.onChange(Number(event.target.value))}
+                                                onChange={(event)=>field.onChange(Number(event.target.valueAsNumber))}
                                             />
                                             </FormControl>
                                         <FormMessage/>
