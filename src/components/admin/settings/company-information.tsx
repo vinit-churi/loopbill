@@ -5,11 +5,25 @@ import {Building2, Plus, Trash2} from "lucide-react";
 import {Button} from "@/components/ui/button"
 import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {useForm} from "react-hook-form";
+import {useFieldArray, useForm} from "react-hook-form";
 import {z} from "zod/v4";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
+
+const phoneSchema = z.object(
+    {
+        type: z.string().min(1, "Phone type is required").max(50, "Phone type must be less than 50 characters").default("Phone"),
+        number: z.string().min(10, "Phone number must be at least 10 digits").max(15, "Phone number must be less than 15 digits").regex(/^\+?[0-9\s-]+$/, "Phone number must be a valid format")
+    }
+)
+
+const emailSchema = z.object(
+    {
+        type: z.string().min(1, "Email type is required").max(50, "Email type must be less than 50 characters").default("Email"),
+        address: z.email("Invalid email address").max(320, "Email must be less than 320 characters")
+    }
+)
 
 // Accepts “9:00 AM”, “02:15 pm”, “12:00 PM”, etc
 const TIME_12H_REGEX = /^(0?[1-9]|1[0-2]):[0-5][0-9]\s?(AM|PM)$/i;
@@ -34,43 +48,76 @@ const timeRangeSchema = z
     .refine(
         ({open, close}) => toMinutes(open) < toMinutes(close),
         {
-            message: 'Close time must be after open time', path: ['close']
+            message: 'Close time must be after open time',
+            path: ['close']
         },
     )
 
 // For each weekday: either a range or the word “Closed”
 const daySchema = z.union([timeRangeSchema, z.literal('Closed'), z.literal('closed')]).default('Closed')
 
+const officeHoursSchema = z.object(
+    {
+        monday: daySchema,
+        tuesday: daySchema,
+        wednesday: daySchema,
+        thursday: daySchema,
+        friday: daySchema,
+        saturday: daySchema,
+        sunday: daySchema
+    }
+)
+
+const branchSchema = z.object(
+    {
+        branchName: z.string().min(1, "Branch name is required").max(200, "Branch name must be less than 200 characters"),
+        branchAddress: z.string().min(1, "Branch address is required").max(500, "Address must be less than 500 characters"),
+        phones: z.array(phoneSchema).min(1, "At least one phone number is required"),
+        emails: z.array(emailSchema).min(1, "At least one email address is required"),
+        branchOfficeHours: officeHoursSchema
+    }
+)
+
 const formSchema = z.object({
     companyName: z.string().min(1, "Company name is required").max(200, "Company name must be less than 200 characters"),
     companyAddress: z.string().min(1, "Company address is required").max(500, "Address must be less than 500 characters"),
-    companyPhone: z.string().min(10, "Phone number must be at least 10 digits").max(15, "Phone number must be less than 15 digits"),
-    companyEmail: z.email("Invalid email address").max(320, "Email must be less than 320 characters"),
-    mainOfficeHours: z.object({
-        monday: daySchema,
-        tuesday: daySchema,
-        wednesday: daySchema,
-        thursday: daySchema,
-        friday: daySchema,
-        saturday: daySchema,
-        sunday: daySchema,
-    }),
-    branchName: z.string().min(1, "Branch name is required").max(200, "Branch name must be less than 200 characters"),
-    branchAddress: z.string().min(1, "Branch address is required").max(500, "Address must be less than 500 characters"),
-    branchPhone: z.string().min(10, "Phone number must be at least 10 digits").max(15, "Phone number must be less than 15 digits"),
-    branchEmail: z.email("Invalid email address").max(320, "Email must be less than 320 characters"),
-    branchOfficeHours: z.object({
-        monday: daySchema,
-        tuesday: daySchema,
-        wednesday: daySchema,
-        thursday: daySchema,
-        friday: daySchema,
-        saturday: daySchema,
-        sunday: daySchema,
-    }),
+    phones: z.array(phoneSchema).min(1, "At least one phone number is required"),
+    emails: z.array(emailSchema).min(1, "At least one email address is required"),
+    mainOfficeHours: officeHoursSchema,
+    branches: z.array(branchSchema).min(0, "Branches cannot be negative")
 })
 
+type FormValues = z.infer<typeof formSchema>
+
 export default function CompanyInformation() {
+    const form = useForm<FormValues>(
+        {
+            // resolver: zodResolver(formSchema),
+        }
+    )
+
+    const companyPhones = useFieldArray(
+        {
+            control: form.control,
+            name: "phones"
+        }
+    )
+
+    const companyEmails = useFieldArray(
+        {
+            control: form.control,
+            name: "emails"
+        }
+    )
+
+    const branches = useFieldArray(
+        {
+            control: form.control,
+            name: "branches"
+        }
+    )
+
+
     return (
         <Card>
             <CardHeader>
