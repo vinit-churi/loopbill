@@ -111,6 +111,22 @@ export default function CompanyInformation() {
     const form = useForm<FormValues>(
         {
             // resolver: zodResolver(formSchema),
+            defaultValues: {
+                companyName: "",
+                companyAddress: "",
+                phones: [defaultPhone],
+                emails: [defaultEmail],
+                mainOfficeHours: {
+                    monday: "Closed",
+                    tuesday: "Closed",
+                    wednesday: "Closed",
+                    thursday: "Closed",
+                    friday: "Closed",
+                    saturday: "Closed",
+                    sunday: "Closed"
+                },
+                branches: []
+            }
         }
     )
 
