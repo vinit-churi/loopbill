@@ -36,11 +36,6 @@ const serviceConfigurationSchema = z.object({
 type ServiceFormInput = z.input<typeof serviceConfigurationSchema>;  // // raw (unknown numbers)
 type ServiceFormOutput = z.output<typeof serviceConfigurationSchema>; // parsed (real numbers)
 
-// Submit handler
-function onSubmit(values: ServiceFormOutput) {
-    console.log(values);
-}
-
 // Default values for the form
 const defaultService: ServiceFormOutput["services"][0] = {
     serviceName: "",
@@ -62,6 +57,18 @@ export default function ServiceConfiguration() {
     )
 
     const {fields, append, remove} = useFieldArray({control: form.control, name: "services"})
+
+    // Submit handler
+    function onSubmit(values: ServiceFormOutput) {
+        console.log(values);
+        // Here you can:
+        // - Update component state
+        // - Make API calls
+        // - Show success/error messages
+        // - Navigate to another page
+        // - Access other component methods/state
+    }
+
 
     return (
         <Form {...form}>

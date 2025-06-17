@@ -117,6 +117,10 @@ export default function CompanyInformation() {
         }
     )
 
+    const onSubmit = (values: FormValues) => {
+        console.log("Form submitted with values:", values);
+        // Here you would typically send the data to your backend or API
+    }
 
     return (
         <Card>
