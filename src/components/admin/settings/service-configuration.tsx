@@ -87,145 +87,162 @@ export default function ServiceConfiguration() {
                         </div>
                         <hr className={"my-4"}/>
                         <section className={"space-y-4"}>
-                            {fields.map((field, index) => (
-                                <Card key={field.id}>
-                                    <CardHeader>
-                                        <CardTitle className={"text-pink-500"}>Service&nbsp;{index + 1}</CardTitle>
-                                        <CardAction>
-                                            <Button
-                                                variant={"outline"}
-                                                type={"button"}
-                                                className={"cursor-pointer"}
-                                                onClick={() => remove(index)}>
-                                                <Trash2 color={"oklch(63.7% 0.237 25.331)"}/>
-                                            </Button>
-                                        </CardAction>
-                                    </CardHeader>
-                                    <CardContent className={"grid grid-cols-1 md:grid-cols-2 gap-4"}>
-                                        <FormField
-                                            control={form.control}
-                                            name={`services.${index}.serviceName`}
-                                            render={({field}) => (
-                                                <FormItem className={"space-y-2"}>
-                                                    <FormLabel htmlFor={`service-name-${index}`}>
-                                                        Service name
-                                                    </FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            {...field}
-                                                            id={`service-name-${index}`}
-                                                            type={"text"}
-                                                            placeholder={"Service name"}/>
-                                                    </FormControl>
-                                                    <FormMessage/>
-                                                </FormItem>
-                                            )}/>
+                            {
+                                fields.length === 0 ? (
+                                    <div className={"text-center py-8 text-gray-500"}>
+                                        <HandPlatter size={48} className={"mx-auto mb-4 opacity-50"}/>
+                                        <p className={"text-lg font-medium mb-2"}>No services configured</p>
+                                        <p className={"text-sm"}>Add your first service to get started</p>
+                                    </div>
+                                ) : (
+                                    fields.map(
+                                        (field, index) => (
+                                            <Card key={field.id}>
+                                                <CardHeader>
+                                                    <CardTitle
+                                                        className={"text-pink-500"}>Service&nbsp;{index + 1}</CardTitle>
+                                                    <CardAction>
+                                                        <Button
+                                                            variant={"outline"}
+                                                            type={"button"}
+                                                            className={"cursor-pointer"}
+                                                            onClick={() => remove(index)}>
+                                                            <Trash2 color={"oklch(63.7% 0.237 25.331)"}/>
+                                                        </Button>
+                                                    </CardAction>
+                                                </CardHeader>
+                                                <CardContent className={"grid grid-cols-1 md:grid-cols-2 gap-4"}>
+                                                    <FormField
+                                                        control={form.control}
+                                                        name={`services.${index}.serviceName`}
+                                                        render={({field}) => (
+                                                            <FormItem className={"space-y-2"}>
+                                                                <FormLabel htmlFor={`service-name-${index}`}>
+                                                                    Service name
+                                                                </FormLabel>
+                                                                <FormControl>
+                                                                    <Input
+                                                                        {...field}
+                                                                        id={`service-name-${index}`}
+                                                                        type={"text"}
+                                                                        placeholder={"Service name"}/>
+                                                                </FormControl>
+                                                                <FormMessage/>
+                                                            </FormItem>
+                                                        )}/>
 
-                                        <FormField
-                                            control={form.control}
-                                            name={`services.${index}.durationType`}
-                                            render={({field}) => (
-                                                <FormItem className={"space-y-2"}>
-                                                    <FormLabel htmlFor={`service-duration-type-${index}`}>
-                                                        Service duration type
-                                                    </FormLabel>
-                                                    <Select
-                                                        defaultValue={field.value}
-                                                        onValueChange={field.onChange}
-                                                    >
-                                                        <FormControl>
-                                                            <SelectTrigger
-                                                                id={`service-duration-type-${index}`}
-                                                                className="w-full cursor-pointer"
-                                                            >
-                                                                <SelectValue placeholder="Service duration type"/>
-                                                            </SelectTrigger>
-                                                        </FormControl>
-                                                        <SelectContent>
-                                                            <SelectItem value="one-time">One time</SelectItem>
-                                                            <SelectItem value="one-year">1 Year</SelectItem>
-                                                            <SelectItem value="two-years">2 Years</SelectItem>
-                                                        </SelectContent>
-                                                    </Select>
-                                                    <FormMessage/>
-                                                </FormItem>
-                                            )}/>
+                                                    <FormField
+                                                        control={form.control}
+                                                        name={`services.${index}.durationType`}
+                                                        render={({field}) => (
+                                                            <FormItem className={"space-y-2"}>
+                                                                <FormLabel htmlFor={`service-duration-type-${index}`}>
+                                                                    Service duration type
+                                                                </FormLabel>
+                                                                <Select
+                                                                    defaultValue={field.value}
+                                                                    onValueChange={field.onChange}
+                                                                >
+                                                                    <FormControl>
+                                                                        <SelectTrigger
+                                                                            id={`service-duration-type-${index}`}
+                                                                            className="w-full cursor-pointer"
+                                                                        >
+                                                                            <SelectValue
+                                                                                placeholder="Service duration type"/>
+                                                                        </SelectTrigger>
+                                                                    </FormControl>
+                                                                    <SelectContent>
+                                                                        <SelectItem value="one-time">One
+                                                                            time</SelectItem>
+                                                                        <SelectItem value="one-year">1 Year</SelectItem>
+                                                                        <SelectItem value="two-years">2
+                                                                            Years</SelectItem>
+                                                                    </SelectContent>
+                                                                </Select>
+                                                                <FormMessage/>
+                                                            </FormItem>
+                                                        )}/>
 
-                                        <FormField
-                                            control={form.control}
-                                            name={`services.${index}.pricePer100SqFt`}
-                                            render={({field}) => (
-                                                <FormItem className={"space-y-2"}>
-                                                    <FormLabel htmlFor={`price-per-100sqft-${index}`}>
-                                                        Price per 100 Square Feet(₹)
-                                                    </FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            {...field}
-                                                            value={field.value as number}
-                                                            id={`price-per-100sqft-${index}`}
-                                                            type={"number"}
-                                                            placeholder={"Price per 100 Square Feet(₹)"}
-                                                            onChange={(event) => field.onChange(Number(event.target.valueAsNumber))}
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage/>
-                                                </FormItem>
-                                            )}/>
+                                                    <FormField
+                                                        control={form.control}
+                                                        name={`services.${index}.pricePer100SqFt`}
+                                                        render={({field}) => (
+                                                            <FormItem className={"space-y-2"}>
+                                                                <FormLabel htmlFor={`price-per-100sqft-${index}`}>
+                                                                    Price per 100 Square Feet(₹)
+                                                                </FormLabel>
+                                                                <FormControl>
+                                                                    <Input
+                                                                        {...field}
+                                                                        value={field.value as number}
+                                                                        id={`price-per-100sqft-${index}`}
+                                                                        type={"number"}
+                                                                        placeholder={"Price per 100 Square Feet(₹)"}
+                                                                        onChange={(event) => field.onChange(Number(event.target.valueAsNumber))}
+                                                                    />
+                                                                </FormControl>
+                                                                <FormMessage/>
+                                                            </FormItem>
+                                                        )}/>
 
-                                        <FormField
-                                            control={form.control}
-                                            name={`services.${index}.deliveryChargePerKm`}
-                                            render={({field}) => (
-                                                <FormItem className={"space-y-2"}>
-                                                    <FormLabel htmlFor={`delivery-charge-per-km-${index}`}>
-                                                        Delivery charge per Km(₹)
-                                                    </FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            {...field}
-                                                            value={field.value as number}
-                                                            id={`delivery-charge-per-km-${index}`}
-                                                            type={"number"}
-                                                            placeholder={"Delivery charge per Km(₹)"}
-                                                            onChange={(event) => field.onChange(Number(event.target.valueAsNumber))}
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage/>
-                                                </FormItem>
-                                            )}/>
+                                                    <FormField
+                                                        control={form.control}
+                                                        name={`services.${index}.deliveryChargePerKm`}
+                                                        render={({field}) => (
+                                                            <FormItem className={"space-y-2"}>
+                                                                <FormLabel htmlFor={`delivery-charge-per-km-${index}`}>
+                                                                    Delivery charge per Km(₹)
+                                                                </FormLabel>
+                                                                <FormControl>
+                                                                    <Input
+                                                                        {...field}
+                                                                        value={field.value as number}
+                                                                        id={`delivery-charge-per-km-${index}`}
+                                                                        type={"number"}
+                                                                        placeholder={"Delivery charge per Km(₹)"}
+                                                                        onChange={(event) => field.onChange(Number(event.target.valueAsNumber))}
+                                                                    />
+                                                                </FormControl>
+                                                                <FormMessage/>
+                                                            </FormItem>
+                                                        )}/>
 
-                                        <FormField
-                                            control={form.control}
-                                            name={`services.${index}.serviceStatus`}
-                                            render={({field}) => (
-                                                <FormItem className={"space-y-2"}>
-                                                    <FormLabel htmlFor={`service-status-${index}`}>
-                                                        Service status
-                                                    </FormLabel>
-                                                    <Select
-                                                        defaultValue={field.value}
-                                                        onValueChange={field.onChange}
-                                                    >
-                                                        <FormControl>
-                                                            <SelectTrigger
-                                                                id={`service-status-${index}`}
-                                                                className="w-full cursor-pointer"
-                                                            >
-                                                                <SelectValue placeholder="Service status"/>
-                                                            </SelectTrigger>
-                                                        </FormControl>
-                                                        <SelectContent>
-                                                            <SelectItem value="active">Active</SelectItem>
-                                                            <SelectItem value="inactive">Inactive</SelectItem>
-                                                        </SelectContent>
-                                                    </Select>
-                                                    <FormMessage/>
-                                                </FormItem>
-                                            )}/>
-                                    </CardContent>
-                                </Card>
-                            ))}
+                                                    <FormField
+                                                        control={form.control}
+                                                        name={`services.${index}.serviceStatus`}
+                                                        render={({field}) => (
+                                                            <FormItem className={"space-y-2"}>
+                                                                <FormLabel htmlFor={`service-status-${index}`}>
+                                                                    Service status
+                                                                </FormLabel>
+                                                                <Select
+                                                                    defaultValue={field.value}
+                                                                    onValueChange={field.onChange}
+                                                                >
+                                                                    <FormControl>
+                                                                        <SelectTrigger
+                                                                            id={`service-status-${index}`}
+                                                                            className="w-full cursor-pointer"
+                                                                        >
+                                                                            <SelectValue placeholder="Service status"/>
+                                                                        </SelectTrigger>
+                                                                    </FormControl>
+                                                                    <SelectContent>
+                                                                        <SelectItem value="active">Active</SelectItem>
+                                                                        <SelectItem
+                                                                            value="inactive">Inactive</SelectItem>
+                                                                    </SelectContent>
+                                                                </Select>
+                                                                <FormMessage/>
+                                                            </FormItem>
+                                                        )}/>
+                                                </CardContent>
+                                            </Card>
+                                        )
+                                    )
+                                )
+                            }
                         </section>
                     </CardContent>
                     <CardFooter>
