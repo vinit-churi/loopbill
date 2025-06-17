@@ -27,6 +27,8 @@ const emailSchema = z.object(
     }
 )
 
+const emailsSchema = z.object({emails: z.array(emailSchema).min(1, "At least one email address is required")});
+
 // Accepts “9:00 AM”, “02:15 pm”, “12:00 PM”, etc
 const TIME_12H_REGEX = /^(0?[1-9]|1[0-2]):[0-5][0-9]\s?(AM|PM)$/i;
 
@@ -90,13 +92,19 @@ const formSchema = z.object({
 })
 
 type FormValues = z.infer<typeof formSchema>
-
 type PhoneValues = z.infer<typeof phonesSchema>
+type EmailValues = z.infer<typeof emailsSchema>
 
 // Default values for phones
 const defaultPhone: PhoneValues["phones"][0] = {
     type: "Phone",
     number: ""
+}
+
+// Default values for emails
+const defaultEmail: EmailValues["emails"][0] = {
+    type: "Email",
+    address: ""
 }
 
 export default function CompanyInformation() {
