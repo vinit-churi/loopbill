@@ -18,6 +18,8 @@ const phoneSchema = z.object(
     }
 )
 
+const phonesSchema = z.object({phones: z.array(phoneSchema).min(1, "At least one phone number is required")})
+
 const emailSchema = z.object(
     {
         type: z.string().min(1, "Email type is required").max(50, "Email type must be less than 50 characters").default("Email"),
@@ -89,6 +91,14 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>
 
+type PhoneValues = z.infer<typeof phonesSchema>
+
+// Default values for phones
+const defaultPhone: PhoneValues["phones"][0] = {
+    type: "Phone",
+    number: ""
+}
+
 export default function CompanyInformation() {
     const form = useForm<FormValues>(
         {
@@ -96,14 +106,14 @@ export default function CompanyInformation() {
         }
     )
 
-    const companyPhones = useFieldArray(
+    const phones = useFieldArray(
         {
             control: form.control,
             name: "phones"
         }
     )
 
-    const companyEmails = useFieldArray(
+    const emails = useFieldArray(
         {
             control: form.control,
             name: "emails"
@@ -116,6 +126,8 @@ export default function CompanyInformation() {
             name: "branches"
         }
     )
+
+    const {fields, append, remove} = useFieldArray({control: form.control, name: "phones"})
 
     const onSubmit = (values: FormValues) => {
         console.log("Form submitted with values:", values);
@@ -161,8 +173,15 @@ export default function CompanyInformation() {
                         />
                         <div className={"flex flex-row items-center justify-between"}>
                             <h4 className={"text-sm font-semibold"}>Phone</h4>
-                            <Button variant={"outline"} className={"cursor-pointer"}><Plus/>Add phone</Button>
+                            <Button
+                                variant={"outline"}
+                                className={"cursor-pointer"}
+                                // onClick={()=>append(...defaultPhone)}
+                            >
+                                <Plus/>Add phone
+                            </Button>
                         </div>
+                        {fields.map((field, index) => (
                         <div className={"flex flex-row gap-2"}>
                             <Input id={"phone-type"} type={"text"} placeholder={"Phone type"} className={"w-30"}/>
                             <Input id={"phone-number"} type={"tel"} placeholder={"Phone number"}/>
@@ -170,6 +189,7 @@ export default function CompanyInformation() {
                                 <Trash2 color={"oklch(63.7% 0.237 25.331)"}/>
                             </Button>
                         </div>
+                        ))}
                         <div className={"flex flex-row items-center justify-between"}>
                             <h4 className={"text-sm font-semibold"}>Email</h4>
                             <Button variant={"outline"} className={"cursor-pointer"}><Plus/>Add email</Button>
