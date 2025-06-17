@@ -110,7 +110,7 @@ const defaultEmail: EmailValues["emails"][0] = {
 export default function CompanyInformation() {
     const form = useForm<FormValues>(
         {
-            // resolver: zodResolver(formSchema),
+            resolver: zodResolver(formSchema),
             defaultValues: {
                 companyName: "",
                 companyAddress: "",
