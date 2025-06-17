@@ -147,10 +147,18 @@ export default function CompanyInformation() {
                                 </FormItem>
                             )}
                         />
-                        <div className={"space-y-2"}>
-                            <Label htmlFor={"company-address"}>Company address</Label>
-                            <Textarea id={"company-address"} placeholder={"Type your company address here"}/>
-                        </div>
+                        <FormField
+                            control={form.control}
+                            name={"companyAddress"}
+                            render={({field}) => (
+                                <FormItem className={"space-y-2"}>
+                                    <FormLabel htmlFor={"company-address"}>Company address</FormLabel>
+                                    <FormControl>
+                                        <Textarea {...field} id={"company-address"} placeholder={"Type your company address here"}/>
+                                    </FormControl>
+                                </FormItem>
+                            )}
+                        />
                         <div className={"flex flex-row items-center justify-between"}>
                             <h4 className={"text-sm font-semibold"}>Phone</h4>
                             <Button variant={"outline"} className={"cursor-pointer"}><Plus/>Add phone</Button>
