@@ -116,10 +116,10 @@ const defaultEmail: EmailValues["emails"][0] = {
 export default function CompanyInformation() {
     const form = useForm<FormInput, any, FormOutput>(
         {
-            // resolver: zodResolver(formSchema),
+            resolver: zodResolver(formSchema),
             defaultValues: {
                 companyName: "UrbanPestMaster",
-                companyAddress: "",
+                companyAddress: "Kandivali East, Mumbai, Maharashtra",
                 phones: [defaultPhone],
                 emails: [defaultEmail],
                 mainOfficeHours: {
@@ -157,7 +157,23 @@ export default function CompanyInformation() {
         }
     )
 
-    const {fields, append, remove} = useFieldArray({control: form.control, name: "phones"})
+    // For phones
+    const {fields: phoneFields, append: appendPhone, remove: removePhone} = useFieldArray({
+        control: form.control,
+        name: "phones"
+    })
+
+    // For emails
+    const {fields: emailFields, append: appendEmail, remove: removeEmail} = useFieldArray({
+        control: form.control,
+        name: "emails"
+    })
+
+    // For branches (if you're using it)
+    const {fields: branchFields, append: appendBranch, remove: removeBranch} = useFieldArray({
+        control: form.control,
+        name: "branches"
+    })
 
     const onSubmit = (values: FormValues) => {
         console.log("Form submitted with values:", values);
@@ -209,13 +225,13 @@ export default function CompanyInformation() {
                                 type={"button"}
                                 variant={"outline"}
                                 className={"cursor-pointer"}
-                                onClick={() => append(defaultPhone)}
+                                onClick={() => appendPhone(defaultPhone)}
                             >
                                 <Plus/>Add phone
                             </Button>
                         </div>
                         <section className={"space-y-4"}>
-                            {fields.map((field, index) => (
+                            {phoneFields.map((field, index) => (
                                 <div className={"flex flex-row gap-2"} key={field.id}>
                                     <FormField
                                         control={form.control}
@@ -247,8 +263,8 @@ export default function CompanyInformation() {
                                         type={"button"}
                                         variant={"outline"}
                                         className={"cursor-pointer"}
-                                        disabled={fields.length === 1}
-                                        onClick={() => remove(index)}
+                                        disabled={phoneFields.length === 1}
+                                        onClick={() => removePhone(index)}
                                     >
                                         <Trash2 color={"oklch(63.7% 0.237 25.331)"}/>
                                     </Button>
@@ -257,15 +273,62 @@ export default function CompanyInformation() {
                         </section>
                         <div className={"flex flex-row items-center justify-between"}>
                             <h4 className={"text-sm font-semibold"}>Email</h4>
-                            <Button variant={"outline"} className={"cursor-pointer"}><Plus/>Add email</Button>
-                        </div>
-                        <div className={"flex flex-row gap-2"}>
-                            <Input id={"email-type"} type={"text"} placeholder={"Email type"} className={"w-30"}/>
-                            <Input id={"email-address"} type={"tel"} placeholder={"Email address"}/>
-                            <Button variant={"outline"} className={"cursor-pointer"}>
-                                <Trash2 color={"oklch(63.7% 0.237 25.331)"}/>
+                            <Button
+                                type={"button"}
+                                variant={"outline"}
+                                className={"cursor-pointer"}
+                                onClick={()=>appendEmail(defaultEmail)}
+                            >
+                                <Plus/>Add email
                             </Button>
                         </div>
+                        <section className={"space-y-4"}>
+                            {emailFields.map((field, index) => (
+                                <div className={"flex flex-row gap-2"} key={field.id}>
+                                    <FormField
+                                        control={form.control}
+                                        name={`emails.${index}.type`}
+                                        render={({field: emailTypeField}) => (
+                                            <FormItem className={"w-30"}>
+                                                <FormControl>
+                                                    <Input
+                                                        {...emailTypeField}
+                                                        type={"text"}
+                                                        placeholder={"Email type"}
+                                                    />
+                                                </FormControl>
+                                                <FormMessage/>
+                                            </FormItem>
+                                        )}
+                                    />
+                                    <FormField
+                                        control={form.control}
+                                        name={`emails.${index}.address`}
+                                        render={({field: emailAddressField}) => (
+                                            <FormItem className={"w-full"}>
+                                                <FormControl>
+                                                    <Input
+                                                        {...emailAddressField}
+                                                        type={"email"}
+                                                        placeholder={"Email address"}
+                                                    />
+                                                </FormControl>
+                                                <FormMessage/>
+                                            </FormItem>
+                                        )}
+                                    />
+                                    <Button
+                                        type={"button"}
+                                        variant={"outline"}
+                                        className={"cursor-pointer"}
+                                        disabled={emailFields.length === 1}
+                                        onClick={() => removeEmail(index)}
+                                    >
+                                        <Trash2 color={"oklch(63.7% 0.237 25.331)"}/>
+                                    </Button>
+                                </div>
+                            ))}
+                        </section>
                         <h4 className={"text-sm font-semibold"}>Main office hours</h4>
                         <div className={"grid grid-cols-1 md:grid-cols-2 gap-4"}>
                             <div className={"flex flex-row gap-2"}>
