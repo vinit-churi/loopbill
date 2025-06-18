@@ -136,27 +136,6 @@ export default function CompanyInformation() {
         }
     )
 
-    const phones = useFieldArray(
-        {
-            control: form.control,
-            name: "phones"
-        }
-    )
-
-    const emails = useFieldArray(
-        {
-            control: form.control,
-            name: "emails"
-        }
-    )
-
-    const branches = useFieldArray(
-        {
-            control: form.control,
-            name: "branches"
-        }
-    )
-
     // For phones
     const {fields: phoneFields, append: appendPhone, remove: removePhone} = useFieldArray({
         control: form.control,
