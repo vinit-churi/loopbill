@@ -227,7 +227,17 @@ export default function CompanyInformation() {
                                         </FormItem>
                                     )}
                                 />
-                                <Input id={"phone-number"} type={"tel"} placeholder={"Phone number"}/>
+                                <FormField
+                                    control={form.control}
+                                    name={`phones.${index}.number`}
+                                    render={({field: phoneNumberField}) => (
+                                        <FormItem className={"w-full"}>
+                                            <FormControl>
+                                                <Input {...phoneNumberField} type={"tel"} placeholder={"Phone number"}/>
+                                            </FormControl>
+                                        </FormItem>
+                                    )}
+                                />
                                 <Button variant={"outline"} className={"cursor-pointer"}>
                                     <Trash2 color={"oklch(63.7% 0.237 25.331)"}/>
                                 </Button>
