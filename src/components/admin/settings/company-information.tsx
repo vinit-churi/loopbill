@@ -92,8 +92,14 @@ const formSchema = z.object({
 })
 
 type FormValues = z.infer<typeof formSchema>
+type FormInput = z.input<typeof formSchema>
+type FormOutput = z.output<typeof formSchema>
 type PhoneValues = z.infer<typeof phonesSchema>
+type PhoneInputValues = z.input<typeof phonesSchema>
+type PhoneOutputValues = z.output<typeof phonesSchema>
 type EmailValues = z.infer<typeof emailsSchema>
+type EmailInputValues = z.input<typeof emailsSchema>
+type EmailOutputValues = z.output<typeof emailsSchema>
 
 // Default values for phones
 const defaultPhone: PhoneValues["phones"][0] = {
@@ -108,9 +114,9 @@ const defaultEmail: EmailValues["emails"][0] = {
 }
 
 export default function CompanyInformation() {
-    const form = useForm<FormValues>(
+    const form = useForm<FormInput, any, FormOutput>(
         {
-            resolver: zodResolver(formSchema),
+            // resolver: zodResolver(formSchema),
             defaultValues: {
                 companyName: "",
                 companyAddress: "",
@@ -178,7 +184,8 @@ export default function CompanyInformation() {
                                 <FormItem className={"space-y-2"}>
                                     <FormLabel htmlFor={"company-name"}>Company name</FormLabel>
                                     <FormControl>
-                                        <Input {...field} id={"company-name"} type={"text"} placeholder={"Registered Company name"}/>
+                                        <Input {...field} id={"company-name"} type={"text"}
+                                               placeholder={"Registered Company name"}/>
                                     </FormControl>
                                 </FormItem>
                             )}
@@ -190,7 +197,8 @@ export default function CompanyInformation() {
                                 <FormItem className={"space-y-2"}>
                                     <FormLabel htmlFor={"company-address"}>Company address</FormLabel>
                                     <FormControl>
-                                        <Textarea {...field} id={"company-address"} placeholder={"Type your company address here"}/>
+                                        <Textarea {...field} id={"company-address"}
+                                                  placeholder={"Type your company address here"}/>
                                     </FormControl>
                                 </FormItem>
                             )}
@@ -206,13 +214,13 @@ export default function CompanyInformation() {
                             </Button>
                         </div>
                         {fields.map((field, index) => (
-                        <div className={"flex flex-row gap-2"}>
-                            <Input id={"phone-type"} type={"text"} placeholder={"Phone type"} className={"w-30"}/>
-                            <Input id={"phone-number"} type={"tel"} placeholder={"Phone number"}/>
-                            <Button variant={"outline"} className={"cursor-pointer"}>
-                                <Trash2 color={"oklch(63.7% 0.237 25.331)"}/>
-                            </Button>
-                        </div>
+                            <div className={"flex flex-row gap-2"}>
+                                <Input id={"phone-type"} type={"text"} placeholder={"Phone type"} className={"w-30"}/>
+                                <Input id={"phone-number"} type={"tel"} placeholder={"Phone number"}/>
+                                <Button variant={"outline"} className={"cursor-pointer"}>
+                                    <Trash2 color={"oklch(63.7% 0.237 25.331)"}/>
+                                </Button>
+                            </div>
                         ))}
                         <div className={"flex flex-row items-center justify-between"}>
                             <h4 className={"text-sm font-semibold"}>Email</h4>
