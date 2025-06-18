@@ -118,7 +118,7 @@ export default function CompanyInformation() {
         {
             // resolver: zodResolver(formSchema),
             defaultValues: {
-                companyName: "",
+                companyName: "UrbanPestMaster",
                 companyAddress: "",
                 phones: [defaultPhone],
                 emails: [defaultEmail],
