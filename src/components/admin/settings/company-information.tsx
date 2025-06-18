@@ -29,36 +29,8 @@ const emailSchema = z.object(
 
 const emailsSchema = z.object({emails: z.array(emailSchema).min(1, "At least one email address is required")});
 
-// Accepts “9:00 AM”, “02:15 pm”, “12:00 PM”, etc
-const TIME_12H_REGEX = /^(0?[1-9]|1[0-2]):[0-5][0-9]\s?(AM|PM)$/i;
-
-// hh:mm AM/PM -> minutes-since-midnight (for ordering check)
-const toMinutes = (time: string) => {
-    const [, hh, mm, meridiem] = time.match(/(\d{1,2}):(\d{2})\s?(AM|PM)/i)!
-
-    let h = Number(hh) % 12
-    if (meridiem.toUpperCase() === 'PM') h += 12
-    return h * 60 + Number(mm)
-}
-
-// “9:00 AM – 6:00 PM” validator
-const timeRangeSchema = z
-    .object(
-        {
-            open: z.string().regex(TIME_12H_REGEX, 'Use hh:mm AM/PM'),
-            close: z.string().regex(TIME_12H_REGEX, 'Use hh:mm AM/PM')
-        }
-    )
-    .refine(
-        ({open, close}) => toMinutes(open) < toMinutes(close),
-        {
-            message: 'Close time must be after open time',
-            path: ['close']
-        },
-    )
-
 // For each weekday: either a range or the word “Closed”
-const daySchema = z.union([timeRangeSchema, z.literal('Closed'), z.literal('closed')]).default('Closed')
+const daySchema = z.string().default('Closed')
 
 const officeHoursSchema = z.object(
     {
@@ -310,6 +282,24 @@ export default function CompanyInformation() {
                         </section>
                         <h4 className={"text-sm font-semibold"}>Main office hours</h4>
                         <div className={"grid grid-cols-1 md:grid-cols-2 gap-4"}>
+                            <FormField
+                                control={form.control}
+                                name={"mainOfficeHours.monday"}
+                                render={({field}) => (
+                                    <FormItem className={"flex flex-row gap-2"}>
+                                        <FormLabel htmlFor={"monday"} className={"w-30"}>Monday:</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                {...field}
+                                                id={"monday"}
+                                                type={"text"}
+                                                placeholder={"Opening time - Closing time"}
+                                            />
+                                        </FormControl>
+                                        <FormMessage/>
+                                    </FormItem>
+                                )}
+                            />
                             <div className={"flex flex-row gap-2"}>
                                 <Label htmlFor={"monday"} className={"w-30"}>Monday:</Label>
                                 <Input id={"monday"} type={"text"} placeholder={"Opening time - Closing time"}/>
