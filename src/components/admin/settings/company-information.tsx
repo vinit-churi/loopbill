@@ -213,15 +213,27 @@ export default function CompanyInformation() {
                                 <Plus/>Add phone
                             </Button>
                         </div>
+                        <section className={"space-y-4"}>
                         {fields.map((field, index) => (
-                            <div className={"flex flex-row gap-2"}>
-                                <Input id={"phone-type"} type={"text"} placeholder={"Phone type"} className={"w-30"}/>
+                            <div className={"flex flex-row gap-2"} key={field.id}>
+                                <FormField
+                                    control={form.control}
+                                    name={`phones.${index}.type`}
+                                    render={({field: phoneTypeField}) => (
+                                        <FormItem className={"w-30"}>
+                                            <FormControl>
+                                                <Input {...phoneTypeField} type={"text"} placeholder={"Phone type"}/>
+                                            </FormControl>
+                                        </FormItem>
+                                    )}
+                                />
                                 <Input id={"phone-number"} type={"tel"} placeholder={"Phone number"}/>
                                 <Button variant={"outline"} className={"cursor-pointer"}>
                                     <Trash2 color={"oklch(63.7% 0.237 25.331)"}/>
                                 </Button>
                             </div>
                         ))}
+                        </section>
                         <div className={"flex flex-row items-center justify-between"}>
                             <h4 className={"text-sm font-semibold"}>Email</h4>
                             <Button variant={"outline"} className={"cursor-pointer"}><Plus/>Add email</Button>
