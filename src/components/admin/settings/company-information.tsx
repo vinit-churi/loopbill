@@ -206,43 +206,54 @@ export default function CompanyInformation() {
                         <div className={"flex flex-row items-center justify-between"}>
                             <h4 className={"text-sm font-semibold"}>Phone</h4>
                             <Button
+                                type={"button"}
                                 variant={"outline"}
                                 className={"cursor-pointer"}
-                                // onClick={()=>append(...defaultPhone)}
+                                onClick={() => append(defaultPhone)}
                             >
                                 <Plus/>Add phone
                             </Button>
                         </div>
                         <section className={"space-y-4"}>
-                        {fields.map((field, index) => (
-                            <div className={"flex flex-row gap-2"} key={field.id}>
-                                <FormField
-                                    control={form.control}
-                                    name={`phones.${index}.type`}
-                                    render={({field: phoneTypeField}) => (
-                                        <FormItem className={"w-30"}>
-                                            <FormControl>
-                                                <Input {...phoneTypeField} type={"text"} placeholder={"Phone type"}/>
-                                            </FormControl>
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name={`phones.${index}.number`}
-                                    render={({field: phoneNumberField}) => (
-                                        <FormItem className={"w-full"}>
-                                            <FormControl>
-                                                <Input {...phoneNumberField} type={"tel"} placeholder={"Phone number"}/>
-                                            </FormControl>
-                                        </FormItem>
-                                    )}
-                                />
-                                <Button variant={"outline"} className={"cursor-pointer"}>
-                                    <Trash2 color={"oklch(63.7% 0.237 25.331)"}/>
-                                </Button>
-                            </div>
-                        ))}
+                            {fields.map((field, index) => (
+                                <div className={"flex flex-row gap-2"} key={field.id}>
+                                    <FormField
+                                        control={form.control}
+                                        name={`phones.${index}.type`}
+                                        render={({field: phoneTypeField}) => (
+                                            <FormItem className={"w-30"}>
+                                                <FormControl>
+                                                    <Input {...phoneTypeField} type={"text"}
+                                                           placeholder={"Phone type"}/>
+                                                </FormControl>
+                                                <FormMessage/>
+                                            </FormItem>
+                                        )}
+                                    />
+                                    <FormField
+                                        control={form.control}
+                                        name={`phones.${index}.number`}
+                                        render={({field: phoneNumberField}) => (
+                                            <FormItem className={"w-full"}>
+                                                <FormControl>
+                                                    <Input {...phoneNumberField} type={"tel"}
+                                                           placeholder={"Phone number"}/>
+                                                </FormControl>
+                                                <FormMessage/>
+                                            </FormItem>
+                                        )}
+                                    />
+                                    <Button
+                                        type={"button"}
+                                        variant={"outline"}
+                                        className={"cursor-pointer"}
+                                        disabled={fields.length === 1}
+                                        onClick={() => remove(index)}
+                                    >
+                                        <Trash2 color={"oklch(63.7% 0.237 25.331)"}/>
+                                    </Button>
+                                </div>
+                            ))}
                         </section>
                         <div className={"flex flex-row items-center justify-between"}>
                             <h4 className={"text-sm font-semibold"}>Email</h4>
