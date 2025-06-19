@@ -228,7 +228,7 @@ export default function CompanyInformation() {
                                 type={"button"}
                                 variant={"outline"}
                                 className={"cursor-pointer"}
-                                onClick={()=>appendEmail(defaultEmail)}
+                                onClick={() => appendEmail(defaultEmail)}
                             >
                                 <Plus/>Add email
                             </Button>
@@ -300,34 +300,114 @@ export default function CompanyInformation() {
                                     </FormItem>
                                 )}
                             />
-                            <div className={"flex flex-row gap-2"}>
-                                <Label htmlFor={"monday"} className={"w-30"}>Monday:</Label>
-                                <Input id={"monday"} type={"text"} placeholder={"Opening time - Closing time"}/>
-                            </div>
-                            <div className={"flex flex-row gap-2"}>
-                                <Label htmlFor={"tuesday"} className={"w-30"}>Tuesday:</Label>
-                                <Input id={"tuesday"} type={"text"} placeholder={"Opening time - Closing time"}/>
-                            </div>
-                            <div className={"flex flex-row gap-2"}>
-                                <Label htmlFor={"wednesday"} className={"w-30"}>Wednesday:</Label>
-                                <Input id={"wednesday"} type={"text"} placeholder={"Opening time - Closing time"}/>
-                            </div>
-                            <div className={"flex flex-row gap-2"}>
-                                <Label htmlFor={"thursday"} className={"w-30"}>Thursday:</Label>
-                                <Input id={"thursday"} type={"text"} placeholder={"Opening time - Closing time"}/>
-                            </div>
-                            <div className={"flex flex-row gap-2"}>
-                                <Label htmlFor={"friday"} className={"w-30"}>Friday:</Label>
-                                <Input id={"friday"} type={"text"} placeholder={"Opening time - Closing time"}/>
-                            </div>
-                            <div className={"flex flex-row gap-2"}>
-                                <Label htmlFor={"saturday"} className={"w-30"}>Saturday:</Label>
-                                <Input id={"saturday"} type={"text"} placeholder={"Opening time - Closing time"}/>
-                            </div>
-                            <div className={"flex flex-row gap-2"}>
-                                <Label htmlFor={"sunday"} className={"w-30"}>Sunday:</Label>
-                                <Input id={"sunday"} type={"text"} placeholder={"Opening time - Closing time"}/>
-                            </div>
+                            <FormField
+                                control={form.control}
+                                name={"mainOfficeHours.tuesday"}
+                                render={({field}) => (
+                                    <FormItem className={"flex flex-row gap-2"}>
+                                        <FormLabel htmlFor={"tuesday"} className={"w-30"}>Tuesday:</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                {...field}
+                                                id={"tuesday"}
+                                                type={"text"}
+                                                placeholder={"Opening time - Closing time"}
+                                            />
+                                        </FormControl>
+                                        <FormMessage/>
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name={"mainOfficeHours.wednesday"}
+                                render={({field}) => (
+                                    <FormItem className={"flex flex-row gap-2"}>
+                                        <FormLabel htmlFor={"wednesday"} className={"w-30"}>Wednesday:</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                {...field}
+                                                id={"wednesday"}
+                                                type={"text"}
+                                                placeholder={"Opening time - Closing time"}
+                                            />
+                                        </FormControl>
+                                        <FormMessage/>
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name={"mainOfficeHours.thursday"}
+                                render={({field}) => (
+                                    <FormItem className={"flex flex-row gap-2"}>
+                                        <FormLabel htmlFor={"thursday"} className={"w-30"}>Thursday:</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                {...field}
+                                                id={"thursday"}
+                                                type={"text"}
+                                                placeholder={"Opening time - Closing time"}
+                                            />
+                                        </FormControl>
+                                        <FormMessage/>
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name={"mainOfficeHours.friday"}
+                                render={({field}) => (
+                                    <FormItem className={"flex flex-row gap-2"}>
+                                        <FormLabel htmlFor={"friday"} className={"w-30"}>Friday:</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                {...field}
+                                                id={"friday"}
+                                                type={"text"}
+                                                placeholder={"Opening time - Closing time"}
+                                            />
+                                        </FormControl>
+                                        <FormMessage/>
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name={"mainOfficeHours.saturday"}
+                                render={({field}) => (
+                                    <FormItem className={"flex flex-row gap-2"}>
+                                        <FormLabel htmlFor={"saturday"} className={"w-30"}>Saturday:</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                {...field}
+                                                id={"saturday"}
+                                                type={"text"}
+                                                placeholder={"Opening time - Closing time"}
+                                            />
+                                        </FormControl>
+                                        <FormMessage/>
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name={"mainOfficeHours.sunday"}
+                                render={({field}) => (
+                                    <FormItem className={"flex flex-row gap-2"}>
+                                        <FormLabel htmlFor={"sunday"} className={"w-30"}>Sunday:</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                {...field}
+                                                id={"sunday"}
+                                                type={"text"}
+                                                placeholder={"Opening time - Closing time"}
+                                            />
+                                        </FormControl>
+                                        <FormMessage/>
+                                    </FormItem>
+                                )}
+                            />
                         </div>
 
                         <div className={"flex flex-row items-center justify-between"}>
