@@ -1,5 +1,5 @@
 import {Button} from "@/components/ui/button";
-import {Calendar} from "lucide-react";
+import {Download} from "lucide-react";
 import TopStatisticsCards from "@/components/admin/reports/top-statistics-cards";
 import AgentPerformance from "@/components/admin/reports/agent-performance";
 import ComplaintStatusBreakdown from "@/components/admin/reports/complaint-status-breakdown";
@@ -14,10 +14,7 @@ export default function Reports() {
                     <h1 className="text-2xl md:text-3xl font-bold">Reports</h1>
                     <p className="text-muted-foreground">Overview of UrbanPestMaster operations</p>
                 </div>
-                <div className="flex gap-2 items-center">
-                    <Button variant="outline" className="cursor-pointer">Export</Button>
-                    <Button className="cursor-pointer"><Calendar className="h-4 w-4"/>Schedule Service</Button>
-                </div>
+                <Button className="cursor-pointer"><Download/>Export reports</Button>
             </div>
             <TopStatisticsCards/>
             <hr/>
