@@ -63,15 +63,10 @@ const formSchema = z.object({
     branches: z.array(branchSchema).min(0, "Branches cannot be negative")
 })
 
-type FormValues = z.infer<typeof formSchema>
 type FormInput = z.input<typeof formSchema>
 type FormOutput = z.output<typeof formSchema>
 type PhoneValues = z.infer<typeof phonesSchema>
-type PhoneInputValues = z.input<typeof phonesSchema>
-type PhoneOutputValues = z.output<typeof phonesSchema>
 type EmailValues = z.infer<typeof emailsSchema>
-type EmailInputValues = z.input<typeof emailsSchema>
-type EmailOutputValues = z.output<typeof emailsSchema>
 
 // Default values for phones
 const defaultPhone: PhoneValues["phones"][0] = {
@@ -126,7 +121,7 @@ export default function CompanyInformation() {
         name: "branches"
     })
 
-    const onSubmit = (values: FormValues) => {
+    const onSubmit = (values: FormOutput) => {
         console.log("Form submitted with values:", values);
         // Here you would typically send the data to your backend or API
     }
