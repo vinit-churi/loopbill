@@ -14,7 +14,7 @@ export default function Reports() {
                     <h1 className="text-2xl md:text-3xl font-bold">Reports</h1>
                     <p className="text-muted-foreground">Overview of UrbanPestMaster operations</p>
                 </div>
-                <Button className="cursor-pointer"><Download/>Export reports</Button>
+                <Button className="cursor-pointer"><Download/>Export report</Button>
             </div>
             <TopStatisticsCards/>
             <hr/>
