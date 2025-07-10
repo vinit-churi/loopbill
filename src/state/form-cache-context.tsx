@@ -1,13 +1,12 @@
-
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 interface FormCache {
-    [key: string]: Record<string, any>;
+    [key: string]: Record<string, unknown>;
 }
 
 interface FormCacheContextType {
-    getFormData: (formId: string) => Record<string, any> | null;
-    setFormData: (formId: string, data: Record<string, any>) => void;
+    getFormData: (formId: string) => Record<string, unknown> | null;
+    setFormData: (formId: string, data: Record<string, unknown>) => void;
     clearFormData: (formId: string) => void;
 }
 
@@ -47,14 +46,15 @@ export const FormCacheProvider = ({ children }: FormCacheProviderProps) => {
 
     const getFormData = (formId: string) => cache[formId] || null;
 
-    const setFormData = (formId: string, data: Record<string, any>) => {
+    const setFormData = (formId: string, data: Record<string, unknown>) => {
         setCache(prev => ({ ...prev, [formId]: data }));
     };
 
     const clearFormData = (formId: string) => {
         setCache(prev => {
-            const { [formId]: _, ...rest } = prev;
-            return rest;
+            const newCache = { ...prev };
+            delete newCache[formId];
+            return newCache;
         });
     };
 
