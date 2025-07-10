@@ -30,12 +30,10 @@ const ScheduleServiceForm = ({ onClose }: { onClose: () => void }) => {
     const formId = "schedule-service-modal";
     const cachedData = getFormData(formId);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [error, setError] = useState<string | null>(null);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsSubmitting(true);
-        setError(null);
 
         try {
             const formData = new FormData(e.currentTarget);
@@ -55,7 +53,7 @@ const ScheduleServiceForm = ({ onClose }: { onClose: () => void }) => {
             clearFormData(formId);
             onClose();
         } catch (error) {
-            setError("Failed to schedule service");
+            console.error("Failed to schedule service:", error);
         } finally {
             setIsSubmitting(false);
         }
@@ -64,6 +62,11 @@ const ScheduleServiceForm = ({ onClose }: { onClose: () => void }) => {
     const handleInputChange = (field: string, value: string) => {
         const currentData = getFormData(formId) || {};
         setFormData(formId, { ...currentData, [field]: value });
+    };
+
+    // Helper function to safely get cached string values
+    const getCachedValue = (key: string): string => {
+        return (cachedData?.[key] as string) || "";
     };
 
     return (
@@ -83,7 +86,7 @@ const ScheduleServiceForm = ({ onClose }: { onClose: () => void }) => {
                     <Label htmlFor="customerSelect">Select Customer *</Label>
                     <Select
                         name="customerSelect"
-                        defaultValue={cachedData?.customerSelect || ""}
+                        defaultValue={getCachedValue('customerSelect')}
                         onValueChange={(value) => handleInputChange('customerSelect', value)}
                     >
                         <SelectTrigger>
@@ -102,7 +105,7 @@ const ScheduleServiceForm = ({ onClose }: { onClose: () => void }) => {
                     <Label htmlFor="serviceType">Service Type *</Label>
                     <Select
                         name="serviceType"
-                        defaultValue={cachedData?.serviceType || ""}
+                        defaultValue={getCachedValue('serviceType')}
                         onValueChange={(value) => handleInputChange('serviceType', value)}
                     >
                         <SelectTrigger>
@@ -125,7 +128,7 @@ const ScheduleServiceForm = ({ onClose }: { onClose: () => void }) => {
                         <Input
                             name="serviceDate"
                             type="date"
-                            defaultValue={cachedData?.serviceDate || ""}
+                            defaultValue={getCachedValue('serviceDate')}
                             onChange={(e) => handleInputChange('serviceDate', e.target.value)}
                             required
                         />
@@ -135,7 +138,7 @@ const ScheduleServiceForm = ({ onClose }: { onClose: () => void }) => {
                         <Input
                             name="serviceTime"
                             type="time"
-                            defaultValue={cachedData?.serviceTime || ""}
+                            defaultValue={getCachedValue('serviceTime')}
                             onChange={(e) => handleInputChange('serviceTime', e.target.value)}
                             required
                         />
@@ -146,7 +149,7 @@ const ScheduleServiceForm = ({ onClose }: { onClose: () => void }) => {
                     <Label htmlFor="assignAgent">Assign Agent *</Label>
                     <Select
                         name="assignAgent"
-                        defaultValue={cachedData?.assignAgent || ""}
+                        defaultValue={getCachedValue('assignAgent')}
                         onValueChange={(value) => handleInputChange('assignAgent', value)}
                     >
                         <SelectTrigger>
@@ -165,7 +168,7 @@ const ScheduleServiceForm = ({ onClose }: { onClose: () => void }) => {
                     <Label htmlFor="priority">Priority Level</Label>
                     <Select
                         name="priority"
-                        defaultValue={cachedData?.priority || "normal"}
+                        defaultValue={getCachedValue('priority') || "normal"}
                         onValueChange={(value) => handleInputChange('priority', value)}
                     >
                         <SelectTrigger>
@@ -185,16 +188,10 @@ const ScheduleServiceForm = ({ onClose }: { onClose: () => void }) => {
                         name="notes"
                         placeholder="Any special instructions for the agent..."
                         rows={3}
-                        defaultValue={cachedData?.notes || ""}
+                        defaultValue={getCachedValue('notes')}
                         onChange={(e) => handleInputChange('notes', e.target.value)}
                     />
                 </div>
-
-                {error && (
-                    <div className="text-sm text-red-600 bg-red-50 p-3 rounded">
-                        {error}
-                    </div>
-                )}
 
                 <div className="flex gap-3 pt-4">
                     <Button type="button" variant="outline" onClick={onClose} className="flex-1">
