@@ -20,7 +20,7 @@ export default function RecentActivities() {
                                 Service #421 completed
                             </p>
                             <p className="text-sm text-muted-foreground">
-                                Raj Kumar completed cockroach treatment at Amit Sharma's location
+                                Raj Kumar completed cockroach treatment at Amit Sharma&apos;s location
                             </p>
                             <p className="text-xs text-muted-foreground">
                                 Today, 11:32 AM
